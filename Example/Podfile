@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'RSKit', :exclusive => true do
+  pod "RSKit", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "RSKit", :path => "../"
+
+  pod 'Kiwi'
+  pod 'FBSnapshotTestCase'
+end
