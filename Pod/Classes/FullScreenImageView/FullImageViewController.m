@@ -19,6 +19,8 @@
 
 @implementation FullImageViewController
 
+@synthesize view;
+
 -(instancetype)init {
     self = [super init];
     if (self) {
