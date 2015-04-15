@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 @class FullImageViewController;
+
 @interface ZoomAnimator : NSObject<UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, weak) FullImageViewController *fullImageViewController;

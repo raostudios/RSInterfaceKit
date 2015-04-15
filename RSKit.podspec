@@ -22,8 +22,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.public_header_files = 'Pod/Classes/**/*.h'
   s.resource_bundles = {
     'RSKit' => ['Pod/Assets/*.png']
   }
@@ -32,13 +30,15 @@ Pod::Spec.new do |s|
   s.frameworks = 'UIKit'
 
   s.subspec 'LoadingView' do |sdkit|
-    sdkit.source_files = 'Pod/Classes/LoadingView/*.{h,m}'
-    sdkit.public_header_files = 'Pod/Classes/LoadingView/*.h'
+    sdkit.source_files = 'Pod/Classes/*.{h,m}'
+    sdkit.public_header_files = 'Pod/Classes/*.h'
+    sdkit.dependency 'RSKit/AutoLayoutHelpers'
   end
 
   s.subspec 'Alerts' do |sdkit|
     sdkit.source_files = 'Pod/Classes/Alerts/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/Alerts/*.h'
+    sdkit.dependency 'RSKit/AutoLayoutHelpers'
   end
 
   s.subspec 'FullScreenImageView' do |sdkit|
@@ -59,6 +59,6 @@ Pod::Spec.new do |s|
   s.subspec 'AutoLayoutHelpers' do |sdkit|
     sdkit.source_files = 'Pod/Classes/AutoLayoutHelpers/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/AutoLayoutHelpers/*.h'
-
   end
+
 end

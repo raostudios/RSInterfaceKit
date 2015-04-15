@@ -27,10 +27,13 @@
     return self;
 }
 
+-(void)loadView {
+    self.view = [[FullImageView alloc] initWithFrame:CGRectZero];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view = [[FullImageView alloc] initWithFrame:CGRectZero];
     [self.view.buttonDone addTarget:self action:@selector(donePressed:) forControlEvents:UIControlEventTouchUpInside];
 
     [self.view shouldShowButtons:NO];

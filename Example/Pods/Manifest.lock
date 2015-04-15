@@ -1,7 +1,21 @@
 PODS:
   - FBSnapshotTestCase (1.6)
   - Kiwi (2.3.1)
-  - RSKit (0.1.0)
+  - RSKit (0.1.0):
+    - RSKit/Alerts (= 0.1.0)
+    - RSKit/AutoLayoutHelpers (= 0.1.0)
+    - RSKit/FullScreenImageView (= 0.1.0)
+    - RSKit/LoadingView (= 0.1.0)
+    - RSKit/RSCarouselDissolvingImageView (= 0.1.0)
+    - RSKit/RSCarouselScrollView (= 0.1.0)
+  - RSKit/Alerts (0.1.0):
+    - RSKit/AutoLayoutHelpers
+  - RSKit/AutoLayoutHelpers (0.1.0)
+  - RSKit/FullScreenImageView (0.1.0)
+  - RSKit/LoadingView (0.1.0):
+    - RSKit/AutoLayoutHelpers
+  - RSKit/RSCarouselDissolvingImageView (0.1.0)
+  - RSKit/RSCarouselScrollView (0.1.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -15,6 +29,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
   Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
-  RSKit: 1de91357f4c9fc44b0f53ca3dbef3ac7915f9a2b
+  RSKit: a85f1334b0bd23db30d44ada84c046323c69f20e
 
 COCOAPODS: 0.36.3
