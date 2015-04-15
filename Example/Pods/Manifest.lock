@@ -1,0 +1,20 @@
+PODS:
+  - FBSnapshotTestCase (1.6)
+  - Kiwi (2.3.1)
+  - RSKit (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - Kiwi
+  - RSKit (from `../`)
+
+EXTERNAL SOURCES:
+  RSKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
+  Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
+  RSKit: 1de91357f4c9fc44b0f53ca3dbef3ac7915f9a2b
+
+COCOAPODS: 0.36.3
