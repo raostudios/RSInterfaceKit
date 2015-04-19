@@ -1,9 +1,9 @@
 # RSKit
 
--[![CI Status](http://img.shields.io/travis/Venkat Rao/RSKit.svg?style=flat)](https://travis-ci.org/Venkat Rao/RSKit)
--[![Version](https://img.shields.io/cocoapods/v/RSKit.svg?style=flat)](http://cocoapods.org/pods/RSKit)
--[![License](https://img.shields.io/cocoapods/l/RSKit.svg?style=flat)](http://cocoapods.org/pods/RSKit)
--[![Platform](https://img.shields.io/cocoapods/p/RSKit.svg?style=flat)](http://cocoapods.org/pods/RSKit)
+-[![CI Status](http://img.shields.io/travis/Venkat Rao/RSInterfaceKit.svg?style=flat)](https://travis-ci.org/Venkat Rao/RSInterfaceKit)
+-[![Version](https://img.shields.io/cocoapods/v/RSInterfaceKit.svg?style=flat)](http://cocoapods.org/pods/RSKit)
+-[![License](https://img.shields.io/cocoapods/l/RSInterfaceKit.svg?style=flat)](http://cocoapods.org/pods/RSKit)
+-[![Platform](https://img.shields.io/cocoapods/p/RSInterfaceKit.svg?style=flat)](http://cocoapods.org/pods/RSKit)
 
 ## Usage
 
