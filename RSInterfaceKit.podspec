@@ -13,7 +13,6 @@ Pod::Spec.new do |s|
   s.summary          = "RSInterfaceKit provides common UI components for iOS Development"
   s.description      = "RSInterfaceKit provides common UI components for iOS Development."
   s.homepage         = "https://github.com/raostudios/RSInterfaceKit"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Venkat Rao" => "vrao423@gmail.com" }
   s.source           = { :git => "https://github.com/raostudios/RSInterfaceKit.git", :tag => s.version.to_s }
