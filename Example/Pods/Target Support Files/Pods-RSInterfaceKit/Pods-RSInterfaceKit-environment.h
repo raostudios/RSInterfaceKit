@@ -6,18 +6,6 @@
 // project.
 
 
-// FBSnapshotTestCase
-#define COCOAPODS_POD_AVAILABLE_FBSnapshotTestCase
-#define COCOAPODS_VERSION_MAJOR_FBSnapshotTestCase 1
-#define COCOAPODS_VERSION_MINOR_FBSnapshotTestCase 7
-#define COCOAPODS_VERSION_PATCH_FBSnapshotTestCase 0
-
-// Kiwi
-#define COCOAPODS_POD_AVAILABLE_Kiwi
-#define COCOAPODS_VERSION_MAJOR_Kiwi 2
-#define COCOAPODS_VERSION_MINOR_Kiwi 3
-#define COCOAPODS_VERSION_PATCH_Kiwi 1
-
 // RSInterfaceKit
 #define COCOAPODS_POD_AVAILABLE_RSInterfaceKit
 #define COCOAPODS_VERSION_MAJOR_RSInterfaceKit 0

@@ -1,34 +1,34 @@
 PODS:
-  - FBSnapshotTestCase (1.6)
+  - FBSnapshotTestCase (1.7)
   - Kiwi (2.3.1)
-  - RSKit (0.1.0):
-    - RSKit/Alerts (= 0.1.0)
-    - RSKit/AutoLayoutHelpers (= 0.1.0)
-    - RSKit/FullScreenImageView (= 0.1.0)
-    - RSKit/LoadingView (= 0.1.0)
-    - RSKit/RSCarouselDissolvingImageView (= 0.1.0)
-    - RSKit/RSCarouselScrollView (= 0.1.0)
-  - RSKit/Alerts (0.1.0):
-    - RSKit/AutoLayoutHelpers
-  - RSKit/AutoLayoutHelpers (0.1.0)
-  - RSKit/FullScreenImageView (0.1.0)
-  - RSKit/LoadingView (0.1.0):
-    - RSKit/AutoLayoutHelpers
-  - RSKit/RSCarouselDissolvingImageView (0.1.0)
-  - RSKit/RSCarouselScrollView (0.1.0)
+  - RSInterfaceKit (0.0.1):
+    - RSInterfaceKit/Alerts (= 0.0.1)
+    - RSInterfaceKit/AutoLayoutHelpers (= 0.0.1)
+    - RSInterfaceKit/FullScreenImageView (= 0.0.1)
+    - RSInterfaceKit/LoadingView (= 0.0.1)
+    - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.1)
+    - RSInterfaceKit/RSCarouselScrollView (= 0.0.1)
+  - RSInterfaceKit/Alerts (0.0.1):
+    - RSInterfaceKit/AutoLayoutHelpers
+  - RSInterfaceKit/AutoLayoutHelpers (0.0.1)
+  - RSInterfaceKit/FullScreenImageView (0.0.1)
+  - RSInterfaceKit/LoadingView (0.0.1):
+    - RSInterfaceKit/AutoLayoutHelpers
+  - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.1)
+  - RSInterfaceKit/RSCarouselScrollView (0.0.1)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
   - Kiwi
-  - RSKit (from `../`)
+  - RSInterfaceKit (from `../`)
 
 EXTERNAL SOURCES:
-  RSKit:
+  RSInterfaceKit:
     :path: ../
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 9d5fe43b29ae3a0ed8fc829477971b281038f748
+  FBSnapshotTestCase: 1eea5145c1f2fa907812ab92e1d6063a8d809b4e
   Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
-  RSKit: a85f1334b0bd23db30d44ada84c046323c69f20e
+  RSInterfaceKit: 1c1bbb2fcfe82f7754798842783d71cd6b6da6dd
 
 COCOAPODS: 0.36.3

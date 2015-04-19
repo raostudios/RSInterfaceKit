@@ -1,1 +1,0 @@
-PODS_TESTS_RSKIT_OTHER_LDFLAGS = -framework "UIKit"

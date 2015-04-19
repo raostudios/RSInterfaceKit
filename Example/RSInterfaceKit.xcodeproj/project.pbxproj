@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		393980E12DD88C7E3D15AC39 /* libPods-RSInterfaceKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -42,14 +43,14 @@
 		4E356037276D7DC52AE56F56 /* libPods-RSKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D444A15CD11F6CF5E216BD6 /* Pods-RSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSKit/Pods-RSKit.debug.xcconfig"; sourceTree = "<group>"; };
 		600226C8774CAE13A8C2B9DC /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* RSKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* RSInterfaceKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSInterfaceKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6003F595195388D20070C39A /* RSKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RSKit-Info.plist"; sourceTree = "<group>"; };
+		6003F595195388D20070C39A /* RSInterfaceKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RSInterfaceKit-Info.plist"; sourceTree = "<group>"; };
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6003F59B195388D20070C39A /* RSKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSKit-Prefix.pch"; sourceTree = "<group>"; };
+		6003F59B195388D20070C39A /* RSInterfaceKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSInterfaceKit-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* RSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
 		6003F5A0195388D20070C39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -63,8 +64,11 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		61B20B0B31E8770C61AA194A /* Pods-RSInterfaceKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.release.xcconfig"; sourceTree = "<group>"; };
+		61D86E927DD95933F06D171F /* Pods-RSInterfaceKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.debug.xcconfig"; sourceTree = "<group>"; };
 		66B8FCB32544449D4385B9D0 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4C59C95912BB80FBB8A594 /* RSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RSKit.podspec; path = ../RSKit.podspec; sourceTree = "<group>"; };
+		92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSInterfaceKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F7E8FC1E6FA59E52DA3DD4 /* Pods-RSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSKit/Pods-RSKit.release.xcconfig"; sourceTree = "<group>"; };
 		E975E0615383FCED11CDE0B6 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +82,7 @@
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
 				A27DE723583DE8EA83084AC6 /* libPods-RSKit.a in Frameworks */,
+				393980E12DD88C7E3D15AC39 /* libPods-RSInterfaceKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +115,7 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* RSKit.app */,
+				6003F58A195388D20070C39A /* RSInterfaceKit.app */,
 				6003F5AE195388D20070C39A /* Tests.xctest */,
 			);
 			name = Products;
@@ -125,6 +130,7 @@
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				4E356037276D7DC52AE56F56 /* libPods-RSKit.a */,
 				66B8FCB32544449D4385B9D0 /* libPods-Tests.a */,
+				92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,10 +153,10 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6003F595195388D20070C39A /* RSKit-Info.plist */,
+				6003F595195388D20070C39A /* RSInterfaceKit-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
-				6003F59B195388D20070C39A /* RSKit-Prefix.pch */,
+				6003F59B195388D20070C39A /* RSInterfaceKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -191,6 +197,8 @@
 				B9F7E8FC1E6FA59E52DA3DD4 /* Pods-RSKit.release.xcconfig */,
 				E975E0615383FCED11CDE0B6 /* Pods-Tests.debug.xcconfig */,
 				600226C8774CAE13A8C2B9DC /* Pods-Tests.release.xcconfig */,
+				61D86E927DD95933F06D171F /* Pods-RSInterfaceKit.debug.xcconfig */,
+				61B20B0B31E8770C61AA194A /* Pods-RSInterfaceKit.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -198,9 +206,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* RSKit */ = {
+		6003F589195388D20070C39A /* RSInterfaceKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "RSKit" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "RSInterfaceKit" */;
 			buildPhases = (
 				1CD6086EF020FD5ACBABC32F /* Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
@@ -212,9 +220,9 @@
 			);
 			dependencies = (
 			);
-			name = RSKit;
+			name = RSInterfaceKit;
 			productName = RSKit;
-			productReference = 6003F58A195388D20070C39A /* RSKit.app */;
+			productReference = 6003F58A195388D20070C39A /* RSInterfaceKit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6003F5AD195388D20070C39A /* Tests */ = {
@@ -252,7 +260,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "RSKit" */;
+			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "RSInterfaceKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -265,7 +273,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F589195388D20070C39A /* RSKit */,
+				6003F589195388D20070C39A /* RSInterfaceKit */,
 				6003F5AD195388D20070C39A /* Tests */,
 			);
 		};
@@ -336,7 +344,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSKit/Pods-RSKit-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E473EC8BFC9CB34CBEF313A6 /* Copy Pods Resources */ = {
@@ -380,7 +388,7 @@
 /* Begin PBXTargetDependency section */
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6003F589195388D20070C39A /* RSKit */;
+			target = 6003F589195388D20070C39A /* RSInterfaceKit */;
 			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -495,30 +503,30 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D444A15CD11F6CF5E216BD6 /* Pods-RSKit.debug.xcconfig */;
+			baseConfigurationReference = 61D86E927DD95933F06D171F /* Pods-RSInterfaceKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RSKit/RSKit-Prefix.pch";
-				INFOPLIST_FILE = "RSKit/RSKit-Info.plist";
+				GCC_PREFIX_HEADER = "RSKit/RSInterfaceKit-Prefix.pch";
+				INFOPLIST_FILE = "RSKit/RSInterfaceKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RSInterfaceKit;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9F7E8FC1E6FA59E52DA3DD4 /* Pods-RSKit.release.xcconfig */;
+			baseConfigurationReference = 61B20B0B31E8770C61AA194A /* Pods-RSInterfaceKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RSKit/RSKit-Prefix.pch";
-				INFOPLIST_FILE = "RSKit/RSKit-Info.plist";
+				GCC_PREFIX_HEADER = "RSKit/RSInterfaceKit-Prefix.pch";
+				INFOPLIST_FILE = "RSKit/RSInterfaceKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RSInterfaceKit;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -568,7 +576,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6003F585195388D10070C39A /* Build configuration list for PBXProject "RSKit" */ = {
+		6003F585195388D10070C39A /* Build configuration list for PBXProject "RSInterfaceKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5BD195388D20070C39A /* Debug */,
@@ -577,7 +585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "RSKit" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "RSInterfaceKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,

@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## RSKit
+## RSInterfaceKit
 
 Copyright (c) 2015 Venkat Rao <vrao423@gmail.com>
 

@@ -2,4 +2,4 @@
 #import <UIKit/UIKit.h>
 #endif
 
-#import "Pods-RSKit-environment.h"
+#import "Pods-RSInterfaceKit-environment.h"
