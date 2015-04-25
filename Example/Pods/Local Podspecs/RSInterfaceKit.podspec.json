@@ -1,6 +1,6 @@
 {
   "name": "RSInterfaceKit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "summary": "RSInterfaceKit provides common UI components for iOS Development",
   "description": "RSInterfaceKit provides common UI components for iOS Development.",
   "homepage": "https://github.com/raostudios/RSInterfaceKit",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/raostudios/RSInterfaceKit.git",
-    "tag": "0.0.1"
+    "tag": "0.0.2"
   },
   "social_media_url": "https://twitter.com/venkatrao",
   "platforms": {
@@ -27,8 +27,8 @@
   "subspecs": [
     {
       "name": "LoadingView",
-      "source_files": "Pod/Classes/*.{h,m}",
-      "public_header_files": "Pod/Classes/*.h",
+      "source_files": "Pod/Classes/LoadingView/*.{h,m}",
+      "public_header_files": "Pod/Classes/LoadingView/*.h",
       "dependencies": {
         "RSInterfaceKit/AutoLayoutHelpers": [
 
@@ -64,6 +64,11 @@
       "name": "AutoLayoutHelpers",
       "source_files": "Pod/Classes/AutoLayoutHelpers/*.{h,m}",
       "public_header_files": "Pod/Classes/AutoLayoutHelpers/*.h"
+    },
+    {
+      "name": "PortraitOnlyNavigation",
+      "source_files": "Pod/Classes/PortraitOnly/*.{h,m}",
+      "public_header_files": "Pod/Classes/PortraitOnly/*.h"
     }
   ]
 }

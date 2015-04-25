@@ -29,8 +29,8 @@ Pod::Spec.new do |s|
   s.frameworks = 'UIKit'
 
   s.subspec 'LoadingView' do |sdkit|
-    sdkit.source_files = 'Pod/Classes/*.{h,m}'
-    sdkit.public_header_files = 'Pod/Classes/*.h'
+    sdkit.source_files = 'Pod/Classes/LoadingView/*.{h,m}'
+    sdkit.public_header_files = 'Pod/Classes/LoadingView/*.h'
     sdkit.dependency 'RSInterfaceKit/AutoLayoutHelpers'
   end
 
@@ -58,6 +58,11 @@ Pod::Spec.new do |s|
   s.subspec 'AutoLayoutHelpers' do |sdkit|
     sdkit.source_files = 'Pod/Classes/AutoLayoutHelpers/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/AutoLayoutHelpers/*.h'
+  end
+
+  s.subspec 'PortraitOnlyNavigation' do |sdkit|
+    sdkit.source_files = 'Pod/Classes/PortraitOnly/*.{h,m}'
+    sdkit.public_header_files = 'Pod/Classes/PortraitOnly/*.h'
   end
 
 end
