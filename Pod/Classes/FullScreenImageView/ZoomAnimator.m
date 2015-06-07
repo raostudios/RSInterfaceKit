@@ -42,21 +42,21 @@
     UIImageView *tempView = [UIImageView new];
     tempView.contentMode = UIViewContentModeScaleAspectFit;
     
-    UIImage *initialImage = [self.fullImageViewController.delegate initialImage];
+    UIImage *initialImage = [self.fullImageViewController.delegate initialImageForFullImageViewController:self.fullImageViewController];
     tempView.image = initialImage;
-
+    
     if (self.presenting) {
-
+        
         CGRect initialFrame = [self frameForImage:initialImage
-                                      insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:fromViewController.view]];
+                                      insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:fromViewController.view forFullImageViewController:self.fullImageViewController]];
         
         CGRect finalFrame = [self frameForImage:initialImage
                                     insideFrame:[transitionContext finalFrameForViewController:toViewController]];
         
         tempView.frame = initialFrame;
         [container addSubview:tempView];
-
-        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{            
+        
+        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             fromViewController.view.alpha = 0.0;
             tempView.frame = finalFrame;
         } completion:^(BOOL finished) {
@@ -65,27 +65,30 @@
             [container addSubview:toViewController.view];
             [transitionContext completeTransition:finished];
         }];
+        
     } else {
         
-
         CGRect initialFrame = [self frameForImage:initialImage
-                                     insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:toViewController.view]]
-        
-       ;
+                                      insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:toViewController.view
+                                                                                         forFullImageViewController:self.fullImageViewController]];
         
         CGRect finalFrame = [self frameForImage:initialImage
                                     insideFrame:[transitionContext finalFrameForViewController:fromViewController]];
-
+        
         tempView.frame = finalFrame;
         [container addSubview:tempView];
+        
         fromViewController.view.alpha = 0.0;
-        toViewController.view.alpha = 1.0;
+        toViewController.view.alpha = 0.0;
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             tempView.frame = initialFrame;
+            toViewController.view.alpha = 1.0;
         } completion:^(BOOL finished) {
             [tempView removeFromSuperview];
+            
             [transitionContext completeTransition:finished];
+            
         }];
     }
 }

@@ -19,7 +19,7 @@
 
 @implementation FullImageViewController
 
-@synthesize view;
+@dynamic view;
 
 -(instancetype)init {
     self = [super init];
@@ -37,14 +37,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view.buttonDone addTarget:self action:@selector(donePressed:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [self.view shouldShowButtons:NO];
     
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:gesture];
 }
 
--(void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {    
+-(void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
     [self.view flipWithAnimation:YES];
 }
 
@@ -58,6 +58,7 @@
 
 - (void) setImage: (UIImage *)image {
     self.view.imageViewFull.image = image;
+    [self.view updateContentSize];
 }
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -65,7 +66,7 @@
     CGRect frame = CGRectZero;
     frame.size = size;
     self.view.frame = frame;
-
+    
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         [self.view layoutIfNeeded];
     } completion:nil];

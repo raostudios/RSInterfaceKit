@@ -7,12 +7,20 @@
 //
 
 #import "RSAppDelegate.h"
+#import "RSViewController.h"
 
 @implementation RSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    RSViewController *viewController = [[RSViewController alloc] init];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							
