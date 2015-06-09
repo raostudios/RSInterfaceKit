@@ -67,29 +67,6 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    CGSize boundsSize = self.bounds.size;
-    CGRect frameToCenter = self.imageViewFull.frame;
-    
-    // center horizontally
-    if (frameToCenter.size.width < boundsSize.width) {
-        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-    } else {
-        frameToCenter.origin.x = 0;
-    }
-    
-    // center vertically
-    if (frameToCenter.size.height < boundsSize.height) {
-        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-    } else {
-        frameToCenter.origin.y = 0;
-    }
-    
-    self.imageViewFull.frame = frameToCenter;
-}
-
 -(void)updateContentSize {
     
     self.scrollView.contentSize = self.imageViewFull.image.size;
@@ -104,12 +81,7 @@
                                           self.imageViewFull.image.size.width,
                                           self.imageViewFull.image.size.height);
     
-    CGFloat scrollViewCenterX = CGRectGetMidX(_scrollView.bounds);
-    CGFloat scrollViewCenterY = CGRectGetMidY(_scrollView.bounds) + _scrollView.contentInset.top / 2 ;
-    _imageViewFull.center = CGPointMake(scrollViewCenterX, scrollViewCenterY);
-    
-    [self setNeedsLayout];
-    
+    [self centerScrollViewContents];
 }
 
 -(UIButton *)buttonDone {
@@ -149,15 +121,27 @@
     return self.imageViewFull;
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+- (void)centerScrollViewContents {
+    CGSize boundsSize = self.scrollView.bounds.size;
+    CGRect contentsFrame = self.imageViewFull.frame;
     
-    if (view.frame.size.width <= scrollView.bounds.size.width) {
-        view.center = CGPointMake(scrollView.center.x, view.center.y);
+    if (contentsFrame.size.width < boundsSize.width) {
+        contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
+    } else {
+        contentsFrame.origin.x = 0.0f;
     }
     
-    if (view.frame.size.height <= scrollView.bounds.size.height) {
-        view.center = CGPointMake(view.center.x, CGRectGetMidY(scrollView.bounds));
+    if (contentsFrame.size.height < boundsSize.height) {
+        contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0f;
+    } else {
+        contentsFrame.origin.y = 0.0f;
     }
+    
+    self.imageViewFull.frame = contentsFrame;
+}
+
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    [self centerScrollViewContents];
 }
 
 -(void) shouldShowButtons:(BOOL) showButtons {
