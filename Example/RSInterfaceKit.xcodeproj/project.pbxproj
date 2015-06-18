@@ -14,7 +14,7 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* RSAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* RSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* RSViewController.m */; };
+		6003F5A7195388D20070C39A /* RSInterfaceKitLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* RSInterfaceKitLibraryViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -22,6 +22,9 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		824D88631B248F430047CE03 /* RSInterfaceKitLibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */; };
 		824D88661B2494FA0047CE03 /* RSFullScreenImageTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */; };
+		82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */; };
+		82606F551B325D65003BB195 /* RSCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F541B325D65003BB195 /* RSCarouselViewController.m */; };
+		82B73ABF1B27ADE300C5AD74 /* RSAlertsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */; };
 		D43BF27D0B73CEAC0A86C1FC /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B8FCB32544449D4385B9D0 /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +54,8 @@
 		6003F59B195388D20070C39A /* RSInterfaceKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSInterfaceKit-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* RSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* RSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* RSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSViewController.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* RSInterfaceKitLibraryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSInterfaceKitLibraryViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* RSInterfaceKitLibraryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSInterfaceKitLibraryViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -66,6 +69,12 @@
 		824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSInterfaceKitLibraryView.m; sourceTree = "<group>"; };
 		824D88641B2494FA0047CE03 /* RSFullScreenImageTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSFullScreenImageTestViewController.h; sourceTree = "<group>"; };
 		824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSFullScreenImageTestViewController.m; sourceTree = "<group>"; };
+		82606F501B27B675003BB195 /* RSImageCarouselExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSImageCarouselExampleViewController.h; sourceTree = "<group>"; };
+		82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSImageCarouselExampleViewController.m; sourceTree = "<group>"; };
+		82606F531B325D65003BB195 /* RSCarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCarouselViewController.h; sourceTree = "<group>"; };
+		82606F541B325D65003BB195 /* RSCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCarouselViewController.m; sourceTree = "<group>"; };
+		82B73ABD1B27ADE300C5AD74 /* RSAlertsExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAlertsExampleViewController.h; sourceTree = "<group>"; };
+		82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAlertsExampleViewController.m; sourceTree = "<group>"; };
 		8D4C59C95912BB80FBB8A594 /* RSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RSKit.podspec; path = ../RSKit.podspec; sourceTree = "<group>"; };
 		92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSInterfaceKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F7E8FC1E6FA59E52DA3DD4 /* Pods-RSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSKit/Pods-RSKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,12 +147,18 @@
 			children = (
 				6003F59C195388D20070C39A /* RSAppDelegate.h */,
 				6003F59D195388D20070C39A /* RSAppDelegate.m */,
-				6003F5A5195388D20070C39A /* RSViewController.h */,
-				6003F5A6195388D20070C39A /* RSViewController.m */,
-				824D88641B2494FA0047CE03 /* RSFullScreenImageTestViewController.h */,
-				824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */,
+				6003F5A5195388D20070C39A /* RSInterfaceKitLibraryViewController.h */,
+				6003F5A6195388D20070C39A /* RSInterfaceKitLibraryViewController.m */,
 				824D88611B248F430047CE03 /* RSInterfaceKitLibraryView.h */,
 				824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */,
+				82606F501B27B675003BB195 /* RSImageCarouselExampleViewController.h */,
+				82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */,
+				82B73ABD1B27ADE300C5AD74 /* RSAlertsExampleViewController.h */,
+				82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */,
+				824D88641B2494FA0047CE03 /* RSFullScreenImageTestViewController.h */,
+				824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */,
+				82606F531B325D65003BB195 /* RSCarouselViewController.h */,
+				82606F541B325D65003BB195 /* RSCarouselViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -368,9 +383,12 @@
 			files = (
 				824D88631B248F430047CE03 /* RSInterfaceKitLibraryView.m in Sources */,
 				6003F59E195388D20070C39A /* RSAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* RSViewController.m in Sources */,
+				6003F5A7195388D20070C39A /* RSInterfaceKitLibraryViewController.m in Sources */,
 				824D88661B2494FA0047CE03 /* RSFullScreenImageTestViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				82B73ABF1B27ADE300C5AD74 /* RSAlertsExampleViewController.m in Sources */,
+				82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */,
+				82606F551B325D65003BB195 /* RSCarouselViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

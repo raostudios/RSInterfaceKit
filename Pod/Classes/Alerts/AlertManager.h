@@ -12,6 +12,9 @@
 
 +(instancetype) sharedManager;
 
--(void) showAlert:(NSString *) message withAnimation:(BOOL)animations forced:(BOOL) forced;
+-(void) showAlert:(NSString *) message withAnimation:(BOOL)animated forced:(BOOL) forced;
+-(void) showUniqueAlert:(NSString *) message withAnimation:(BOOL)animation withIdentifier:(NSString *)identifier;
+
+-(void) showNextQueuedAlert;
 
 @end

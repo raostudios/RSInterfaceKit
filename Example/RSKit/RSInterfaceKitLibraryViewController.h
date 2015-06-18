@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RSViewController : UIViewController
+@interface RSInterfaceKitLibraryViewController : UIViewController
 
 @end

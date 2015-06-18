@@ -19,7 +19,7 @@
 
 @implementation FullImageView
 
--(instancetype)initWithFrame:(CGRect)frame {
+-(instancetype) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         
@@ -67,7 +67,13 @@
     return self;
 }
 
--(void)updateContentSize {
+-(void) layoutSubviews {
+    [super layoutSubviews];
+    
+    [self centerScrollViewContents];
+}
+
+-(void) updateContentSize {
     
     self.scrollView.contentSize = self.imageViewFull.image.size;
     
@@ -81,10 +87,10 @@
                                           self.imageViewFull.image.size.width,
                                           self.imageViewFull.image.size.height);
     
-    [self centerScrollViewContents];
+    [self setNeedsLayout];
 }
 
--(UIButton *)buttonDone {
+-(UIButton *) buttonDone {
     if (!_buttonDone) {
         _buttonDone = [UIButton buttonWithType:UIButtonTypeCustom];
         [_buttonDone setTitle:@"Done" forState:UIControlStateNormal];
@@ -93,9 +99,9 @@
     return _buttonDone;
 }
 
--(UIImageView *)imageViewFull {
+-(UIImageView *) imageViewFull {
     if (!_imageViewFull) {
-        _imageViewFull = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bandH.jpg"]];
+        _imageViewFull = [[UIImageView alloc] initWithFrame:CGRectZero];
         [_imageViewFull setContentMode:UIViewContentModeScaleAspectFit];
         [_imageViewFull setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_imageViewFull setUserInteractionEnabled:YES];
@@ -103,7 +109,7 @@
     return _imageViewFull;
 }
 
--(UIScrollView *)scrollView {
+-(UIScrollView *) scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
         [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -117,12 +123,12 @@
     return _scrollView;
 }
 
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+-(UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageViewFull;
 }
 
-- (void)centerScrollViewContents {
-    CGSize boundsSize = self.scrollView.bounds.size;
+-(void) centerScrollViewContents {
+    CGSize boundsSize = self.bounds.size;
     CGRect contentsFrame = self.imageViewFull.frame;
     
     if (contentsFrame.size.width < boundsSize.width) {
@@ -140,7 +146,7 @@
     self.imageViewFull.frame = contentsFrame;
 }
 
--(void)scrollViewDidZoom:(UIScrollView *)scrollView {
+-(void) scrollViewDidZoom:(UIScrollView *)scrollView {
     [self centerScrollViewContents];
 }
 
@@ -154,8 +160,19 @@
     }];
 }
 
-- (void)flipWithAnimation:(BOOL) animated {
+-(void) flipWithAnimation:(BOOL) animated {
     [self shouldShowButtons:self.buttonDone.alpha == 0.0 animated:animated];
+}
+
+-(void) animateBackToOriginalWithCompletion:(void (^)())completionBlock {
+    
+    [UIView animateWithDuration:.1 animations:^{
+        self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
+    } completion:^(BOOL finished) {
+        if (completionBlock) {
+            completionBlock();
+        }
+    }];
 }
 
 @end

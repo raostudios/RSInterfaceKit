@@ -7,13 +7,13 @@
 //
 
 #import "RSAppDelegate.h"
-#import "RSViewController.h"
+#import "RSInterfaceKitLibraryViewController.h"
 
 @implementation RSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    RSViewController *viewController = [[RSViewController alloc] init];
+    RSInterfaceKitLibraryViewController *viewController = [[RSInterfaceKitLibraryViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

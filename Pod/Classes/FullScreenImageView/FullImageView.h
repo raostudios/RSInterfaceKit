@@ -20,5 +20,6 @@
 - (void)flipWithAnimation:(BOOL) animated;
 
 - (void)updateContentSize;
+-(void) animateBackToOriginalWithCompletion:(void (^)())completionBlock;
 
 @end

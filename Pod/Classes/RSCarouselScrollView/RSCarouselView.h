@@ -12,8 +12,8 @@
 
 @protocol RSCarouselViewDataSource <NSObject>
 
-- (NSInteger) numberOfItemsInCarouselView:(RSCarouselView *)carouselView;
-- (void) configureCell:(UICollectionViewCell *)cell InCarouselView:(RSCarouselView *)carouselView atIndex:(NSUInteger)index;
+-(NSInteger) numberOfItemsInCarouselView:(RSCarouselView *)carouselView;
+-(void) configureCell:(UICollectionViewCell *)cell InCarouselView:(RSCarouselView *)carouselView atIndex:(NSUInteger)index;
 
 @end
 
@@ -21,7 +21,7 @@
 
 @property (nonatomic, weak) id<RSCarouselViewDataSource> dataSource;
 
-- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
+-(void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 -(void) start;
 -(void) stop;

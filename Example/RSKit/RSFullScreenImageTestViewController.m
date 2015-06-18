@@ -39,6 +39,8 @@
     [self presentViewController:self.fullImageViewController animated:YES completion:nil];
 }
 
+#pragma mark - FullImageViewControllerDelegate
+
 -(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(FullImageViewController *)fullImageViewController {
     return self.buttonImageToZoom.frame;
 }

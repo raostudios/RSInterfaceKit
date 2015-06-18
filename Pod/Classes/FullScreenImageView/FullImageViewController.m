@@ -53,7 +53,11 @@
 }
 
 - (void)donePressed:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.view animateBackToOriginalWithCompletion:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
 }
 
 - (void) setImage: (UIImage *)image {
