@@ -9,6 +9,7 @@
 #import "FullImageViewController.h"
 #import "FullImageView.h"
 #import "ZoomAnimator.h"
+#import "ZoomableScrollView.h"
 
 @interface FullImageViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -19,7 +20,7 @@
 
 @implementation FullImageViewController
 
-@synthesize view;
+@dynamic view;
 
 -(instancetype)init {
     self = [super init];
@@ -37,14 +38,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view.buttonDone addTarget:self action:@selector(donePressed:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [self.view shouldShowButtons:NO];
     
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:gesture];
 }
 
--(void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {    
+-(void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
     [self.view flipWithAnimation:YES];
 }
 
@@ -53,11 +54,16 @@
 }
 
 - (void)donePressed:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.view animateBackToOriginalWithCompletion:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
 }
 
 - (void) setImage: (UIImage *)image {
-    self.view.imageViewFull.image = image;
+    self.view.scrollView.imageViewFull.image = image;
+    [self.view.scrollView updateContentSize];
 }
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -65,7 +71,7 @@
     CGRect frame = CGRectZero;
     frame.size = size;
     self.view.frame = frame;
-
+    
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         [self.view layoutIfNeeded];
     } completion:nil];

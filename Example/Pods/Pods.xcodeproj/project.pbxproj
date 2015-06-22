@@ -135,6 +135,7 @@
 		7E2167525BC4F0AA33FF06DE /* KWReceiveMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 369C0FEEEC573906869337CA /* KWReceiveMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7E4E55F496E9B838803F8AEA /* KWEqualMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 4486169A414A506DC3A629E7 /* KWEqualMatcher.h */; };
 		7EBD67F526B658BEDBB0C58D /* KWFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B878B250072070BBDBD0FB /* KWFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		828E2CED1B38891200F03B65 /* ZoomableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 828E2CEC1B38891200F03B65 /* ZoomableScrollView.m */; };
 		84E4B0EFEA8FB0FA0F504385 /* KWMatchVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F790DC40773B7BF5D79534C /* KWMatchVerifier.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		865303A1AE9250EA636289C7 /* KWWorkarounds.h in Headers */ = {isa = PBXBuildFile; fileRef = D2394DC6734AE67D22B5FF24 /* KWWorkarounds.h */; };
 		871DA878F1521756F6B076F1 /* KWGenericMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C39BB5B22617A1763B9F05A /* KWGenericMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -426,6 +427,8 @@
 		7BEBBEB8C4A531DE3BEB5696 /* LoadingView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		7D604C1648F6D5D9C4897DD7 /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		80A0D99EFBC26A9E11C13EFB /* KWAsyncVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWAsyncVerifier.h; path = Classes/Verifiers/KWAsyncVerifier.h; sourceTree = "<group>"; };
+		828E2CEB1B38891200F03B65 /* ZoomableScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomableScrollView.h; sourceTree = "<group>"; };
+		828E2CEC1B38891200F03B65 /* ZoomableScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomableScrollView.m; sourceTree = "<group>"; };
 		82C857F0129FCE9034A78968 /* KWObjCUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWObjCUtilities.m; path = Classes/Core/KWObjCUtilities.m; sourceTree = "<group>"; };
 		836D1C7F4F8F6AEE161157EC /* KWUserDefinedMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWUserDefinedMatcher.m; path = Classes/Matchers/KWUserDefinedMatcher.m; sourceTree = "<group>"; };
 		85DEBAD7AC839C9C56D59B5F /* KWContextNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWContextNode.h; path = Classes/Nodes/KWContextNode.h; sourceTree = "<group>"; };
@@ -1117,6 +1120,8 @@
 			children = (
 				5376C8ADA801E0C32E62481E /* FullImageView.h */,
 				572DE4DC13C5E3B529413D6A /* FullImageView.m */,
+				828E2CEB1B38891200F03B65 /* ZoomableScrollView.h */,
+				828E2CEC1B38891200F03B65 /* ZoomableScrollView.m */,
 				3D988DFAC6B0C30CF8508A80 /* FullImageViewController.h */,
 				2C35D1A6FD73888F25262C2B /* FullImageViewController.m */,
 				D62C9FFE37E231A44DE6CA7B /* ZoomAnimator.h */,
@@ -1687,6 +1692,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				828E2CED1B38891200F03B65 /* ZoomableScrollView.m in Sources */,
 				9284C0613A5DECF82465A0E9 /* Pods-RSInterfaceKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

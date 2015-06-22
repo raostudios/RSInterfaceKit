@@ -7,56 +7,41 @@
 //
 
 #import "FullImageView.h"
+#import "ZoomableScrollView.h"
 
 @interface FullImageView ()
 
 @property (nonatomic, strong) NSLayoutConstraint *centerY;
 @property (nonatomic, strong) NSLayoutConstraint *centerX;
 
+
 @end
 
 @implementation FullImageView
 
--(instancetype)initWithFrame:(CGRect)frame {
+-(instancetype) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-
-        [self addSubview:self.imageViewFull];
-        self.centerY = [NSLayoutConstraint constraintWithItem:self
-                                                         attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.imageViewFull
-                                                         attribute:NSLayoutAttributeCenterY
-                                                        multiplier:1
-                                                          constant:0];
-        [self addConstraint:self.centerY];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+        [self addSubview:self.scrollView];
+                
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.imageViewFull
+                                                            toItem:self
                                                          attribute:NSLayoutAttributeWidth
                                                         multiplier:1
                                                           constant:0]];
         
-        self.centerX = [NSLayoutConstraint constraintWithItem:self
-                                                         attribute:NSLayoutAttributeCenterX
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.imageViewFull
-                                                         attribute:NSLayoutAttributeCenterX
-                                                        multiplier:1
-                                                          constant:0];
-        [self addConstraint:self.centerX];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                          attribute:NSLayoutAttributeHeight
                                                          relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.imageViewFull
+                                                            toItem:self
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1
                                                           constant:0]];
         
-
+        
         [self addSubview:self.buttonDone];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonDone
                                                          attribute:NSLayoutAttributeTrailing
@@ -75,14 +60,12 @@
                                                           constant:0]];
         self.backgroundColor = [UIColor blackColor];
         
-        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-        [self.imageViewFull addGestureRecognizer:pan];
         
     }
     return self;
 }
 
--(UIButton *)buttonDone {
+-(UIButton *) buttonDone {
     if (!_buttonDone) {
         _buttonDone = [UIButton buttonWithType:UIButtonTypeCustom];
         [_buttonDone setTitle:@"Done" forState:UIControlStateNormal];
@@ -91,14 +74,13 @@
     return _buttonDone;
 }
 
--(UIImageView *)imageViewFull {
-    if (!_imageViewFull) {
-        _imageViewFull = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bandH.jpg"]];
-        [_imageViewFull setContentMode:UIViewContentModeScaleAspectFit];
-        [_imageViewFull setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_imageViewFull setUserInteractionEnabled:YES];
+-(UIScrollView *) scrollView {
+    if (!_scrollView) {
+        _scrollView = [[ZoomableScrollView alloc] initWithFrame:CGRectZero];
+        [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
-    return _imageViewFull;
+    
+    return _scrollView;
 }
 
 -(void) shouldShowButtons:(BOOL) showButtons {
@@ -111,32 +93,19 @@
     }];
 }
 
-- (void)flipWithAnimation:(BOOL) animated {
+-(void) flipWithAnimation:(BOOL) animated {
     [self shouldShowButtons:self.buttonDone.alpha == 0.0 animated:animated];
 }
 
-- (void)pan:(UIPanGestureRecognizer *)panGesture {
-    CGPoint point;
-    switch (panGesture.state) {
-        case UIGestureRecognizerStateChanged:
-            point = [panGesture translationInView:self.imageViewFull];
-            self.centerX.constant = -point.x;
-            self.centerY.constant = -point.y;
-            break;
-        case UIGestureRecognizerStateEnded: {
-            self.centerX.constant = 0;
-            self.centerY.constant = 0;
-            [UIView animateWithDuration:.2 animations:^{
-                [self layoutIfNeeded];
-            }];
-            } break;
-        case UIGestureRecognizerStatePossible:
-        case UIGestureRecognizerStateBegan:
-        case UIGestureRecognizerStateCancelled:
-        case UIGestureRecognizerStateFailed:
-        default:
-            break;
-    }
+-(void) animateBackToOriginalWithCompletion:(void (^)())completionBlock {
+    
+    [UIView animateWithDuration:.1 animations:^{
+        self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
+    } completion:^(BOOL finished) {
+        if (completionBlock) {
+            completionBlock();
+        }
+    }];
 }
 
 @end
