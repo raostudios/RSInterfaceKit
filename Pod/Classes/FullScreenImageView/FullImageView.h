@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ZoomableScrollView;
+
 @interface FullImageView : UIView
-@property (nonatomic, strong) UIImageView *imageViewFull;
+
 @property (nonatomic, strong) UIButton *buttonDone;
 @property (nonatomic, strong) UIView *topView;
 
@@ -21,5 +23,7 @@
 
 - (void)updateContentSize;
 -(void) animateBackToOriginalWithCompletion:(void (^)())completionBlock;
+
+@property (nonatomic, strong) ZoomableScrollView *scrollView;
 
 @end

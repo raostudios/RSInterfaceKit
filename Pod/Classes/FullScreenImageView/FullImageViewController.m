@@ -9,6 +9,7 @@
 #import "FullImageViewController.h"
 #import "FullImageView.h"
 #import "ZoomAnimator.h"
+#import "ZoomableScrollView.h"
 
 @interface FullImageViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -61,8 +62,8 @@
 }
 
 - (void) setImage: (UIImage *)image {
-    self.view.imageViewFull.image = image;
-    [self.view updateContentSize];
+    self.view.scrollView.imageViewFull.image = image;
+    [self.view.scrollView updateContentSize];
 }
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {

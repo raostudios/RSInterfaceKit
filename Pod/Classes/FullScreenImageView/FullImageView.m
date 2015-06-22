@@ -7,13 +7,13 @@
 //
 
 #import "FullImageView.h"
+#import "ZoomableScrollView.h"
 
-@interface FullImageView () <UIScrollViewDelegate>
+@interface FullImageView ()
 
 @property (nonatomic, strong) NSLayoutConstraint *centerY;
 @property (nonatomic, strong) NSLayoutConstraint *centerX;
 
-@property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
 
@@ -24,9 +24,7 @@
     if (self) {
         
         [self addSubview:self.scrollView];
-        
-        [self.scrollView addSubview:self.imageViewFull];
-        
+                
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
@@ -67,29 +65,6 @@
     return self;
 }
 
--(void) layoutSubviews {
-    [super layoutSubviews];
-    
-    [self centerScrollViewContents];
-}
-
--(void) updateContentSize {
-    
-    self.scrollView.contentSize = self.imageViewFull.image.size;
-    
-    self.scrollView.minimumZoomScale = MIN(CGRectGetWidth([UIScreen mainScreen].bounds) / self.imageViewFull.image.size.width,
-                                           CGRectGetHeight([UIScreen mainScreen].bounds) / self.imageViewFull.image.size.height);
-    
-    self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
-    
-    self.imageViewFull.frame = CGRectMake(0.0,
-                                          0.0,
-                                          self.imageViewFull.image.size.width,
-                                          self.imageViewFull.image.size.height);
-    
-    [self setNeedsLayout];
-}
-
 -(UIButton *) buttonDone {
     if (!_buttonDone) {
         _buttonDone = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -99,55 +74,13 @@
     return _buttonDone;
 }
 
--(UIImageView *) imageViewFull {
-    if (!_imageViewFull) {
-        _imageViewFull = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [_imageViewFull setContentMode:UIViewContentModeScaleAspectFit];
-        [_imageViewFull setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_imageViewFull setUserInteractionEnabled:YES];
-    }
-    return _imageViewFull;
-}
-
 -(UIScrollView *) scrollView {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+        _scrollView = [[ZoomableScrollView alloc] initWithFrame:CGRectZero];
         [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        _scrollView.showsHorizontalScrollIndicator = NO;
-        _scrollView.showsVerticalScrollIndicator = NO;
-        _scrollView.delegate = self;
-        _scrollView.minimumZoomScale=0.1;
-        _scrollView.maximumZoomScale=1.0;
     }
     
     return _scrollView;
-}
-
--(UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.imageViewFull;
-}
-
--(void) centerScrollViewContents {
-    CGSize boundsSize = self.bounds.size;
-    CGRect contentsFrame = self.imageViewFull.frame;
-    
-    if (contentsFrame.size.width < boundsSize.width) {
-        contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
-    } else {
-        contentsFrame.origin.x = 0.0f;
-    }
-    
-    if (contentsFrame.size.height < boundsSize.height) {
-        contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0f;
-    } else {
-        contentsFrame.origin.y = 0.0f;
-    }
-    
-    self.imageViewFull.frame = contentsFrame;
-}
-
--(void) scrollViewDidZoom:(UIScrollView *)scrollView {
-    [self centerScrollViewContents];
 }
 
 -(void) shouldShowButtons:(BOOL) showButtons {
