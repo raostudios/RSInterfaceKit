@@ -46,7 +46,7 @@
 
 }
 
--(void)setDataSource:(id<RSCarouselImageViewDataSource>)dataSource {
+-(void) setDataSource:(id<RSCarouselImageViewDataSource>)dataSource {
     _dataSource = dataSource;
     [self setImage:[dataSource imageInCarouselView:self atIndex:self.index]];
     self.index = 1;

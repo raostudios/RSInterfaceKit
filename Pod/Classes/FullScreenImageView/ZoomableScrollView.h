@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) UIImageView *imageViewFull;
 
-- (void)updateContentSize;
+-(void) updateContentSize;
 
 @end

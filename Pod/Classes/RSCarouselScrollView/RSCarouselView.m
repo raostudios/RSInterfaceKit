@@ -12,14 +12,13 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
-@property (nonatomic, strong) NSTimer *scrollTimer;
 @property (nonatomic, strong) NSString *carouselCellIdentifier;
 
 @end
 
 @implementation RSCarouselView
 
--(instancetype) initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.layout = [[UICollectionViewFlowLayout alloc] init];
@@ -47,6 +46,16 @@
         self.collectionView.delegate = self;
     }
     return self;
+}
+
+-(void) dealloc {
+    [self.scrollTimer invalidate];
+}
+
+-(void) willMoveToSuperview:(UIView *)newSuperview {
+    if (!newSuperview) {
+        [self.scrollTimer invalidate];
+    }
 }
 
 -(void) scroll {

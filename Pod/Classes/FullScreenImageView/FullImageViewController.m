@@ -22,7 +22,7 @@
 
 @dynamic view;
 
--(instancetype)init {
+-(instancetype) init {
     self = [super init];
     if (self) {
         self.transitioningDelegate = self.zoomAnimator;
@@ -30,11 +30,11 @@
     return self;
 }
 
--(void)loadView {
+-(void) loadView {
     self.view = [[FullImageView alloc] initWithFrame:CGRectZero];
 }
 
-- (void)viewDidLoad {
+-(void) viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view.buttonDone addTarget:self action:@selector(donePressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -45,15 +45,15 @@
     [self.view addGestureRecognizer:gesture];
 }
 
--(void)viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
+-(void) viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
     [self.view flipWithAnimation:YES];
 }
 
--(BOOL)prefersStatusBarHidden {
+-(BOOL) prefersStatusBarHidden {
     return YES;
 }
 
-- (void)donePressed:(UIButton *)sender {
+-(void) donePressed:(UIButton *)sender {
     
     [self.view animateBackToOriginalWithCompletion:^{
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -61,12 +61,12 @@
     
 }
 
-- (void) setImage: (UIImage *)image {
+-(void) setImage: (UIImage *)image {
     self.view.scrollView.imageViewFull.image = image;
     [self.view.scrollView updateContentSize];
 }
 
--(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+-(void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     
     CGRect frame = CGRectZero;
     frame.size = size;
@@ -77,7 +77,7 @@
     } completion:nil];
 }
 
--(ZoomAnimator *)zoomAnimator {
+-(ZoomAnimator *) zoomAnimator {
     if (!_zoomAnimator) {
         _zoomAnimator = [ZoomAnimator new];
         _zoomAnimator.fullImageViewController = self;

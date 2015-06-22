@@ -20,8 +20,9 @@
 @interface RSCarouselView : UIView
 
 @property (nonatomic, weak) id<RSCarouselViewDataSource> dataSource;
+@property (nonatomic, strong) NSTimer *scrollTimer;
 
--(void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
+-(void) registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 -(void) start;
 -(void) stop;
