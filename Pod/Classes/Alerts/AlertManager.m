@@ -23,4 +23,14 @@
     
 }
 
+-(void) showUniqueAlert:(NSString *) message
+          withAnimation:(BOOL)animation
+         withIdentifier:(NSString *)identifier {
+    
+}
+
+-(void) showNextQueuedAlert {
+    
+}
+
 @end

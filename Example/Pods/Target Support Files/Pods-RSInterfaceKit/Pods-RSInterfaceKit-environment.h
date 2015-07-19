@@ -54,3 +54,9 @@
 #define COCOAPODS_VERSION_MINOR_RSInterfaceKit_RSCarouselScrollView 0
 #define COCOAPODS_VERSION_PATCH_RSInterfaceKit_RSCarouselScrollView 2
 
+// RSInterfaceKit/ZoomableImageView
+#define COCOAPODS_POD_AVAILABLE_RSInterfaceKit_ZoomableImageView
+#define COCOAPODS_VERSION_MAJOR_RSInterfaceKit_ZoomableImageView 0
+#define COCOAPODS_VERSION_MINOR_RSInterfaceKit_ZoomableImageView 0
+#define COCOAPODS_VERSION_PATCH_RSInterfaceKit_ZoomableImageView 2
+

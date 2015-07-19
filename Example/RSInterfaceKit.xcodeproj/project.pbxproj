@@ -25,6 +25,7 @@
 		82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */; };
 		82606F551B325D65003BB195 /* RSCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F541B325D65003BB195 /* RSCarouselViewController.m */; };
 		82B73ABF1B27ADE300C5AD74 /* RSAlertsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */; };
+		82BB07491B5C1348002149F5 /* RSInterfaceKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */; };
 		D43BF27D0B73CEAC0A86C1FC /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B8FCB32544449D4385B9D0 /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +76,7 @@
 		82606F541B325D65003BB195 /* RSCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCarouselViewController.m; sourceTree = "<group>"; };
 		82B73ABD1B27ADE300C5AD74 /* RSAlertsExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAlertsExampleViewController.h; sourceTree = "<group>"; };
 		82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAlertsExampleViewController.m; sourceTree = "<group>"; };
-		8D4C59C95912BB80FBB8A594 /* RSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RSKit.podspec; path = ../RSKit.podspec; sourceTree = "<group>"; };
+		82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RSInterfaceKit.podspec; path = ../RSInterfaceKit.podspec; sourceTree = "<group>"; };
 		92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSInterfaceKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F7E8FC1E6FA59E52DA3DD4 /* Pods-RSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSKit/Pods-RSKit.release.xcconfig"; sourceTree = "<group>"; };
 		E975E0615383FCED11CDE0B6 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -197,7 +198,7 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				8D4C59C95912BB80FBB8A594 /* RSKit.podspec */,
+				82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */,
 				32F417AD5B30C0505E5A3B05 /* README.md */,
 				4709D2AE48241A9CC9D224CE /* LICENSE */,
 			);
@@ -300,6 +301,7 @@
 			files = (
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				82BB07491B5C1348002149F5 /* RSInterfaceKit.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

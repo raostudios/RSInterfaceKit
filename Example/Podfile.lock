@@ -9,15 +9,18 @@ PODS:
     - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.2)
     - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.2)
     - RSInterfaceKit/RSCarouselScrollView (= 0.0.2)
+    - RSInterfaceKit/ZoomableImageView (= 0.0.2)
   - RSInterfaceKit/Alerts (0.0.2):
     - RSInterfaceKit/AutoLayoutHelpers
   - RSInterfaceKit/AutoLayoutHelpers (0.0.2)
-  - RSInterfaceKit/FullScreenImageView (0.0.2)
+  - RSInterfaceKit/FullScreenImageView (0.0.2):
+    - RSInterfaceKit/ZoomableImageView
   - RSInterfaceKit/LoadingView (0.0.2):
     - RSInterfaceKit/AutoLayoutHelpers
   - RSInterfaceKit/PortraitOnlyNavigation (0.0.2)
   - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.2)
   - RSInterfaceKit/RSCarouselScrollView (0.0.2)
+  - RSInterfaceKit/ZoomableImageView (0.0.2)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -31,6 +34,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 1eea5145c1f2fa907812ab92e1d6063a8d809b4e
   Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
-  RSInterfaceKit: d4c972fc4c15aee6660fd3720ac9749faefbfbd5
+  RSInterfaceKit: f87356ab31beba7a92456459ecd946fac8359479
 
 COCOAPODS: 0.36.3

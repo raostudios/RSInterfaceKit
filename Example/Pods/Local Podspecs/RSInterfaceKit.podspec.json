@@ -48,7 +48,17 @@
     {
       "name": "FullScreenImageView",
       "source_files": "Pod/Classes/FullScreenImageView/*.{h,m}",
-      "public_header_files": "Pod/Classes/FullScreenImageView/*.h"
+      "public_header_files": "Pod/Classes/FullScreenImageView/*.h",
+      "dependencies": {
+        "RSInterfaceKit/ZoomableImageView": [
+
+        ]
+      }
+    },
+    {
+      "name": "ZoomableImageView",
+      "source_files": "Pod/Classes/ZoomableImageView/*.{h,m}",
+      "public_header_files": "Pod/Classes/ZoomableImageView/*.h"
     },
     {
       "name": "RSCarouselDissolvingImageView",
