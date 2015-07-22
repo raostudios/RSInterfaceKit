@@ -21,28 +21,20 @@
         self.delegate = self;
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
-        self.minimumZoomScale=0.1;
-        self.maximumZoomScale=1.0;
+        
+        UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2;
+        [self addGestureRecognizer:doubleTapGestureRecognizer];
+        
         
         [self addSubview:self.imageViewFull];
     }
     
     return self;
 }
-    
-
--(UIImageView *) imageViewFull {
-    if (!_imageViewFull) {
-        _imageViewFull = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [_imageViewFull setContentMode:UIViewContentModeScaleAspectFit];
-        [_imageViewFull setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_imageViewFull setUserInteractionEnabled:YES];
-    }
-    return _imageViewFull;
-}
-
 
 -(void) centerScrollViewContents {
+    
     CGSize boundsSize = self.bounds.size;
     CGRect contentsFrame = self.imageViewFull.frame;
     
@@ -61,27 +53,14 @@
     self.imageViewFull.frame = contentsFrame;
 }
 
--(void) scrollViewDidZoom:(UIScrollView *)scrollView {
-    [self centerScrollViewContents];
-}
-
--(UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.imageViewFull;
-}
-
--(void) layoutSubviews {
-    [super layoutSubviews];
-    
-    [self centerScrollViewContents];
-}
-
-
 -(void) updateContentSize {
     
     self.contentSize = self.imageViewFull.image.size;
     
     self.minimumZoomScale = MIN(CGRectGetWidth([UIScreen mainScreen].bounds) / self.imageViewFull.image.size.width,
-                                           CGRectGetHeight([UIScreen mainScreen].bounds) / self.imageViewFull.image.size.height);
+                                CGRectGetHeight([UIScreen mainScreen].bounds) / self.imageViewFull.image.size.height);
+    
+    self.maximumZoomScale = MAX(self.minimumZoomScale * 2, 1.0);
     
     self.zoomScale = self.minimumZoomScale;
     
@@ -91,6 +70,37 @@
                                           self.imageViewFull.image.size.height);
     
     [self setNeedsLayout];
+}
+
+-(void) layoutSubviews {
+    [super layoutSubviews];
+    [self centerScrollViewContents];
+}
+
+-(void) doubleTapRecognized:(UITapGestureRecognizer *)tapGestureRecognizer {
+    [self setZoomScale:self.minimumZoomScale animated:YES];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+-(void) scrollViewDidZoom:(UIScrollView *)scrollView {
+    [self centerScrollViewContents];
+}
+
+-(UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageViewFull;
+}
+
+#pragma mark - Lazy Instantiation
+
+-(UIImageView *) imageViewFull {
+    if (!_imageViewFull) {
+        _imageViewFull = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [_imageViewFull setContentMode:UIViewContentModeScaleAspectFit];
+        [_imageViewFull setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_imageViewFull setUserInteractionEnabled:YES];
+    }
+    return _imageViewFull;
 }
 
 @end

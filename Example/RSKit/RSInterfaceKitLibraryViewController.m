@@ -12,6 +12,7 @@
 #import "RSAlertsExampleViewController.h"
 #import "RSImageCarouselExampleViewController.h"
 #import "RSCarouselViewController.h"
+#import "RSZoomImageToImageViewController.h"
 
 @interface RSInterfaceKitLibraryViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -42,11 +43,11 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ItemIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ItemIdentifier forIndexPath:indexPath];
     switch (indexPath.item) {
         case 0:
             cell.textLabel.text = @"Image Zoom";
@@ -59,6 +60,10 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
             break;
         case 3:
             cell.textLabel.text = @"Image Carousel";
+            break;
+        case 4:
+            cell.textLabel.text = @"Zoomable Full Screen Image";
+            break;
         default:
             break;
     }
@@ -79,6 +84,9 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
         [self showViewController:viewController sender:self];
     } else if (indexPath.item == 3) {
         RSCarouselViewController *viewController = [[RSCarouselViewController alloc] init];
+        [self showViewController:viewController sender:self];
+    } else if (indexPath.item == 4) {
+        RSZoomImageToImageViewController *viewController = [[RSZoomImageToImageViewController alloc] init];
         [self showViewController:viewController sender:self];
     }
 }

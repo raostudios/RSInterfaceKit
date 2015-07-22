@@ -42,15 +42,16 @@
     UIImageView *tempView = [UIImageView new];
     tempView.contentMode = UIViewContentModeScaleAspectFit;
     
-    UIImage *initialImage = [self.fullImageViewController.delegate initialImageForFullImageViewController:self.fullImageViewController];
-    tempView.image = initialImage;
+    UIImageView *initialImageView = [self.fullImageViewController.delegate initialImageViewForFullImageViewController:self.fullImageViewController];
+    initialImageView.alpha = 0.0;
+    tempView.image = initialImageView.image;
     
     if (self.presenting) {
         
-        CGRect initialFrame = [self frameForImage:initialImage
+        CGRect initialFrame = [self frameForImage:initialImageView.image
                                       insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:fromViewController.view forFullImageViewController:self.fullImageViewController]];
         
-        CGRect finalFrame = [self frameForImage:initialImage
+        CGRect finalFrame = [self frameForImage:initialImageView.image
                                     insideFrame:[transitionContext finalFrameForViewController:toViewController]];
         
         tempView.frame = initialFrame;
@@ -68,11 +69,11 @@
         
     } else {
         
-        CGRect initialFrame = [self frameForImage:initialImage
+        CGRect initialFrame = [self frameForImage:initialImageView.image
                                       insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:toViewController.view
                                                                                          forFullImageViewController:self.fullImageViewController]];
         
-        CGRect finalFrame = [self frameForImage:initialImage
+        CGRect finalFrame = [self frameForImage:initialImageView.image
                                     insideFrame:[transitionContext finalFrameForViewController:fromViewController]];
         
         tempView.frame = finalFrame;
@@ -86,7 +87,7 @@
             toViewController.view.alpha = 1.0;
         } completion:^(BOOL finished) {
             [tempView removeFromSuperview];
-            
+            initialImageView.alpha = 1.0;
             [transitionContext completeTransition:finished];
             
         }];

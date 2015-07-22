@@ -20,9 +20,11 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.buttonImageToZoom = [UIButton buttonWithType:UIButtonTypeCustom];
     self.buttonImageToZoom.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.buttonImageToZoom setImage:[UIImage imageNamed:@"yosemite"] forState:UIControlStateNormal]
+    [self.buttonImageToZoom setImage:[UIImage imageNamed:@"bandH"] forState:UIControlStateNormal]
     ;
     [self.view addSubview:self.buttonImageToZoom];
     
@@ -45,8 +47,8 @@
     return self.buttonImageToZoom.frame;
 }
 
--(UIImage *) initialImageForFullImageViewController:(FullImageViewController *)fullImageViewController {
-    return self.buttonImageToZoom.imageView.image;
+-(UIImageView *) initialImageViewForFullImageViewController:(FullImageViewController *)fullImageViewController {
+    return self.buttonImageToZoom.imageView;
 }
 
 @end
