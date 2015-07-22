@@ -7,7 +7,7 @@
 //
 
 #import "FullImageView.h"
-#import "ZoomableScrollView.h"
+#import "RSZoomableImageView.h"
 
 @interface FullImageView ()
 
@@ -76,7 +76,7 @@
 
 -(UIScrollView *) scrollView {
     if (!_scrollView) {
-        _scrollView = [[ZoomableScrollView alloc] initWithFrame:CGRectZero];
+        _scrollView = [[RSZoomableImageView alloc] initWithFrame:CGRectZero];
         [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
     

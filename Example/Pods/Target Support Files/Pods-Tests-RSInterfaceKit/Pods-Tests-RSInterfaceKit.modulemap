@@ -1,0 +1,6 @@
+framework module RSInterfaceKit {
+  umbrella header "Pods-Tests-RSInterfaceKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

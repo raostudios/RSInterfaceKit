@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class ZoomableScrollView;
+@class RSZoomableImageView;
 
 @interface FullImageView : UIView
 
 @property (nonatomic, strong) UIButton *buttonDone;
 @property (nonatomic, strong) UIView *topView;
-@property (nonatomic, strong) ZoomableScrollView *scrollView;
+@property (nonatomic, strong) RSZoomableImageView *scrollView;
 
 -(void) shouldShowButtons:(BOOL) showButtons;
 -(void) shouldShowButtons:(BOOL) showButtons animated:(BOOL)animated;

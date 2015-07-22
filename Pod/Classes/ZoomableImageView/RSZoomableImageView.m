@@ -6,13 +6,13 @@
 //
 //
 
-#import "ZoomableScrollView.h"
+#import "RSZoomableImageView.h"
 
-@interface ZoomableScrollView () <UIScrollViewDelegate>
+@interface RSZoomableImageView () <UIScrollViewDelegate>
 
 @end
 
-@implementation ZoomableScrollView
+@implementation RSZoomableImageView
 
 -(instancetype) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -22,10 +22,9 @@
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
         
-        UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
-        doubleTapGestureRecognizer.numberOfTapsRequired = 2;
-        [self addGestureRecognizer:doubleTapGestureRecognizer];
-        
+        self.doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
+        self.doubleTapGestureRecognizer.numberOfTapsRequired = 2;
+        [self addGestureRecognizer:self.doubleTapGestureRecognizer];
         
         [self addSubview:self.imageViewFull];
     }

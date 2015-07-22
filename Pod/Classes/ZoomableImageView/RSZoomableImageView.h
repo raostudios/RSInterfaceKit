@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZoomableScrollView : UIScrollView
+@interface RSZoomableImageView : UIScrollView
 
 @property (nonatomic, strong) UIImageView *imageViewFull;
 
 -(void) updateContentSize;
+
+@property (nonatomic, strong) UITapGestureRecognizer *doubleTapGestureRecognizer;
 
 @end

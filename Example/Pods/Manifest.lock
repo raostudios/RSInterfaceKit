@@ -1,26 +1,30 @@
 PODS:
-  - FBSnapshotTestCase (1.7)
+  - FBSnapshotTestCase (2.0.3):
+    - FBSnapshotTestCase/SwiftSupport (= 2.0.3)
+  - FBSnapshotTestCase/Core (2.0.3)
+  - FBSnapshotTestCase/SwiftSupport (2.0.3):
+    - FBSnapshotTestCase/Core
   - Kiwi (2.3.1)
-  - RSInterfaceKit (0.0.2):
-    - RSInterfaceKit/Alerts (= 0.0.2)
-    - RSInterfaceKit/AutoLayoutHelpers (= 0.0.2)
-    - RSInterfaceKit/FullScreenImageView (= 0.0.2)
-    - RSInterfaceKit/LoadingView (= 0.0.2)
-    - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.2)
-    - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.2)
-    - RSInterfaceKit/RSCarouselScrollView (= 0.0.2)
-    - RSInterfaceKit/ZoomableImageView (= 0.0.2)
-  - RSInterfaceKit/Alerts (0.0.2):
+  - RSInterfaceKit (0.0.4):
+    - RSInterfaceKit/Alerts (= 0.0.4)
+    - RSInterfaceKit/AutoLayoutHelpers (= 0.0.4)
+    - RSInterfaceKit/FullScreenImageView (= 0.0.4)
+    - RSInterfaceKit/LoadingView (= 0.0.4)
+    - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.4)
+    - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.4)
+    - RSInterfaceKit/RSCarouselScrollView (= 0.0.4)
+    - RSInterfaceKit/ZoomableImageView (= 0.0.4)
+  - RSInterfaceKit/Alerts (0.0.4):
     - RSInterfaceKit/AutoLayoutHelpers
-  - RSInterfaceKit/AutoLayoutHelpers (0.0.2)
-  - RSInterfaceKit/FullScreenImageView (0.0.2):
+  - RSInterfaceKit/AutoLayoutHelpers (0.0.4)
+  - RSInterfaceKit/FullScreenImageView (0.0.4):
     - RSInterfaceKit/ZoomableImageView
-  - RSInterfaceKit/LoadingView (0.0.2):
+  - RSInterfaceKit/LoadingView (0.0.4):
     - RSInterfaceKit/AutoLayoutHelpers
-  - RSInterfaceKit/PortraitOnlyNavigation (0.0.2)
-  - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.2)
-  - RSInterfaceKit/RSCarouselScrollView (0.0.2)
-  - RSInterfaceKit/ZoomableImageView (0.0.2)
+  - RSInterfaceKit/PortraitOnlyNavigation (0.0.4)
+  - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.4)
+  - RSInterfaceKit/RSCarouselScrollView (0.0.4)
+  - RSInterfaceKit/ZoomableImageView (0.0.4)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -32,8 +36,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 1eea5145c1f2fa907812ab92e1d6063a8d809b4e
+  FBSnapshotTestCase: d0eeca6bf87958e088b254396ae66873f971cfb1
   Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
-  RSInterfaceKit: f87356ab31beba7a92456459ecd946fac8359479
+  RSInterfaceKit: cedcc18b1149e86ec7edb14f5a427592930ec694
 
 COCOAPODS: 0.36.3

@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RSInterfaceKit"
-  s.version          = "0.0.4"
+  s.version          = "0.0.5"
   s.summary          = "RSInterfaceKit provides common UI components for iOS Development"
   s.description      = "RSInterfaceKit provides common UI components for iOS Development."
   s.homepage         = "https://github.com/raostudios/RSInterfaceKit"

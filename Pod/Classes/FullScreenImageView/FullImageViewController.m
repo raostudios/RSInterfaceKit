@@ -9,7 +9,7 @@
 #import "FullImageViewController.h"
 #import "FullImageView.h"
 #import "ZoomAnimator.h"
-#import "ZoomableScrollView.h"
+#import "RSZoomableImageView.h"
 
 @interface FullImageViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentInteractionControllerDelegate>
 

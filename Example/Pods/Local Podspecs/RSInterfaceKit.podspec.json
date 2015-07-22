@@ -1,6 +1,6 @@
 {
   "name": "RSInterfaceKit",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "summary": "RSInterfaceKit provides common UI components for iOS Development",
   "description": "RSInterfaceKit provides common UI components for iOS Development.",
   "homepage": "https://github.com/raostudios/RSInterfaceKit",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/raostudios/RSInterfaceKit.git",
-    "tag": "0.0.2"
+    "tag": "0.0.4"
   },
   "social_media_url": "https://twitter.com/venkatrao",
   "platforms": {

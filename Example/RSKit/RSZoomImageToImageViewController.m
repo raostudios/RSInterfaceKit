@@ -7,12 +7,12 @@
 //
 
 #import "RSZoomImageToImageViewController.h"
-#import <RSInterfaceKit/ZoomableScrollView.h>
+#import <RSInterfaceKit/RSZoomableImageView.h>
 
 
 @interface RSZoomImageToImageViewController ()
 
-@property (nonatomic, strong) ZoomableScrollView *imageView;
+@property (nonatomic, strong) RSZoomableImageView *imageView;
 
 @end
 
@@ -23,7 +23,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.imageView = [[ZoomableScrollView alloc] initWithFrame:CGRectZero];
+    self.imageView = [[RSZoomableImageView alloc] initWithFrame:CGRectZero];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.imageView];

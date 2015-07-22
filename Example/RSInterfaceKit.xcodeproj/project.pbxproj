@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		393980E12DD88C7E3D15AC39 /* libPods-RSInterfaceKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */; };
+		2370519E0D8E38700122582B /* Pods_RSInterfaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DFA5E0A4819CF059A0C811 /* Pods_RSInterfaceKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		416937AAA60E97B1CE76EB93 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008308EDEE01E4D6F38AA8B6 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -27,7 +28,6 @@
 		82B73ABF1B27ADE300C5AD74 /* RSAlertsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */; };
 		82BB07491B5C1348002149F5 /* RSInterfaceKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */; };
 		82BB074C1B5C8285002149F5 /* RSZoomImageToImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BB074B1B5C8285002149F5 /* RSZoomImageToImageViewController.m */; };
-		D43BF27D0B73CEAC0A86C1FC /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B8FCB32544449D4385B9D0 /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,11 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008308EDEE01E4D6F38AA8B6 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F417AD5B30C0505E5A3B05 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		36F02342340569D42182AC16 /* Pods-RSInterfaceKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.release.xcconfig"; sourceTree = "<group>"; };
 		4709D2AE48241A9CC9D224CE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4E356037276D7DC52AE56F56 /* libPods-RSKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D444A15CD11F6CF5E216BD6 /* Pods-RSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSKit/Pods-RSKit.debug.xcconfig"; sourceTree = "<group>"; };
-		600226C8774CAE13A8C2B9DC /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* RSInterfaceKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSInterfaceKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,9 +64,6 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		61B20B0B31E8770C61AA194A /* Pods-RSInterfaceKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.release.xcconfig"; sourceTree = "<group>"; };
-		61D86E927DD95933F06D171F /* Pods-RSInterfaceKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.debug.xcconfig"; sourceTree = "<group>"; };
-		66B8FCB32544449D4385B9D0 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		824D88611B248F430047CE03 /* RSInterfaceKitLibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSInterfaceKitLibraryView.h; sourceTree = "<group>"; };
 		824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSInterfaceKitLibraryView.m; sourceTree = "<group>"; };
 		824D88641B2494FA0047CE03 /* RSFullScreenImageTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSFullScreenImageTestViewController.h; sourceTree = "<group>"; };
@@ -80,9 +77,10 @@
 		82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RSInterfaceKit.podspec; path = ../RSInterfaceKit.podspec; sourceTree = "<group>"; };
 		82BB074A1B5C8285002149F5 /* RSZoomImageToImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSZoomImageToImageViewController.h; sourceTree = "<group>"; };
 		82BB074B1B5C8285002149F5 /* RSZoomImageToImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSZoomImageToImageViewController.m; sourceTree = "<group>"; };
-		92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSInterfaceKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9F7E8FC1E6FA59E52DA3DD4 /* Pods-RSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSKit/Pods-RSKit.release.xcconfig"; sourceTree = "<group>"; };
-		E975E0615383FCED11CDE0B6 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A66F6A8598C99C14C39DEE4A /* Pods-RSInterfaceKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.debug.xcconfig"; sourceTree = "<group>"; };
+		BB963E97BC9D8400B20BE734 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		D9DFA5E0A4819CF059A0C811 /* Pods_RSInterfaceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSInterfaceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E258D4D2B917F81FA4820D7D /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +91,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				393980E12DD88C7E3D15AC39 /* libPods-RSInterfaceKit.a in Frameworks */,
+				2370519E0D8E38700122582B /* Pods_RSInterfaceKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +102,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				D43BF27D0B73CEAC0A86C1FC /* libPods-Tests.a in Frameworks */,
+				416937AAA60E97B1CE76EB93 /* Pods_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +138,8 @@
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				4E356037276D7DC52AE56F56 /* libPods-RSKit.a */,
-				66B8FCB32544449D4385B9D0 /* libPods-Tests.a */,
-				92B108007FE027CE3C116671 /* libPods-RSInterfaceKit.a */,
+				D9DFA5E0A4819CF059A0C811 /* Pods_RSInterfaceKit.framework */,
+				008308EDEE01E4D6F38AA8B6 /* Pods_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,12 +211,10 @@
 		E341FCED8968DFBDA77E282D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5D444A15CD11F6CF5E216BD6 /* Pods-RSKit.debug.xcconfig */,
-				B9F7E8FC1E6FA59E52DA3DD4 /* Pods-RSKit.release.xcconfig */,
-				E975E0615383FCED11CDE0B6 /* Pods-Tests.debug.xcconfig */,
-				600226C8774CAE13A8C2B9DC /* Pods-Tests.release.xcconfig */,
-				61D86E927DD95933F06D171F /* Pods-RSInterfaceKit.debug.xcconfig */,
-				61B20B0B31E8770C61AA194A /* Pods-RSInterfaceKit.release.xcconfig */,
+				A66F6A8598C99C14C39DEE4A /* Pods-RSInterfaceKit.debug.xcconfig */,
+				36F02342340569D42182AC16 /* Pods-RSInterfaceKit.release.xcconfig */,
+				BB963E97BC9D8400B20BE734 /* Pods-Tests.debug.xcconfig */,
+				E258D4D2B917F81FA4820D7D /* Pods-Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -235,6 +231,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				8F1A4CF2E6CD933AF2B13BC9 /* Copy Pods Resources */,
+				BD0378D5C64DB55932AABBD2 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,6 +251,7 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				E473EC8BFC9CB34CBEF313A6 /* Copy Pods Resources */,
+				E86E5B8DD251625ED4921EE7 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,6 +364,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BD0378D5C64DB55932AABBD2 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E473EC8BFC9CB34CBEF313A6 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +392,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E86E5B8DD251625ED4921EE7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -511,7 +539,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61D86E927DD95933F06D171F /* Pods-RSInterfaceKit.debug.xcconfig */;
+			baseConfigurationReference = A66F6A8598C99C14C39DEE4A /* Pods-RSInterfaceKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -526,7 +554,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61B20B0B31E8770C61AA194A /* Pods-RSInterfaceKit.release.xcconfig */;
+			baseConfigurationReference = 36F02342340569D42182AC16 /* Pods-RSInterfaceKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -541,7 +569,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E975E0615383FCED11CDE0B6 /* Pods-Tests.debug.xcconfig */;
+			baseConfigurationReference = BB963E97BC9D8400B20BE734 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSKit.app/RSKit";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -564,7 +592,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 600226C8774CAE13A8C2B9DC /* Pods-Tests.release.xcconfig */;
+			baseConfigurationReference = E258D4D2B917F81FA4820D7D /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSKit.app/RSKit";
 				FRAMEWORK_SEARCH_PATHS = (
