@@ -43,14 +43,22 @@
     
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:gesture];
-}
-
--(void) viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
-    [self.view flipWithAnimation:YES];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view.buttonDone
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.topLayoutGuide
+                                                     attribute:NSLayoutAttributeBottom
+                                                    multiplier:1
+                                                      constant:0]];
 }
 
 -(BOOL) prefersStatusBarHidden {
     return YES;
+}
+
+-(void) viewTapped:(UITapGestureRecognizer *)gestureRecognizer {
+    [self.view flipWithAnimation:YES];
 }
 
 -(void) donePressed:(UIButton *)sender {

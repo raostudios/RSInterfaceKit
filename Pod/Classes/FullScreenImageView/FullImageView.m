@@ -51,13 +51,6 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonDone
-                                                         attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeTopMargin
-                                                        multiplier:1
-                                                          constant:0]];
         self.backgroundColor = [UIColor blackColor];
         
         
