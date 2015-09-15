@@ -37,12 +37,7 @@
                                                                       metrics:nil
                                                                         views:@{@"imageView": self.imageView}]];
     
-    self.imageView.imageViewFull.image = [UIImage imageNamed:@"bandH"];
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.imageView updateContentSize];
+    self.imageView.imageViewFull.image = [UIImage imageNamed:@"yosemite"];
 }
 
 @end

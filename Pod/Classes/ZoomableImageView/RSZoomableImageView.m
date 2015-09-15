@@ -10,6 +10,8 @@
 
 @interface RSZoomableImageView () <UIScrollViewDelegate>
 
+@property (assign, nonatomic) CGRect oldBounds;
+
 @end
 
 @implementation RSZoomableImageView
@@ -22,7 +24,8 @@
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
         
-        self.doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
+        self.doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(doubleTapRecognized:)];
         self.doubleTapGestureRecognizer.numberOfTapsRequired = 2;
         [self addGestureRecognizer:self.doubleTapGestureRecognizer];
         
@@ -56,8 +59,8 @@
     
     self.contentSize = self.imageViewFull.image.size;
     
-    self.minimumZoomScale = MIN(CGRectGetWidth([UIScreen mainScreen].bounds) / self.imageViewFull.image.size.width,
-                                CGRectGetHeight([UIScreen mainScreen].bounds) / self.imageViewFull.image.size.height);
+    self.minimumZoomScale = MIN(CGRectGetWidth(self.bounds) / self.imageViewFull.image.size.width,
+                                CGRectGetHeight(self.bounds) / self.imageViewFull.image.size.height);
     
     self.maximumZoomScale = MAX(self.minimumZoomScale * 2, 1.0);
     
@@ -74,6 +77,15 @@
 -(void) layoutSubviews {
     [super layoutSubviews];
     [self centerScrollViewContents];
+}
+
+
+-(void)setBounds:(CGRect)bounds {
+    [super setBounds:bounds];
+    if (bounds.size.width != self.oldBounds.size.width) {
+        [self updateContentSize];
+        self.oldBounds = bounds;
+    }
 }
 
 -(void) doubleTapRecognized:(UITapGestureRecognizer *)tapGestureRecognizer {
