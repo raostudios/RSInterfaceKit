@@ -28,6 +28,7 @@
 		82B73ABF1B27ADE300C5AD74 /* RSAlertsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */; };
 		82BB07491B5C1348002149F5 /* RSInterfaceKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */; };
 		82BB074C1B5C8285002149F5 /* RSZoomImageToImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BB074B1B5C8285002149F5 /* RSZoomImageToImageViewController.m */; };
+		82DE1F4E1BB056B1002307AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RSInterfaceKit.podspec; path = ../RSInterfaceKit.podspec; sourceTree = "<group>"; };
 		82BB074A1B5C8285002149F5 /* RSZoomImageToImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSZoomImageToImageViewController.h; sourceTree = "<group>"; };
 		82BB074B1B5C8285002149F5 /* RSZoomImageToImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSZoomImageToImageViewController.m; sourceTree = "<group>"; };
+		82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A66F6A8598C99C14C39DEE4A /* Pods-RSInterfaceKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.debug.xcconfig"; sourceTree = "<group>"; };
 		BB963E97BC9D8400B20BE734 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9DFA5E0A4819CF059A0C811 /* Pods_RSInterfaceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSInterfaceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 				82606F541B325D65003BB195 /* RSCarouselViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */,
 			);
 			path = RSKit;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			files = (
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				82DE1F4E1BB056B1002307AB /* Launch Screen.storyboard in Resources */,
 				82BB07491B5C1348002149F5 /* RSInterfaceKit.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +547,6 @@
 			baseConfigurationReference = A66F6A8598C99C14C39DEE4A /* Pods-RSInterfaceKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSKit/RSInterfaceKit-Prefix.pch";
 				INFOPLIST_FILE = "RSKit/RSInterfaceKit-Info.plist";
@@ -559,7 +562,6 @@
 			baseConfigurationReference = 36F02342340569D42182AC16 /* Pods-RSInterfaceKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSKit/RSInterfaceKit-Prefix.pch";
 				INFOPLIST_FILE = "RSKit/RSInterfaceKit-Info.plist";
