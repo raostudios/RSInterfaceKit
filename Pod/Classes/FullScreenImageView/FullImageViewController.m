@@ -74,17 +74,6 @@
     [self.view.scrollView updateContentSize];
 }
 
--(void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    
-    CGRect frame = CGRectZero;
-    frame.size = size;
-    self.view.frame = frame;
-    
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        [self.view layoutIfNeeded];
-    } completion:nil];
-}
-
 -(ZoomAnimator *) zoomAnimator {
     if (!_zoomAnimator) {
         _zoomAnimator = [ZoomAnimator new];
