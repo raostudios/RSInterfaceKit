@@ -19,8 +19,7 @@
 
 @interface FullImageViewController : UIViewController
 
--(void) setImage: (UIImage *)image;
-
+@property (nonatomic) UIImage *image;
 @property (nonatomic, weak) id<FullImageViewControllerDelegate> delegate;
 
 @end

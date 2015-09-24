@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIButton *buttonDone;
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) RSZoomableImageView *scrollView;
+@property (nonatomic, strong) UIImage *image;
 
 -(void) shouldShowButtons:(BOOL) showButtons;
 -(void) shouldShowButtons:(BOOL) showButtons animated:(BOOL)animated;

@@ -74,6 +74,10 @@
     [self.view.scrollView updateContentSize];
 }
 
+-(UIImage *)image {
+    return self.view.scrollView.imageViewFull.image;
+}
+
 -(ZoomAnimator *) zoomAnimator {
     if (!_zoomAnimator) {
         _zoomAnimator = [ZoomAnimator new];
