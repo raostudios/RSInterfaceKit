@@ -11,7 +11,6 @@
 @interface RSZoomableImageView () <UIScrollViewDelegate>
 
 @property (assign, nonatomic) CGRect oldBounds;
-@property (nonatomic, strong) UIImageView *imageViewFull;
 
 @end
 
