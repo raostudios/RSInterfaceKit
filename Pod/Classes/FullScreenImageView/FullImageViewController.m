@@ -70,12 +70,11 @@
 }
 
 -(void) setImage: (UIImage *)image {
-    self.view.scrollView.imageViewFull.image = image;
-    [self.view.scrollView updateContentSize];
+    self.view.scrollView.image = image;
 }
 
 -(UIImage *)image {
-    return self.view.scrollView.imageViewFull.image;
+    return self.view.scrollView.image;
 }
 
 -(ZoomAnimator *) zoomAnimator {

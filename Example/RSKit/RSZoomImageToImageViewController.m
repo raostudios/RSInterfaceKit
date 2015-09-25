@@ -37,7 +37,7 @@
                                                                       metrics:nil
                                                                         views:@{@"imageView": self.imageView}]];
     
-    self.imageView.imageViewFull.image = [UIImage imageNamed:@"yosemite"];
+    self.imageView.image = [UIImage imageNamed:@"yosemite"];
 }
 
 @end

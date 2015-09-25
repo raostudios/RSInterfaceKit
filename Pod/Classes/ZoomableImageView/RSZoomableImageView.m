@@ -11,6 +11,7 @@
 @interface RSZoomableImageView () <UIScrollViewDelegate>
 
 @property (assign, nonatomic) CGRect oldBounds;
+@property (nonatomic, strong) UIImageView *imageViewFull;
 
 @end
 
@@ -100,6 +101,15 @@
 
 -(UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageViewFull;
+}
+
+-(void)setImage:(UIImage *)image {
+    self.imageViewFull.image = image;
+    [self updateContentSize];
+}
+
+-(UIImage *)image {
+    return self.imageViewFull.image;
 }
 
 #pragma mark - Lazy Instantiation
