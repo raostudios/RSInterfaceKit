@@ -87,9 +87,9 @@
             toViewController.view.alpha = 1.0;
         } completion:^(BOOL finished) {
             [tempView removeFromSuperview];
+            toViewController.view.frame = [transitionContext finalFrameForViewController:toViewController];
             initialImageView.alpha = 1.0;
             [transitionContext completeTransition:finished];
-            
         }];
     }
 }

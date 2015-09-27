@@ -9,14 +9,6 @@
 #import "FullImageView.h"
 #import "RSZoomableImageView.h"
 
-@interface FullImageView ()
-
-@property (nonatomic, strong) NSLayoutConstraint *centerY;
-@property (nonatomic, strong) NSLayoutConstraint *centerX;
-
-
-@end
-
 @implementation FullImageView
 
 -(instancetype) initWithFrame:(CGRect)frame {
@@ -40,8 +32,7 @@
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1
                                                           constant:0]];
-        
-        
+
         [self addSubview:self.buttonDone];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.buttonDone
                                                          attribute:NSLayoutAttributeTrailing
@@ -56,24 +47,6 @@
         
     }
     return self;
-}
-
--(UIButton *) buttonDone {
-    if (!_buttonDone) {
-        _buttonDone = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_buttonDone setTitle:@"Done" forState:UIControlStateNormal];
-        [_buttonDone setTranslatesAutoresizingMaskIntoConstraints:NO];
-    }
-    return _buttonDone;
-}
-
--(UIScrollView *) scrollView {
-    if (!_scrollView) {
-        _scrollView = [[RSZoomableImageView alloc] initWithFrame:CGRectZero];
-        [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    }
-    
-    return _scrollView;
 }
 
 -(void) shouldShowButtons:(BOOL) showButtons {
@@ -99,6 +72,26 @@
             completionBlock();
         }
     }];
+}
+
+#pragma mark - Lazy Instatiation
+
+-(UIButton *) buttonDone {
+    if (!_buttonDone) {
+        _buttonDone = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_buttonDone setTitle:@"Done" forState:UIControlStateNormal];
+        [_buttonDone setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
+    return _buttonDone;
+}
+
+-(UIScrollView *) scrollView {
+    if (!_scrollView) {
+        _scrollView = [[RSZoomableImageView alloc] initWithFrame:CGRectZero];
+        [_scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
+    
+    return _scrollView;
 }
 
 @end
