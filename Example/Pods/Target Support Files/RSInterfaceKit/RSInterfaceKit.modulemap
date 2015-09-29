@@ -1,0 +1,6 @@
+framework module RSInterfaceKit {
+  umbrella header "RSInterfaceKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

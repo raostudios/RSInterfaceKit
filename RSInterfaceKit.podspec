@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RSInterfaceKit"
-  s.version          = "0.0.12"
+  s.version          = "0.0.13"
   s.summary          = "RSInterfaceKit provides common UI components for iOS Development"
   s.description      = "RSInterfaceKit provides common UI components for iOS Development."
   s.homepage         = "https://github.com/raostudios/RSInterfaceKit"
@@ -69,6 +69,11 @@ Pod::Spec.new do |s|
   s.subspec 'PortraitOnlyNavigation' do |sdkit|
     sdkit.source_files = 'Pod/Classes/PortraitOnly/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/PortraitOnly/*.h'
+  end
+
+  s.subspec 'CollectionViewWithTransitions' do |sdkit|
+    sdkit.source_files = 'Pod/Classes/CollectionViewWithTransitions/*.{h,m}'
+    sdkit.public_header_files = 'Pod/Classes/CollectionViewWithTransitions/*.h'
   end
 
 end

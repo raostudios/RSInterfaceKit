@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/CollectionViewWithTransitions/TransitionAnimator.h

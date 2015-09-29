@@ -13,6 +13,9 @@
 #import "RSImageCarouselExampleViewController.h"
 #import "RSCarouselViewController.h"
 #import "RSZoomImageToImageViewController.h"
+#import "CollectionViewWithTransitions.h"
+
+#import "CollectionViewDataSource.h"
 
 @interface RSInterfaceKitLibraryViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -43,7 +46,7 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,6 +66,9 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
             break;
         case 4:
             cell.textLabel.text = @"Zoomable Full Screen Image";
+            break;
+        case 5:
+            cell.textLabel.text = @"Collection View Transitions";
             break;
         default:
             break;
@@ -88,7 +94,21 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
     } else if (indexPath.item == 4) {
         RSZoomImageToImageViewController *viewController = [[RSZoomImageToImageViewController alloc] init];
         [self showViewController:viewController sender:self];
+    } else if (indexPath.item == 5) {
+        UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+        
+        CGFloat width = (CGRectGetWidth([UIScreen mainScreen].bounds) - layout.minimumInteritemSpacing * 2) / 3.0;
+        
+        layout.itemSize = CGSizeMake(width, width);
+        
+        CollectionViewWithTransitions *viewController = [[CollectionViewWithTransitions alloc] initWithCollectionViewLayout:layout];
+        viewController.dataSource = [[CollectionViewDataSource alloc] initWithCollectionView:viewController.collectionView];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        navigationController.navigationBar.barTintColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];;
+        [self showViewController:navigationController sender:self];
+
     }
+    
 }
 
 @end
