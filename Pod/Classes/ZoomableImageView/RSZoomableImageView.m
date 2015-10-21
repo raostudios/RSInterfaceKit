@@ -58,19 +58,20 @@
 -(void) updateContentSize {
     
     self.contentSize = self.imageViewFull.image.size;
-    
-    self.minimumZoomScale = MIN(CGRectGetWidth(self.bounds) / self.imageViewFull.image.size.width,
-                                CGRectGetHeight(self.bounds) / self.imageViewFull.image.size.height);
-    
-    self.maximumZoomScale = MAX(self.minimumZoomScale * 2, 1.0);
-    
-    self.zoomScale = self.minimumZoomScale;
-    
-    self.imageViewFull.frame = CGRectMake(0.0,
-                                          0.0,
-                                          self.imageViewFull.image.size.width,
-                                          self.imageViewFull.image.size.height);
-    
+    if (CGRectGetHeight(self.bounds) != 0.0) {
+        self.minimumZoomScale = MIN(CGRectGetWidth(self.bounds) / self.imageViewFull.image.size.width,
+                                    CGRectGetHeight(self.bounds) / self.imageViewFull.image.size.height);
+        
+        self.maximumZoomScale = MAX(self.minimumZoomScale * 2, 1.0);
+        
+        self.zoomScale = self.minimumZoomScale;
+        
+        self.imageViewFull.frame = CGRectMake(0.0,
+                                              0.0,
+                                              self.imageViewFull.image.size.width,
+                                              self.imageViewFull.image.size.height);
+    }
+
     [self setNeedsLayout];
 }
 
