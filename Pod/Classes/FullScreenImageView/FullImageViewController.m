@@ -22,14 +22,6 @@
 
 @dynamic view;
 
--(instancetype) init {
-    self = [super init];
-    if (self) {
-        self.transitioningDelegate = self.zoomAnimator;
-    }
-    return self;
-}
-
 -(void) loadView {
     self.view = [[FullImageView alloc] initWithFrame:CGRectZero];
 }
@@ -75,6 +67,11 @@
 
 -(UIImage *)image {
     return self.view.scrollView.image;
+}
+
+-(void)setDelegate:(id<FullImageViewControllerDelegate>)delegate {
+    _delegate = delegate;
+    self.transitioningDelegate = self.zoomAnimator;
 }
 
 -(ZoomAnimator *) zoomAnimator {

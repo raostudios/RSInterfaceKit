@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) NSString *carouselCellIdentifier;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
 
@@ -37,13 +38,25 @@
                                                                      metrics:nil
                                                                        views:@{@"collectionView":self.collectionView}]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[collectionView]|"
+        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectZero];
+        self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.pageControl];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.pageControl
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0
+                                                          constant:0]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[collectionView]-[pageControl]-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:@{@"collectionView":self.collectionView}]];
+                                                                       views:@{@"collectionView":self.collectionView,
+                                                                               @"pageControl":self.pageControl}]];
         
         self.collectionView.dataSource = self;
-        self.collectionView.delegate = self;
+        self.collectionView.delegate = self;        
     }
     return self;
 }
@@ -96,16 +109,18 @@
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.carouselCellIdentifier forIndexPath:indexPath];
-    
-    if (indexPath.item == 0 || indexPath.item == ([collectionView numberOfItemsInSection:0] - 2)) {
-        [self.dataSource configureCell:cell InCarouselView:self atIndex:([self.dataSource numberOfItemsInCarouselView:self] - 1)];
-    } else if (indexPath.item == 1 || indexPath.item == ([collectionView numberOfItemsInSection:0] - 1)) {
-        [self.dataSource configureCell:cell InCarouselView:self atIndex:0];
-    } else {
-        [self.dataSource configureCell:cell InCarouselView:self atIndex:(indexPath.item - 1)];
-    }
-    
+    [self.dataSource configureCell:cell InCarouselView:self atIndex:[self adjustedIndexForCollectionViewIndex:indexPath.item]];
     return cell;
+}
+
+-(NSUInteger) adjustedIndexForCollectionViewIndex:(NSUInteger) index {
+    if (index== 0 || index == ([self.collectionView numberOfItemsInSection:0] - 2)) {
+        return ([self.dataSource numberOfItemsInCarouselView:self] - 1);
+    } else if (index == 1 || index == ([self.collectionView numberOfItemsInSection:0] - 1)) {
+        return 0;
+    } else {
+        return (index - 1);
+    }
 }
 
 -(void) registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier {
@@ -123,6 +138,27 @@
 
 -(void) stop {
     [self.scrollTimer invalidate];
+}
+
+-(void)setDataSource:(id<RSCarouselViewDataSource>)dataSource {
+    _dataSource = dataSource;
+    self.pageControl.numberOfPages = [dataSource numberOfItemsInCarouselView:self];
+}
+
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self updatePageControl];
+}
+
+-(void) updatePageControl {
+    self.pageControl.currentPage = [self adjustedIndexForCollectionViewIndex: [self indexForContentOffset:self.collectionView.contentOffset]];
+}
+
+-(NSUInteger) indexForContentOffset:(CGPoint) contentOffset {
+    NSUInteger index = 0;
+    if (contentOffset.x != 0) {
+        index = contentOffset.x / CGRectGetWidth(self.bounds);
+    }
+    return index;
 }
 
 -(void) layoutSubviews {
