@@ -57,14 +57,17 @@
 
 -(void) updateContentSize {
     
-    self.contentSize = self.imageViewFull.image.size;
-    if (CGRectGetHeight(self.bounds) != 0.0) {
+    if (self.imageViewFull.image && CGRectGetHeight(self.bounds) != 0.0) {
         self.minimumZoomScale = MIN(CGRectGetWidth(self.bounds) / self.imageViewFull.image.size.width,
                                     CGRectGetHeight(self.bounds) / self.imageViewFull.image.size.height);
         
         self.maximumZoomScale = MAX(self.minimumZoomScale * 2, 1.0);
         
+        self.contentSize = self.imageViewFull.image.size;
         self.zoomScale = self.minimumZoomScale;
+        if (self.zoomScale > 1.0) {
+            self.contentSize = self.imageViewFull.image.size;
+        }
         
         self.imageViewFull.frame = CGRectMake(0.0,
                                               0.0,
