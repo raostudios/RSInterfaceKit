@@ -28,7 +28,7 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
     [self.view.buttonDone addTarget:self action:@selector(donePressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view shouldShowButtons:NO];
@@ -37,9 +37,9 @@
     [self.view addGestureRecognizer:gesture];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view.buttonDone
-                                                     attribute:NSLayoutAttributeTop
+                                                     attribute:NSLayoutAttributeBottom
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.topLayoutGuide
+                                                        toItem:self.bottomLayoutGuide
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1
                                                       constant:0]];
