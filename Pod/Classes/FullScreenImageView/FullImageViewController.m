@@ -43,6 +43,8 @@
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1
                                                       constant:0]];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+    [self.view.scrollView addGestureRecognizer:tapGesture];
 }
 
 -(BOOL) prefersStatusBarHidden {
@@ -53,12 +55,16 @@
     [self.view flipWithAnimation:YES];
 }
 
--(void) donePressed:(UIButton *)sender {
-    
+-(void) imageTapped:(UITapGestureRecognizer *) gesture {
     [self.view animateBackToOriginalWithCompletion:^{
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    
+}
+
+-(void) donePressed:(UIButton *)sender {
+    [self.view animateBackToOriginalWithCompletion:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 -(void) setImage: (UIImage *)image {
