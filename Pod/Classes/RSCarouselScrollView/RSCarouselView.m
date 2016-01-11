@@ -8,7 +8,7 @@
 
 #import "RSCarouselView.h"
 
-@interface RSCarouselView () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface RSCarouselView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
@@ -20,8 +20,12 @@
 @implementation RSCarouselView
 
 - (instancetype)initWithFrame:(CGRect)frame {
+    
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.shouldWrapAround = YES;
+        
         self.layout = [[UICollectionViewFlowLayout alloc] init];
         self.layout.minimumInteritemSpacing = 0.0f;
         self.layout.minimumLineSpacing = 0.0f;
@@ -56,9 +60,14 @@
                                                                                @"pageControl":self.pageControl}]];
         
         self.collectionView.dataSource = self;
-        self.collectionView.delegate = self;        
+        self.collectionView.delegate = self;
     }
     return self;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(CGRectGetWidth(self.collectionView.bounds),
+                      CGRectGetHeight(self.collectionView.bounds));
 }
 
 -(void) dealloc {
@@ -79,24 +88,29 @@
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return ([self.dataSource numberOfItemsInCarouselView:self] + 2);
+    return ([self.dataSource numberOfItemsInCarouselView:self] + (self.shouldWrapAround ? 2 : 0));
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    ;
+    
+    if (!self.shouldWrapAround) {
+        return;
+    }
+    
     NSIndexPath *newIndexPath = [self indexPathForItemAtCenterOfCollectionView:collectionView];
     if (newIndexPath.item == [collectionView numberOfItemsInSection:0] - 1) {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]
                                     atScrollPosition:UICollectionViewScrollPositionLeft
                                             animated:NO];
     }
-
+    
     if (newIndexPath.item == 0 && indexPath.item == 1) {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:([collectionView numberOfItemsInSection:0] - 2)  inSection:0]
                                     atScrollPosition:UICollectionViewScrollPositionLeft
                                             animated:NO];
     }
 }
+
 
 -(NSIndexPath *) indexPathForItemAtCenterOfCollectionView:(UICollectionView *)collectionView {
     return [collectionView indexPathForItemAtPoint:CGPointMake(collectionView.center.x + collectionView.contentOffset.x, collectionView.center.y + collectionView.contentOffset.y)];
@@ -113,8 +127,18 @@
     return cell;
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[self.collectionView indexPathForItemAtPoint:scrollView.contentOffset]];
+    [self.delegate carouselView:self animationEndedOnCell:cell];
+}
+
 -(NSUInteger) adjustedIndexForCollectionViewIndex:(NSUInteger) index {
-    if (index== 0 || index == ([self.collectionView numberOfItemsInSection:0] - 2)) {
+    
+    if (!self.shouldWrapAround) {
+        return index;
+    }
+    
+    if (index == 0 || index == ([self.collectionView numberOfItemsInSection:0] - 2)) {
         return ([self.dataSource numberOfItemsInCarouselView:self] - 1);
     } else if (index == 1 || index == ([self.collectionView numberOfItemsInSection:0] - 1)) {
         return 0;
@@ -163,10 +187,16 @@
 
 -(void) layoutSubviews {
     [super layoutSubviews];
-    self.layout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds),
-                                      CGRectGetHeight(self.collectionView.bounds));
-    [self.layout invalidateLayout];
-    self.collectionView.contentOffset = CGPointMake(CGRectGetWidth(self.collectionView.bounds), 0);
+    
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    
+    NSIndexPath *currentIndexPath = (self.layout.itemSize.width == CGRectGetWidth(self.collectionView.bounds) || self.layout.itemSize.width == CGRectGetHeight(self.collectionView.bounds)) ?
+    nil:
+    [NSIndexPath indexPathForItem:[self adjustedIndexForCollectionViewIndex:0] inSection:0];
+    
+    if (currentIndexPath) {
+        [self.collectionView scrollToItemAtIndexPath:currentIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    }
 }
 
 @end

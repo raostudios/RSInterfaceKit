@@ -17,14 +17,25 @@
 
 @end
 
+@protocol RSCarouselViewDelegate <NSObject>
+
+-(void) carouselView:(RSCarouselView *) carouselView animationEndedOnCell:(UICollectionViewCell *)cell;
+
+@end
+
 @interface RSCarouselView : UIView
 
 @property (nonatomic, weak) id<RSCarouselViewDataSource> dataSource;
+@property (nonatomic, weak) id<RSCarouselViewDelegate> delegate;
+
 @property (nonatomic, strong) NSTimer *scrollTimer;
+@property (nonatomic, assign) BOOL shouldWrapAround;
+
 
 -(void) registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 -(void) start;
 -(void) stop;
+
 
 @end
