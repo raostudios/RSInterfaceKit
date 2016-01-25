@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RSInterfaceKit"
-  s.version          = "0.0.17"
+  s.version          = "0.0.18"
   s.summary          = "RSInterfaceKit provides common UI components for iOS Development"
   s.description      = "RSInterfaceKit provides common UI components for iOS Development."
   s.homepage         = "https://github.com/raostudios/RSInterfaceKit"
@@ -34,7 +34,8 @@ Pod::Spec.new do |s|
     sdkit.source_files = 'Pod/Classes/Alerts/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/Alerts/*.h'
     sdkit.resources = 'Pod/Assets/Alerts/*.png'
-    sdkit.resource_bundle = { 'RSInterfaceKit' => 'Pod/Assets/*.png' }
+    sdkit.dependency 'RSInterfaceKit/AutoLayoutHelpers'
+    sdkit.resource_bundle = { 'RSInterfaceKit' => 'Pod/Assets/Alerts/*.png' }
   end
 
   s.subspec 'FullScreenImageView' do |sdkit|
