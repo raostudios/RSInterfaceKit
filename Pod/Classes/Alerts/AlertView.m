@@ -26,19 +26,26 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        
+        self.backgroundColor = self.userBackgroundColor;
+        
         self.labelMessage = [[UILabel alloc] initWithAutoLayout];
-        self.labelMessage.textColor = [UIColor redColor];
         self.labelMessage.numberOfLines = 0;
         self.labelMessage.textAlignment = NSTextAlignmentCenter;
         self.labelMessage.preferredMaxLayoutWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 44.0;
-
         [self addSubview:self.labelMessage];
         
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSURL *bundleURL = [bundle URLForResource:@"RSInterfaceKit" withExtension:@"bundle"];
+
         self.buttonClose = [UIButton buttonWithType:UIButtonTypeSystem];
         self.buttonClose.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.buttonClose setTitle:@"X" forState:UIControlStateNormal];
+        [self.buttonClose setImage:[[UIImage imageNamed:@"Close" inBundle:[NSBundle bundleWithURL:bundleURL] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+                          forState:UIControlStateNormal];
         self.buttonClose.accessibilityLabel = @"Dismiss Alert";
-        [self.buttonClose addTarget:self action:@selector(pressedClose:) forControlEvents:UIControlEventTouchUpInside];
+        [self.buttonClose addTarget:self
+                             action:@selector(pressedClose:)
+                   forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.buttonClose];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[buttonClose(44)][labelMessage]|"
@@ -47,18 +54,11 @@
                                                                        views:@{@"labelMessage":self.labelMessage,
                                                                                @"buttonClose":self.buttonClose}]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
-                                                         attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.labelMessage
-                                                         attribute:NSLayoutAttributeCenterY
-                                                        multiplier:1
-                                                          constant:0]];
-        
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[labelMessage]"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[labelMessage]-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:@{@"labelMessage": self.labelMessage}]];
+                                                                       views:@{@"labelMessage":self.labelMessage,
+                                                                               @"buttonClose":self.buttonClose}]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self
                                                          attribute:NSLayoutAttributeCenterY
@@ -68,17 +68,11 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        self.constraintHeight = [NSLayoutConstraint constraintWithItem:self
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:NSLayoutAttributeHeight
-                                                        multiplier:0
-                                                          constant:0];
-        
-        [self addConstraint:self.constraintHeight];
-        
         self.clipsToBounds = YES;
+        
+        UITapGestureRecognizer *tapGetureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(alertTapped:)];
+        [self addGestureRecognizer:tapGetureRecognizer];
+        
     }
     return self;
 }
@@ -92,28 +86,40 @@
     self.labelMessage.accessibilityLabel = [NSString stringWithFormat:@"Alert: %@", message];
 }
 
+-(void) alertTapped:(UITapGestureRecognizer *)tapGestures {
+    [self.delegate alertViewTapped:self];
+}
+
+-(void) dismissPressed:(UIButton *)sender {
+
+}
+
+-(void)setUserBackgroundColor:(UIColor *)backgroundColor {
+    self.backgroundColor = backgroundColor;
+}
+
+-(UIColor *)userBackgroundColor {
+    return self.backgroundColor;
+}
+
+-(void)setCloseButtonImage:(UIImage *)closeButtonImage {
+    [self.buttonClose setImage:[closeButtonImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+                      forState:UIControlStateNormal];
+}
+
+-(void)setTextColor:(UIColor *)textColor {
+    [self.buttonClose setTintColor:textColor];
+    self.labelMessage.textColor = textColor;
+}
+
+-(UIColor *)textColor {
+    return self.labelMessage.textColor;
+}
+
 -(void) pressedClose:(UIButton *)button {
-    [self hideWithAnimation:YES];
-}
-
--(void) showMessage:(NSString *)message withAnimation:(BOOL)animation forced:(BOOL)forced {
-    if (![self.messagesShown containsObject:message] || forced) {
-        self.message = message;
-        [self.messagesShown addObject:message];
-        [self.labelMessage sizeToFit];
-        self.constraintHeight.constant = CGRectGetHeight(self.labelMessage.frame);
-        
-        [UIView animateWithDuration:animation ? 0.5f : 0.0f animations:^{
-            [self.superview layoutIfNeeded];
-        }];
+    if (self.bannerDismissed) {
+        self.bannerDismissed();
     }
-}
-
--(void) hideWithAnimation:(BOOL)animation {
-    self.constraintHeight.constant = 0;
-    [UIView animateWithDuration:animation ? 0.5f : 0.0f animations:^{
-        [self.superview layoutIfNeeded];
-    }];
 }
 
 -(NSSet *)messagesShown {

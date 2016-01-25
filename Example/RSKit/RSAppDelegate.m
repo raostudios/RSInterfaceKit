@@ -8,6 +8,7 @@
 
 #import "RSAppDelegate.h"
 #import "RSInterfaceKitLibraryViewController.h"
+#import "AlertView.h"
 
 @implementation RSAppDelegate
 
@@ -20,6 +21,9 @@
     // Override point for customization after application launch.
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    
+    [[AlertView appearance] setUserBackgroundColor:[UIColor greenColor]];
+    [[AlertView appearance] setTextColor:[UIColor whiteColor]];
     
     return YES;
 }

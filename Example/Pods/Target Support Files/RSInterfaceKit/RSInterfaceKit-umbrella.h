@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 
+#import "Alert.h"
 #import "AlertManager.h"
 #import "AlertView.h"
 #import "UIView+AutoLayout.h"
@@ -14,6 +15,7 @@
 #import "RSCarouselImageView.h"
 #import "RSCarouselView.h"
 #import "RSZoomableImageView.h"
+#import "Alert.h"
 #import "AlertManager.h"
 #import "AlertView.h"
 #import "UIView+AutoLayout.h"

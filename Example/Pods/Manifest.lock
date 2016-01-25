@@ -5,28 +5,27 @@ PODS:
   - FBSnapshotTestCase/SwiftSupport (2.0.4):
     - FBSnapshotTestCase/Core
   - Kiwi (2.4.0)
-  - RSInterfaceKit (0.0.12):
-    - RSInterfaceKit/Alerts (= 0.0.12)
-    - RSInterfaceKit/AutoLayoutHelpers (= 0.0.12)
-    - RSInterfaceKit/CollectionViewWithTransitions (= 0.0.12)
-    - RSInterfaceKit/FullScreenImageView (= 0.0.12)
-    - RSInterfaceKit/LoadingView (= 0.0.12)
-    - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.12)
-    - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.12)
-    - RSInterfaceKit/RSCarouselScrollView (= 0.0.12)
-    - RSInterfaceKit/ZoomableImageView (= 0.0.12)
-  - RSInterfaceKit/Alerts (0.0.12):
-    - RSInterfaceKit/AutoLayoutHelpers
-  - RSInterfaceKit/AutoLayoutHelpers (0.0.12)
-  - RSInterfaceKit/CollectionViewWithTransitions (0.0.12)
-  - RSInterfaceKit/FullScreenImageView (0.0.12):
+  - RSInterfaceKit (0.0.17):
+    - RSInterfaceKit/Alerts (= 0.0.17)
+    - RSInterfaceKit/AutoLayoutHelpers (= 0.0.17)
+    - RSInterfaceKit/CollectionViewWithTransitions (= 0.0.17)
+    - RSInterfaceKit/FullScreenImageView (= 0.0.17)
+    - RSInterfaceKit/LoadingView (= 0.0.17)
+    - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.17)
+    - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.17)
+    - RSInterfaceKit/RSCarouselScrollView (= 0.0.17)
+    - RSInterfaceKit/ZoomableImageView (= 0.0.17)
+  - RSInterfaceKit/Alerts (0.0.17)
+  - RSInterfaceKit/AutoLayoutHelpers (0.0.17)
+  - RSInterfaceKit/CollectionViewWithTransitions (0.0.17)
+  - RSInterfaceKit/FullScreenImageView (0.0.17):
     - RSInterfaceKit/ZoomableImageView
-  - RSInterfaceKit/LoadingView (0.0.12):
+  - RSInterfaceKit/LoadingView (0.0.17):
     - RSInterfaceKit/AutoLayoutHelpers
-  - RSInterfaceKit/PortraitOnlyNavigation (0.0.12)
-  - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.12)
-  - RSInterfaceKit/RSCarouselScrollView (0.0.12)
-  - RSInterfaceKit/ZoomableImageView (0.0.12)
+  - RSInterfaceKit/PortraitOnlyNavigation (0.0.17)
+  - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.17)
+  - RSInterfaceKit/RSCarouselScrollView (0.0.17)
+  - RSInterfaceKit/ZoomableImageView (0.0.17)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -40,6 +39,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSnapshotTestCase: d94cf34841c9e77390e29009e8e2713479d48753
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
-  RSInterfaceKit: 07035b90e856b1945a838f90f58a94250ba66279
+  RSInterfaceKit: f63633d7af849195a9a802c505ac813d41c08cc3
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

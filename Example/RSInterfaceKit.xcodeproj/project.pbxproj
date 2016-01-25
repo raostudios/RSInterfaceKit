@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2370519E0D8E38700122582B /* Pods_RSInterfaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DFA5E0A4819CF059A0C811 /* Pods_RSInterfaceKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		416937AAA60E97B1CE76EB93 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008308EDEE01E4D6F38AA8B6 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2370519E0D8E38700122582B /* Pods_RSInterfaceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DFA5E0A4819CF059A0C811 /* Pods_RSInterfaceKit.framework */; };
+		416937AAA60E97B1CE76EB93 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008308EDEE01E4D6F38AA8B6 /* Pods_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,17 +21,18 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		822FD0F01BBA271400E45C19 /* CollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0EF1BBA271400E45C19 /* CollectionViewDataSource.m */; settings = {ASSET_TAGS = (); }; };
-		822FD0F31BBA271C00E45C19 /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F21BBA271C00E45C19 /* ImageManager.m */; settings = {ASSET_TAGS = (); }; };
-		822FD0F61BBA272500E45C19 /* UserLibraryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F51BBA272500E45C19 /* UserLibraryCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		822FD0F01BBA271400E45C19 /* CollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0EF1BBA271400E45C19 /* CollectionViewDataSource.m */; };
+		822FD0F31BBA271C00E45C19 /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F21BBA271C00E45C19 /* ImageManager.m */; };
+		822FD0F61BBA272500E45C19 /* UserLibraryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F51BBA272500E45C19 /* UserLibraryCollectionViewCell.m */; };
 		824D88631B248F430047CE03 /* RSInterfaceKitLibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */; };
 		824D88661B2494FA0047CE03 /* RSFullScreenImageTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */; };
 		82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */; };
 		82606F551B325D65003BB195 /* RSCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F541B325D65003BB195 /* RSCarouselViewController.m */; };
+		826CA9111C5679B0007CDDF5 /* RSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 826CA9101C5679B0007CDDF5 /* RSWebViewController.m */; };
 		82B73ABF1B27ADE300C5AD74 /* RSAlertsExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */; };
 		82BB07491B5C1348002149F5 /* RSInterfaceKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */; };
 		82BB074C1B5C8285002149F5 /* RSZoomImageToImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BB074B1B5C8285002149F5 /* RSZoomImageToImageViewController.m */; };
-		82DE1F4E1BB056B1002307AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		82DE1F4E1BB056B1002307AB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSImageCarouselExampleViewController.m; sourceTree = "<group>"; };
 		82606F531B325D65003BB195 /* RSCarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCarouselViewController.h; sourceTree = "<group>"; };
 		82606F541B325D65003BB195 /* RSCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCarouselViewController.m; sourceTree = "<group>"; };
+		826CA90F1C5679B0007CDDF5 /* RSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWebViewController.h; sourceTree = "<group>"; };
+		826CA9101C5679B0007CDDF5 /* RSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWebViewController.m; sourceTree = "<group>"; };
 		82B73ABD1B27ADE300C5AD74 /* RSAlertsExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAlertsExampleViewController.h; sourceTree = "<group>"; };
 		82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAlertsExampleViewController.m; sourceTree = "<group>"; };
 		82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RSInterfaceKit.podspec; path = ../RSInterfaceKit.podspec; sourceTree = "<group>"; };
@@ -171,13 +174,15 @@
 				82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */,
 				82B73ABD1B27ADE300C5AD74 /* RSAlertsExampleViewController.h */,
 				82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */,
+				826CA90F1C5679B0007CDDF5 /* RSWebViewController.h */,
+				826CA9101C5679B0007CDDF5 /* RSWebViewController.m */,
 				824D88641B2494FA0047CE03 /* RSFullScreenImageTestViewController.h */,
 				824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */,
 				82606F531B325D65003BB195 /* RSCarouselViewController.h */,
 				82606F541B325D65003BB195 /* RSCarouselViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
-				6003F594195388D20070C39A /* Supporting Files */,
 				82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */,
+				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			path = RSKit;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */,
 				82606F551B325D65003BB195 /* RSCarouselViewController.m in Sources */,
 				82BB074C1B5C8285002149F5 /* RSZoomImageToImageViewController.m in Sources */,
+				826CA9111C5679B0007CDDF5 /* RSWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 {
   "name": "RSInterfaceKit",
-  "version": "0.0.12",
+  "version": "0.0.17",
   "summary": "RSInterfaceKit provides common UI components for iOS Development",
   "description": "RSInterfaceKit provides common UI components for iOS Development.",
   "homepage": "https://github.com/raostudios/RSInterfaceKit",
@@ -10,18 +10,13 @@
   },
   "source": {
     "git": "https://github.com/raostudios/RSInterfaceKit.git",
-    "tag": "0.0.12"
+    "tag": "0.0.17"
   },
   "social_media_url": "https://twitter.com/venkatrao",
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
-  "resource_bundles": {
-    "RSInterfaceKit": [
-      "Pod/Assets/*.png"
-    ]
-  },
   "public_header_files": "Pod/Classes/**/*.h",
   "frameworks": "UIKit",
   "subspecs": [
@@ -39,10 +34,9 @@
       "name": "Alerts",
       "source_files": "Pod/Classes/Alerts/*.{h,m}",
       "public_header_files": "Pod/Classes/Alerts/*.h",
-      "dependencies": {
-        "RSInterfaceKit/AutoLayoutHelpers": [
-
-        ]
+      "resources": "Pod/Assets/Alerts/*.png",
+      "resource_bundles": {
+        "RSInterfaceKit": "Pod/Assets/*.png"
       }
     },
     {

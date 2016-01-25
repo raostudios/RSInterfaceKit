@@ -8,10 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlertView : UIView
+@class AlertView;
+
+@protocol AlertViewDelegate <NSObject>
+
+-(void) alertViewTapped:(AlertView *)alertView;
+
+@end
+
+@interface AlertView : UIView <UIAppearanceContainer>
 
 @property (nonatomic, weak) NSString *message;
 
--(void) showMessage:(NSString *) message withAnimation:(BOOL)animations forced:(BOOL) forced;
--(void) hideWithAnimation:(BOOL)animation;
+@property (nonatomic, copy) void(^bannerDismissed)(void);
+
+@property (nonatomic, weak) id<AlertViewDelegate> delegate;
+
+@property (nonatomic, strong) UIColor *textColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *userBackgroundColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIImage *closeButtonImage UI_APPEARANCE_SELECTOR;
+
 @end
