@@ -10,8 +10,8 @@
 
 @class Alert;
 
-extern const NSString * const AlertManagerBannerDisplayedNotification;
-extern const NSString * const AlertManagerBannerDismissedNotification;
+extern NSString * const AlertManagerBannerDisplayedNotification;
+extern NSString * const AlertManagerBannerDismissedNotification;
 
 @interface AlertManager : NSObject
 
