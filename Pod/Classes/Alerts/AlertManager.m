@@ -24,8 +24,8 @@
 
 @implementation AlertManager
 
-NSString * AlertManagerBannerDisplayedNotification = @"AlertManagerBannerDisplayedNotification";
-NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedDismissed";
+NSString * const AlertManagerBannerDisplayedNotification = @"AlertManagerBannerDisplayedNotification";
+NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerDismissedNotification";
 
 -(void) showAlertWithMessage:(Alert *)alert withAnimation:(BOOL)animations {
     
@@ -142,7 +142,7 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
             }
         }];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedNotification
+        [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDismissedNotification
                                                             object:nil
                                                           userInfo:@{@"bannerFrame":  [NSValue valueWithCGRect:self.alertView.frame],
                                                                      @"alert": self.currentAlert}];
