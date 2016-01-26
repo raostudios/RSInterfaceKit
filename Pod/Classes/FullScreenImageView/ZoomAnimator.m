@@ -84,8 +84,8 @@
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             tempView.frame = initialFrame;
-            toViewController.view.alpha = 1.0;
         } completion:^(BOOL finished) {
+            toViewController.view.alpha = 1.0; // moving this to animation block causes black screen on iPhone(1/25/2016)
             [tempView removeFromSuperview];
             toViewController.view.frame = [transitionContext finalFrameForViewController:toViewController];
             initialImageView.alpha = 1.0;
