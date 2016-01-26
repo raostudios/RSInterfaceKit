@@ -30,13 +30,9 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
 -(void) showAlertWithMessage:(Alert *)alert withAnimation:(BOOL)animations {
     
     if ([alert.uniqueId length]) {
-        if ([self.alertsDisplayed containsObject:alert.uniqueId]) {
-            return;
-        } else {
-            [self.alertsDisplayed addObject:alert.uniqueId];
-        }
+        [self.alertsDisplayed addObject:alert.uniqueId];
     }
-
+    
     AlertView *banner = [[AlertView alloc] initWithFrame:CGRectZero];
     banner.delegate = self;
     UIViewController *topViewController = [self topViewController];
@@ -51,17 +47,25 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
                                                                                      views:@{@"banner": banner}]];
     
     self.topConstraint = [NSLayoutConstraint constraintWithItem:topViewController.topLayoutGuide
+                                                      attribute:NSLayoutAttributeTop
+                                                      relatedBy:NSLayoutRelationEqual
+                                                         toItem:banner
+                                                      attribute:NSLayoutAttributeBottom
+                                                     multiplier:1.0
+                                                       constant:0.0];
+    
+    [topViewController.view addConstraint:self.topConstraint];
+    [topViewController.view layoutIfNeeded];
+    [topViewController.view removeConstraint:self.topConstraint];
+    self.topConstraint = [NSLayoutConstraint constraintWithItem:topViewController.topLayoutGuide
                                                       attribute:NSLayoutAttributeBottom
                                                       relatedBy:NSLayoutRelationEqual
                                                          toItem:banner
                                                       attribute:NSLayoutAttributeTop
                                                      multiplier:1.0
-                                                       constant:40.0];
-    
+                                                       constant:0.0];
     [topViewController.view addConstraint:self.topConstraint];
-    [topViewController.view layoutIfNeeded];
     
-    self.topConstraint.constant = 0.0;
     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         [topViewController.view layoutIfNeeded];
     } completion:nil];
@@ -70,7 +74,7 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
     
     __weak typeof(self) weakSelf = self;
     banner.bannerDismissed = ^void() {
-        [weakSelf dismissMesssage];
+        [weakSelf dismissMesssageWithCompletion:nil];
     };
     
     if (alert.seconds > 0) {
@@ -83,6 +87,9 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
     }
     self.currentAlert = alert;
     self.alertView = banner;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedNotification
+                                                        object:[NSValue valueWithCGRect:banner.frame]];
 }
 
 -(void)alertViewTapped:(AlertView *)alertView {
@@ -92,27 +99,68 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
 }
 
 -(void) dismissMesssage {
+    [self dismissMesssageWithCompletion:nil];
+}
+
+-(void) dismissMesssageWithCompletion:(void(^)(void))completionBlock {
     
-    self.topConstraint.constant = 40.0;
-    [self.alertView setNeedsUpdateConstraints];
-    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self.alertView layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [self.alertView removeFromSuperview];
-        self.alertView = nil;
-    }];
+    if (self.alertView) {
+
+        UIViewController *topViewController = [self topViewController];
+        
+        if (topViewController.view == self.alertView.superview) {
+            [topViewController.view removeConstraint:self.topConstraint];
+            self.topConstraint = [NSLayoutConstraint constraintWithItem:topViewController.topLayoutGuide
+                                                              attribute:NSLayoutAttributeTop
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.alertView
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:1.0
+                                                               constant:0.0];
+            
+            [topViewController.view addConstraint:self.topConstraint];
+        } else {
+            self.topConstraint.constant = CGRectGetHeight(self.alertView.frame);
+        }
+        
+        __weak typeof(self) weakSelf = self;
+        
+        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [weakSelf.alertView layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [weakSelf.alertView removeFromSuperview];
+            weakSelf.alertView = nil;
+            weakSelf.currentAlert = nil;
+            if (completionBlock) {
+                completionBlock();
+            }
+        }];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedDismissed
+                                                            object:self.currentAlert];
+    }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedDismissed
-                                                        object:self.currentAlert];
-    
-    self.currentAlert = nil;
 }
 
 -(UIViewController *) topViewController {
     
     UIViewController *topViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     
-    if ([topViewController isKindOfClass:[UINavigationController class]]) {
+    if ([topViewController isKindOfClass:[UISplitViewController class]]) {
+        UISplitViewController *splitViewController = (UISplitViewController *)topViewController;
+        
+        if ([splitViewController.viewControllers count] == 1) {
+            topViewController = splitViewController.viewControllers[0];
+        } else {
+            if (splitViewController.collapsed) {
+                topViewController = splitViewController.viewControllers[0];
+            } else {
+                topViewController = splitViewController.viewControllers[1];
+            }
+        }
+    }
+    
+    while ([topViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navigationController = (UINavigationController *) topViewController;
         topViewController = navigationController.topViewController;
     }
@@ -132,8 +180,15 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
 }
 
 -(void) scheduleAlert:(Alert *)alert {
+    
+    if ([alert.uniqueId length] && [self.alertsDisplayed containsObject:alert.uniqueId]) {
+        return;
+    }
+    
     [self.alertsQueued addObject:alert];
-    [self showNextQueuedAlert];
+    if (!self.currentAlert) {
+        [self showNextQueuedAlert];
+    }
 }
 
 -(void) showNextQueuedAlert {
@@ -151,6 +206,12 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
         } else {
             [self showAlertWithMessage:alert withAnimation:YES];
         }
+    }
+}
+
+-(void)viewControllerIsDissapearing {
+    if (self.currentAlert) {
+        [self dismissMesssage];
     }
 }
 

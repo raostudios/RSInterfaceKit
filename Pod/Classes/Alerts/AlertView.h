@@ -25,6 +25,8 @@
 @property (nonatomic, weak) id<AlertViewDelegate> delegate;
 
 @property (nonatomic, strong) UIColor *textColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIFont *textFont UI_APPEARANCE_SELECTOR;
+
 @property (nonatomic, strong) UIColor *userBackgroundColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIImage *closeButtonImage UI_APPEARANCE_SELECTOR;
 

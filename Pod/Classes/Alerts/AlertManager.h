@@ -19,5 +19,7 @@ extern const NSString * AlertManagerBannerDisplayedDismissed;
 
 -(void) scheduleAlert:(Alert *)alert;
 -(void) showNextQueuedAlert;
+-(void) viewControllerIsDissapearing;
+
 
 @end

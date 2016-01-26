@@ -112,6 +112,10 @@
     self.labelMessage.textColor = textColor;
 }
 
+-(void)setTextFont:(UIFont *)textFont {
+    self.labelMessage.font = textFont;
+}
+
 -(UIColor *)textColor {
     return self.labelMessage.textColor;
 }
