@@ -74,7 +74,7 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
     
     __weak typeof(self) weakSelf = self;
     banner.bannerDismissed = ^void() {
-        [weakSelf dismissMesssageWithCompletion:nil];
+        [weakSelf dismissMesssageWithAnimation:YES withCompletion:nil];
     };
     
     if (alert.seconds > 0) {
@@ -99,10 +99,12 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
 }
 
 -(void) dismissMesssage {
-    [self dismissMesssageWithCompletion:nil];
+    [self dismissMesssageWithAnimation:NO withCompletion:^{
+        [self showNextQueuedAlert];
+    }];
 }
 
--(void) dismissMesssageWithCompletion:(void(^)(void))completionBlock {
+-(void) dismissMesssageWithAnimation:(BOOL) animated withCompletion:(void(^)(void))completionBlock {
     
     if (self.alertView) {
 
@@ -125,7 +127,7 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
         
         __weak typeof(self) weakSelf = self;
         
-        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:(animated ? 1.0 : 0.0) delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             [weakSelf.alertView layoutIfNeeded];
         } completion:^(BOOL finished) {
             [weakSelf.alertView removeFromSuperview];
@@ -149,14 +151,14 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
     if ([topViewController isKindOfClass:[UISplitViewController class]]) {
         UISplitViewController *splitViewController = (UISplitViewController *)topViewController;
         
-        if ([splitViewController.viewControllers count] == 1) {
-            topViewController = splitViewController.viewControllers[0];
-        } else {
+        if ([splitViewController.viewControllers count] > 1) {
             if (splitViewController.collapsed) {
                 topViewController = splitViewController.viewControllers[0];
             } else {
                 topViewController = splitViewController.viewControllers[1];
             }
+        } else if ([splitViewController.viewControllers count] == 1) {
+            topViewController = splitViewController.viewControllers[0];
         }
     }
     
