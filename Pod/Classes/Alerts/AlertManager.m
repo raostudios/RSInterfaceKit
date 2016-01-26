@@ -38,7 +38,7 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
     UIViewController *topViewController = [self topViewController];
     
     banner.translatesAutoresizingMaskIntoConstraints = NO;
-
+    
     [topViewController.view addSubview:banner];
     
     [topViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[banner]|"
@@ -56,6 +56,7 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
     
     [topViewController.view addConstraint:self.topConstraint];
     [topViewController.view layoutIfNeeded];
+    
     [topViewController.view removeConstraint:self.topConstraint];
     self.topConstraint = [NSLayoutConstraint constraintWithItem:topViewController.topLayoutGuide
                                                       attribute:NSLayoutAttributeBottom
@@ -68,7 +69,12 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
     
     [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         [topViewController.view layoutIfNeeded];
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedNotification
+                                                            object:nil
+                                                          userInfo:@{@"bannerFrame":  [NSValue valueWithCGRect:banner.frame],
+                                                                     @"alert": alert}];
+    }];
     
     banner.message = alert.message;
     
@@ -83,13 +89,11 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
                                        selector:@selector(dismissMesssage)
                                        userInfo:nil
                                         repeats:NO];
-
+        
     }
     self.currentAlert = alert;
     self.alertView = banner;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedNotification
-                                                        object:[NSValue valueWithCGRect:banner.frame]];
 }
 
 -(void)alertViewTapped:(AlertView *)alertView {
@@ -107,7 +111,7 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
 -(void) dismissMesssageWithAnimation:(BOOL) animated withCompletion:(void(^)(void))completionBlock {
     
     if (self.alertView) {
-
+        
         UIViewController *topViewController = [self topViewController];
         
         if (topViewController.view == self.alertView.superview) {
@@ -138,10 +142,11 @@ NSString * AlertManagerBannerDisplayedDismissed = @"AlertManagerBannerDisplayedD
             }
         }];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedDismissed
-                                                            object:self.currentAlert];
+        [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedNotification
+                                                            object:nil
+                                                          userInfo:@{@"bannerFrame":  [NSValue valueWithCGRect:self.alertView.frame],
+                                                                     @"alert": self.currentAlert}];
     }
-    
 }
 
 -(UIViewController *) topViewController {
