@@ -14,8 +14,8 @@
 #import "RSCarouselViewController.h"
 #import "RSZoomImageToImageViewController.h"
 #import "CollectionViewWithTransitions.h"
-
 #import "CollectionViewDataSource.h"
+#import "RSSettingsViewController.h"
 
 @interface RSInterfaceKitLibraryViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -46,7 +46,7 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,6 +69,9 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
             break;
         case 5:
             cell.textLabel.text = @"Collection View Transitions";
+            break;
+        case 6:
+            cell.textLabel.text = @"Settings View";
             break;
         default:
             break;
@@ -107,6 +110,10 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
         navigationController.navigationBar.barTintColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];;
         [self showViewController:navigationController sender:self];
 
+    } else if (indexPath.item == 6) {
+        RSSettingsViewController *settingsViewController = [RSSettingsViewController new];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+        [self showDetailViewController:navigationController sender:self];
     }
     
 }

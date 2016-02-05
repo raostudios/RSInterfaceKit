@@ -14,6 +14,11 @@
 #import "PortraitOnlyNavigationController.h"
 #import "RSCarouselImageView.h"
 #import "RSCarouselView.h"
+#import "SettingsAction.h"
+#import "SettingsActionGenerator.h"
+#import "SettingsActionGroup.h"
+#import "SettingsLogoView.h"
+#import "SettingsViewController.h"
 #import "RSZoomableImageView.h"
 #import "Alert.h"
 #import "AlertManager.h"
@@ -29,6 +34,11 @@
 #import "PortraitOnlyNavigationController.h"
 #import "RSCarouselImageView.h"
 #import "RSCarouselView.h"
+#import "SettingsAction.h"
+#import "SettingsActionGenerator.h"
+#import "SettingsActionGroup.h"
+#import "SettingsLogoView.h"
+#import "SettingsViewController.h"
 #import "RSZoomableImageView.h"
 
 FOUNDATION_EXPORT double RSInterfaceKitVersionNumber;

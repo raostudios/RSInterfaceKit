@@ -1,6 +1,6 @@
 {
   "name": "RSInterfaceKit",
-  "version": "0.0.18",
+  "version": "0.0.26",
   "summary": "RSInterfaceKit provides common UI components for iOS Development",
   "description": "RSInterfaceKit provides common UI components for iOS Development.",
   "homepage": "https://github.com/raostudios/RSInterfaceKit",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/raostudios/RSInterfaceKit.git",
-    "tag": "0.0.18"
+    "tag": "0.0.26"
   },
   "social_media_url": "https://twitter.com/venkatrao",
   "platforms": {
@@ -58,6 +58,16 @@
       "name": "ZoomableImageView",
       "source_files": "Pod/Classes/ZoomableImageView/*.{h,m}",
       "public_header_files": "Pod/Classes/ZoomableImageView/*.h"
+    },
+    {
+      "name": "RSSettings",
+      "source_files": "Pod/Classes/RSSettings/*.{h,m}",
+      "public_header_files": "Pod/Classes/RSSettings/*.h",
+      "dependencies": {
+        "RSInterfaceKit/AutoLayoutHelpers": [
+
+        ]
+      }
     },
     {
       "name": "RSCarouselDissolvingImageView",
