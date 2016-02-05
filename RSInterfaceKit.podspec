@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RSInterfaceKit"
-  s.version          = "0.0.25"
+  s.version          = "0.0.26"
   s.summary          = "RSInterfaceKit provides common UI components for iOS Development"
   s.description      = "RSInterfaceKit provides common UI components for iOS Development."
   s.homepage         = "https://github.com/raostudios/RSInterfaceKit"
@@ -47,6 +47,11 @@ Pod::Spec.new do |s|
   s.subspec 'ZoomableImageView' do |sdkit|
     sdkit.source_files = 'Pod/Classes/ZoomableImageView/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/ZoomableImageView/*.h'
+  end
+
+  s.subspec 'RSSettings' do |sdkit|
+    sdkit.source_files = 'Pod/Classes/RSSettings/*.{h,m}'
+    sdkit.public_header_files = 'Pod/Classes/RSSettings/*.h'
   end
 
   s.subspec 'RSCarouselDissolvingImageView' do |sdkit|
