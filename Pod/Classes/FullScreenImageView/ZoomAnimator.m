@@ -123,7 +123,7 @@
                                image.size.height * ratio);
         } else {
             ratio = CGRectGetWidth(frame) / image.size.width;
-            CGFloat newHeight = image.size.width * ratio;
+            CGFloat newHeight = image.size.height * ratio;
             frame = CGRectMake(CGRectGetMinX(frame),
                                (CGRectGetHeight(frame) - newHeight) / 2.0 + CGRectGetMinY(frame),
                                image.size.width * ratio,
