@@ -40,21 +40,25 @@
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *container = [transitionContext containerView];
     UIImageView *tempView = [UIImageView new];
-    tempView.contentMode = UIViewContentModeScaleAspectFit;
     
     UIImageView *initialImageView = [self.fullImageViewController.delegate initialImageViewForFullImageViewController:self.fullImageViewController];
     initialImageView.alpha = 0.0;
     tempView.image = initialImageView.image;
+    tempView.contentMode = initialImageView.contentMode;
     
     if (self.presenting) {
         
+        CGRect insideFrame = [self.fullImageViewController.delegate rectForInitialImageForView:fromViewController.view
+                                                                    forFullImageViewController:self.fullImageViewController];
+        
         CGRect initialFrame = [self frameForImage:initialImageView.image
-                                      insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:fromViewController.view forFullImageViewController:self.fullImageViewController]];
+                                      insideFrame:insideFrame forContentMode:initialImageView.contentMode];
         
         CGRect finalFrame = [self frameForImage:initialImageView.image
-                                    insideFrame:[transitionContext finalFrameForViewController:toViewController]];
+                                    insideFrame:[transitionContext finalFrameForViewController:toViewController] forContentMode:UIViewContentModeScaleAspectFit];
         
         tempView.frame = initialFrame;
+        
         [container addSubview:tempView];
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
@@ -71,10 +75,10 @@
         
         CGRect initialFrame = [self frameForImage:initialImageView.image
                                       insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:toViewController.view
-                                                                                         forFullImageViewController:self.fullImageViewController]];
+                                                                                         forFullImageViewController:self.fullImageViewController] forContentMode:initialImageView.contentMode];
         
         CGRect finalFrame = [self frameForImage:initialImageView.image
-                                    insideFrame:[transitionContext finalFrameForViewController:fromViewController]];
+                                    insideFrame:[transitionContext finalFrameForViewController:fromViewController] forContentMode:UIViewContentModeScaleAspectFit];
         
         tempView.frame = finalFrame;
         [container addSubview:tempView];
@@ -94,18 +98,38 @@
     }
 }
 
--(CGRect) frameForImage:(UIImage *)image insideFrame:(CGRect) frame {
-    CGFloat imageRatio = image.size.width/image.size.height;
-    CGFloat frameRatio = frame.size.width/frame.size.height;
-    
-    if (imageRatio < frameRatio) {
-        CGFloat ratio = image.size.height/frame.size.height;
-        frame.origin.x += (frame.size.width - image.size.width / ratio) / 2.0;
-        frame.size.width = image.size.width / ratio;
-    } else {
-        CGFloat ratio = image.size.width/frame.size.width;
-        frame.origin.y += (frame.size.height - image.size.height / ratio) / 2.0;
-        frame.size.height = image.size.height / ratio;
+-(CGRect) frameForImage:(UIImage *)image insideFrame:(CGRect)frame forContentMode:(UIViewContentMode)contentMode {
+    if (contentMode == UIViewContentModeScaleAspectFit) {
+        CGFloat imageRatio = image.size.width/image.size.height;
+        CGFloat frameRatio = frame.size.width/frame.size.height;
+        
+        if (imageRatio < frameRatio) {
+            CGFloat ratio = image.size.height/frame.size.height;
+            frame.origin.x += (frame.size.width - image.size.width / ratio) / 2.0;
+            frame.size.width = image.size.width / ratio;
+        } else {
+            CGFloat ratio = image.size.width/frame.size.width;
+            frame.origin.y += (frame.size.height - image.size.height / ratio) / 2.0;
+            frame.size.height = image.size.height / ratio;
+        }
+    } else if (contentMode == UIViewContentModeScaleAspectFill) {
+        CGFloat ratio;
+        if (image.size.width > image.size.height) {
+            ratio = CGRectGetHeight(frame) / image.size.height;
+            CGFloat newWidth = image.size.width * ratio;
+            frame = CGRectMake((CGRectGetWidth(frame) - newWidth) / 2.0 + CGRectGetMinX(frame),
+                               CGRectGetMinY(frame),
+                               image.size.width * ratio,
+                               image.size.height * ratio);
+        } else {
+            ratio = CGRectGetWidth(frame) / image.size.width;
+            CGFloat newHeight = image.size.width * ratio;
+            frame = CGRectMake(CGRectGetMinX(frame),
+                               (CGRectGetHeight(frame) - newHeight) / 2.0 + CGRectGetMinY(frame),
+                               image.size.width * ratio,
+                               image.size.height * ratio);
+        }
+        
     }
     
     return frame;

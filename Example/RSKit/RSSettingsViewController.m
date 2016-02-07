@@ -22,15 +22,14 @@
         [SettingsActionGenerator sharedGenerator].appId = @"990229325";
         [SettingsActionGenerator sharedGenerator].shortDescription = @"Create your own Filters with Preset!";
         [SettingsActionGenerator sharedGenerator].URLString = @"http://apple.co/1PTwa6E";
+        [SettingsActionGenerator sharedGenerator].viewController = self;
         
         self.imageLogo = [UIImage imageNamed:@"logo"];
         
         SettingsActionGroup *shareGroup = [SettingsActionGroup new];
         shareGroup.name = @"Tell Others About Preset";
         shareGroup.actions = @[[[SettingsActionGenerator sharedGenerator] mailAction], [[SettingsActionGenerator sharedGenerator] textAction]];
-        
-        
-        
+    
         self.actionGroups = @[shareGroup];
     }
     
