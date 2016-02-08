@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '95CA681F4FA0D7F5A95A9088'
+               BlueprintIdentifier = '6478E4D0B405CC259D0F0417'
                BlueprintName = 'RSInterfaceKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'RSInterfaceKit.framework'>

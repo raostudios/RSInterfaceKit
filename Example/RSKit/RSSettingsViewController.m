@@ -25,6 +25,8 @@
         [SettingsActionGenerator sharedGenerator].viewController = self;
         
         self.imageLogo = [UIImage imageNamed:@"logo"];
+        self.appLogo = [UIImage imageNamed:@"icon"];
+        self.appDescription = @"This is an example app that shows all the components in RSInterfaceKit";
         
         SettingsActionGroup *shareGroup = [SettingsActionGroup new];
         shareGroup.name = @"Tell Others About Preset";

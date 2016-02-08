@@ -113,7 +113,7 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
     } else if (indexPath.item == 6) {
         RSSettingsViewController *settingsViewController = [RSSettingsViewController new];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
-        [self showDetailViewController:navigationController sender:self];
+        [self showViewController:navigationController sender:self];
     }
     
 }

@@ -11,11 +11,12 @@
 #import "SettingsActionGenerator.h"
 #import "SettingsAction.h"
 #import "SettingsActionGroup.h"
-
+#import "SettingsHeaderView.h"
 
 @interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) SettingsLogoView *logoView;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
@@ -28,24 +29,53 @@
         
         self.title = @"Info";
         
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        tableView.translatesAutoresizingMaskIntoConstraints = NO;
-        tableView.delegate = self;
-        tableView.dataSource = self;
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         
-        [self.view addSubview:tableView];
+        [self.view addSubview:self.tableView];
         
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:@{@"tableView": tableView}]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|" options:0 metrics:nil views:@{@"tableView": tableView}]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:@{@"tableView": self.tableView}]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|"
+                                                                          options:0 metrics:nil
+                                                                            views:@{@"tableView": self.tableView}]];
         
         self.logoView = [[SettingsLogoView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
         self.logoView.labelBuildNumber.text = [NSString stringWithFormat:@"Build: %@", [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
-        [self.logoView.logoButton addTarget:self action:@selector(logoTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [self.logoView.logoButton addTarget:self
+                                     action:@selector(logoTapped:)
+                           forControlEvents:UIControlEventTouchUpInside];
         [self.logoView layoutIfNeeded];
-        tableView.tableFooterView = self.logoView;
+        self.tableView.tableFooterView = self.logoView;
     }
     
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];    
+    [self updateHeaderForSize:self.view.bounds.size];
+}
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [self updateHeaderForSize:size];
+}
+
+-(void) updateHeaderForSize:(CGSize)size {
+    if ([self.appDescription length] > 0 || self.appLogo) {
+        SettingsHeaderView *headerView = [[SettingsHeaderView alloc] initWithFrame:CGRectZero];
+        headerView.text = self.appDescription;
+        headerView.imageLogo = self.appLogo;
+        headerView.frame = [headerView frameForHeaderForMaxWidth:size.width];
+        self.tableView.tableHeaderView = headerView;
+    } else {
+        self.tableView.tableHeaderView = nil;
+    }
 }
 
 -(void)setImageLogo:(UIImage *)imageLogo {
