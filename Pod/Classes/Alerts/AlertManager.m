@@ -72,7 +72,7 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
     } completion:^(BOOL finished) {
         [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerDisplayedNotification
                                                             object:nil
-                                                          userInfo:@{@"bannerFrame":  [NSValue valueWithCGRect:banner.frame],
+                                                          userInfo:@{@"bannerFrame": [NSValue valueWithCGRect:banner.frame],
                                                                      @"alert": alert}];
     }];
     

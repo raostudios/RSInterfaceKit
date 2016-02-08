@@ -48,11 +48,19 @@
                    forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.buttonClose];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[buttonClose(44)][labelMessage]|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[buttonClose(44)][labelMessage]"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"labelMessage":self.labelMessage,
                                                                                @"buttonClose":self.buttonClose}]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.labelMessage
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0
+                                                          constant:0.0]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[labelMessage]-|"
                                                                      options:0
