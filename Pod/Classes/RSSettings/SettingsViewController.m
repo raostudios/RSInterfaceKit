@@ -58,7 +58,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];    
+    [super viewWillAppear:animated];
     [self updateHeaderForSize:self.view.bounds.size];
 }
 

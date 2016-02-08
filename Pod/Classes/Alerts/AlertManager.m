@@ -80,7 +80,9 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
     
     __weak typeof(self) weakSelf = self;
     banner.bannerDismissed = ^void() {
-        [weakSelf dismissMesssageWithAnimation:YES withCompletion:nil];
+        [weakSelf dismissMesssageWithAnimation:YES withCompletion:^{
+            [self showNextQueuedAlert];
+        }];
     };
     
     if (alert.seconds > 0) {
@@ -103,7 +105,7 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
 }
 
 -(void) dismissMesssage {
-    [self dismissMesssageWithAnimation:NO withCompletion:^{
+    [self dismissMesssageWithAnimation:YES withCompletion:^{
         [self showNextQueuedAlert];
     }];
 }
