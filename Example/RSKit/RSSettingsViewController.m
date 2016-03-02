@@ -10,6 +10,7 @@
 
 #import "SettingsActionGenerator.h"
 #import "SettingsAction.h"
+#import "AppSettingAction.h"
 #import "SettingsActionGroup.h"
 
 @implementation RSSettingsViewController
@@ -32,7 +33,22 @@
         shareGroup.name = @"Tell Others About Preset";
         shareGroup.actions = @[[[SettingsActionGenerator sharedGenerator] mailAction], [[SettingsActionGenerator sharedGenerator] textAction]];
     
-        self.actionGroups = @[shareGroup];
+        
+        
+        AppSettingAction *bigClockSettingAction = [AppSettingAction new];
+        bigClockSettingAction.appId = @"583451358";
+        bigClockSettingAction.name = @"The Big Clock";
+        bigClockSettingAction.appURL = @"thebigclock://";
+        bigClockSettingAction.imageName = @"thebigclockicon";
+        bigClockSettingAction.campaignId = @"rskit_example_app";
+        
+        SettingsActionGroup *appGroup = [SettingsActionGroup new];
+        appGroup.name = @"Our other Apps";
+        appGroup.actions = @[bigClockSettingAction];
+        
+        self.actionGroups = @[shareGroup, appGroup];
+
+        
     }
     
     return self;

@@ -10,6 +10,8 @@
 #import "SettingsLogoView.h"
 #import "SettingsActionGenerator.h"
 #import "SettingsAction.h"
+#import "AppSettingAction.h"
+
 #import "SettingsActionGroup.h"
 #import "SettingsHeaderView.h"
 
@@ -92,9 +94,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    cell.textLabel.text = self.actionGroups[indexPath.section].actions[indexPath.row].name;
-    return cell;
+    
+    SettingsAction *action =  self.actionGroups[indexPath.section].actions[indexPath.row];
+
+    if ([action isKindOfClass:[AppSettingAction class]]) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        AppSettingAction *appAction = (AppSettingAction *)action;
+        cell.textLabel.text = action.name;
+        cell.imageView.image = [UIImage imageNamed:appAction.imageName];
+        return cell;
+        
+    } else {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell.textLabel.text = action.name;
+        return cell;
+    }
+    
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

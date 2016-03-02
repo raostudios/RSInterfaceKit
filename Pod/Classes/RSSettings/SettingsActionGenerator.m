@@ -66,7 +66,7 @@
 -(SettingsAction *)rateAppAction {
     
     SettingsAction *action = [SettingsAction new];
-    action.name = @"Rate My App";
+    action.name = @"Rate App";
     action.action = ^{
         NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software", self.appId];
         
