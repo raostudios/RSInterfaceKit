@@ -41,21 +41,26 @@
     UIView *container = [transitionContext containerView];
     UIImageView *tempView = [UIImageView new];
     
-    UIImageView *initialImageView = [self.fullImageViewController.delegate initialImageViewForFullImageViewController:self.fullImageViewController];
+    UIImageView *initialImageView = [self.delegate initialImageViewForFullImageViewController:self];
     initialImageView.alpha = 0.0;
-    tempView.image = initialImageView.image;
-    tempView.contentMode = initialImageView.contentMode;
+    tempView.image = [self.delegate initialImageForFullImageViewController:self];
+    tempView.contentMode = initialImageView ? initialImageView.contentMode : UIViewContentModeScaleAspectFill;
+    
+    CGRect initialFrame, finalFrame;
     
     if (self.presenting) {
         
-        CGRect insideFrame = [self.fullImageViewController.delegate rectForInitialImageForView:fromViewController.view
-                                                                    forFullImageViewController:self.fullImageViewController];
+        CGRect insideFrame = [self.delegate rectForInitialImageForView:fromViewController.view
+                                            forFullImageViewController:self];
         
-        CGRect initialFrame = [self frameForImage:initialImageView.image
-                                      insideFrame:insideFrame forContentMode:initialImageView.contentMode];
+        UIImage *image = [self.delegate initialImageForFullImageViewController:self];
         
-        CGRect finalFrame = [self frameForImage:initialImageView.image
-                                    insideFrame:[transitionContext finalFrameForViewController:toViewController] forContentMode:UIViewContentModeScaleAspectFit];
+        initialFrame = [self frameForImage:image
+                               insideFrame:insideFrame forContentMode:initialImageView.contentMode];
+        
+        finalFrame = [self frameForImage:image
+                             insideFrame:[transitionContext finalFrameForViewController:toViewController]
+                          forContentMode:UIViewContentModeScaleAspectFit];
         
         tempView.frame = initialFrame;
         
@@ -66,6 +71,7 @@
             tempView.frame = finalFrame;
         } completion:^(BOOL finished) {
             [tempView removeFromSuperview];
+            initialImageView.alpha = 1.0;
             toViewController.view.frame = [transitionContext finalFrameForViewController:toViewController];
             [container addSubview:toViewController.view];
             [transitionContext completeTransition:finished];
@@ -73,23 +79,31 @@
         
     } else {
         
-        CGRect initialFrame = [self frameForImage:initialImageView.image
-                                      insideFrame:[self.fullImageViewController.delegate rectForInitialImageForView:toViewController.view
-                                                                                         forFullImageViewController:self.fullImageViewController] forContentMode:initialImageView.contentMode];
+        UIImage *image = [self.delegate initialImageForFullImageViewController:self];
         
-        CGRect finalFrame = [self frameForImage:initialImageView.image
-                                    insideFrame:[transitionContext finalFrameForViewController:fromViewController] forContentMode:UIViewContentModeScaleAspectFit];
+        UIViewContentMode mode = initialImageView ? initialImageView.contentMode : UIViewContentModeScaleAspectFill;
         
-        tempView.frame = finalFrame;
+        if (image) {
+            finalFrame = [self frameForImage:image
+                                 insideFrame:[self.delegate rectForInitialImageForView:toViewController.view
+                                                            forFullImageViewController:self]
+                              forContentMode:mode];
+            
+            initialFrame = [self frameForImage:image
+                                   insideFrame:[transitionContext finalFrameForViewController:fromViewController]
+                                forContentMode:UIViewContentModeScaleAspectFit];
+        }
+        
+        tempView.frame = initialFrame;
         [container addSubview:tempView];
         
         fromViewController.view.alpha = 0.0;
         toViewController.view.alpha = 0.0;
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            tempView.frame = initialFrame;
+            tempView.frame = finalFrame;
         } completion:^(BOOL finished) {
-            toViewController.view.alpha = 1.0; // moving this to animation block causes black screen on iPhone(1/25/2016)
+            toViewController.view.alpha = 1.0; // moving this to animation block causes black screen on iPhone(1/self	ZoomAnimator *	0x149447440	0x000000014944744025/2016)
             [tempView removeFromSuperview];
             toViewController.view.frame = [transitionContext finalFrameForViewController:toViewController];
             initialImageView.alpha = 1.0;
@@ -99,12 +113,14 @@
 }
 
 -(CGRect) frameForImage:(UIImage *)image insideFrame:(CGRect)frame forContentMode:(UIViewContentMode)contentMode {
+    NSAssert(image, @"image cannot be nil");
+    
     if (contentMode == UIViewContentModeScaleAspectFit) {
         CGFloat imageRatio = image.size.width/image.size.height;
         CGFloat frameRatio = frame.size.width/frame.size.height;
         
         if (imageRatio < frameRatio) {
-            CGFloat ratio = image.size.height/frame.size.height;
+            CGFloat ratio = image.size.height / frame.size.height;
             frame.origin.x += (frame.size.width - image.size.width / ratio) / 2.0;
             frame.size.width = image.size.width / ratio;
         } else {
@@ -129,7 +145,6 @@
                                image.size.width * ratio,
                                image.size.height * ratio);
         }
-        
     }
     
     return frame;

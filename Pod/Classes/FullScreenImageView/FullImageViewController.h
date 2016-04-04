@@ -14,6 +14,7 @@
 
 -(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(FullImageViewController *)fullImageViewController;
 -(UIImageView *) initialImageViewForFullImageViewController:(FullImageViewController *)fullImageViewController;
+-(UIImage *) initialImageForFullImageViewController:(FullImageViewController *)fullImageViewController;
 
 @end
 

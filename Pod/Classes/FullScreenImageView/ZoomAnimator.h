@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class FullImageViewController;
+@class ZoomAnimator;
+
+@protocol ZoomAnimatorDelegate <NSObject>
+
+-(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(ZoomAnimator *)zoomAnimator;
+-(UIImageView *) initialImageViewForFullImageViewController:(ZoomAnimator *)zoomAnimator;
+-(UIImage *) initialImageForFullImageViewController:(ZoomAnimator *)zoomAnimator;
+
+@end
 
 @interface ZoomAnimator : NSObject<UIViewControllerTransitioningDelegate>
 
-@property (nonatomic, weak) FullImageViewController *fullImageViewController;
+@property (nonatomic, weak) id<ZoomAnimatorDelegate> delegate;
 
 @end

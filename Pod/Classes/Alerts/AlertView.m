@@ -32,7 +32,6 @@
         self.labelMessage = [[UILabel alloc] initWithAutoLayout];
         self.labelMessage.numberOfLines = 0;
         self.labelMessage.textAlignment = NSTextAlignmentCenter;
-        self.labelMessage.preferredMaxLayoutWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 44.0;
         [self addSubview:self.labelMessage];
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -78,7 +77,8 @@
         
         self.clipsToBounds = YES;
         
-        UITapGestureRecognizer *tapGetureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(alertTapped:)];
+        UITapGestureRecognizer *tapGetureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                              action:@selector(alertTapped:)];
         [self addGestureRecognizer:tapGetureRecognizer];
         
     }

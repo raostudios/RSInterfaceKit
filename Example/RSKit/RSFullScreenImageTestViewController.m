@@ -70,4 +70,8 @@
     return self.selectedButton.imageView;
 }
 
+-(UIImage *)initialImageForFullImageViewController:(FullImageViewController *)fullImageViewController {
+    return self.selectedButton.imageView.image;
+}
+
 @end

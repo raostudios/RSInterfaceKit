@@ -11,7 +11,7 @@
 #import "ZoomAnimator.h"
 #import "RSZoomableImageView.h"
 
-@interface FullImageViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentInteractionControllerDelegate>
+@interface FullImageViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentInteractionControllerDelegate, ZoomAnimatorDelegate>
 
 @property (strong, nonatomic) FullImageView *view;
 @property (strong, nonatomic) ZoomAnimator *zoomAnimator;
@@ -43,7 +43,9 @@
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1
                                                       constant:0]];
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(imageTapped:)];
     [self.view.scrollView addGestureRecognizer:tapGesture];
 }
 
@@ -80,10 +82,23 @@
     self.transitioningDelegate = self.zoomAnimator;
 }
 
+-(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(ZoomAnimator *)zoomAnimator {
+    return [self.delegate rectForInitialImageForView:view forFullImageViewController:self];
+}
+
+-(UIImageView *) initialImageViewForFullImageViewController:(ZoomAnimator *)zoomAnimator {
+    return [self.delegate initialImageViewForFullImageViewController:self];
+}
+
+-(UIImage *) initialImageForFullImageViewController:(ZoomAnimator *)zoomAnimator {
+    return [self.delegate initialImageForFullImageViewController:self];
+}
+
+
 -(ZoomAnimator *) zoomAnimator {
     if (!_zoomAnimator) {
         _zoomAnimator = [ZoomAnimator new];
-        _zoomAnimator.fullImageViewController = self;
+        _zoomAnimator.delegate = self;
     }
     return _zoomAnimator;
 }
