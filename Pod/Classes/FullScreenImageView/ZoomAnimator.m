@@ -46,7 +46,8 @@
     tempView.image = [self.delegate initialImageForFullImageViewController:self];
     tempView.contentMode = initialImageView ? initialImageView.contentMode : UIViewContentModeScaleAspectFill;
     
-    CGRect initialFrame, finalFrame;
+    CGRect initialFrame = CGRectZero;
+    CGRect finalFrame = CGRectZero;
     
     if (self.presenting) {
         
@@ -103,7 +104,7 @@
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             tempView.frame = finalFrame;
         } completion:^(BOOL finished) {
-            toViewController.view.alpha = 1.0; // moving this to animation block causes black screen on iPhone(1/self	ZoomAnimator *	0x149447440	0x000000014944744025/2016)
+            toViewController.view.alpha = 1.0;
             [tempView removeFromSuperview];
             toViewController.view.frame = [transitionContext finalFrameForViewController:toViewController];
             initialImageView.alpha = 1.0;
