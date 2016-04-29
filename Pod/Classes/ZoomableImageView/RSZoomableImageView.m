@@ -57,22 +57,25 @@
 
 -(void) updateContentSize {
     
-    if (self.imageViewFull.image && CGRectGetHeight(self.bounds) != 0.0) {
-        self.minimumZoomScale = MIN(CGRectGetWidth(self.bounds) / self.imageViewFull.image.size.width,
-                                    CGRectGetHeight(self.bounds) / self.imageViewFull.image.size.height);
+    CGSize imageSize = self.imageViewFull.image.size;
+    
+    if (imageSize.width != 0.0 && imageSize.height != 0.0 && CGRectGetHeight(self.bounds) != 0.0) {
+        self.minimumZoomScale = MIN(CGRectGetWidth(self.bounds) / imageSize.width,
+                                    CGRectGetHeight(self.bounds) / imageSize.height);
         
         self.maximumZoomScale = MAX(self.minimumZoomScale * 2, 1.0);
         
-        self.contentSize = self.imageViewFull.image.size;
+        self.contentSize = imageSize;
         self.zoomScale = self.minimumZoomScale;
         if (self.zoomScale > 1.0) {
-            self.contentSize = self.imageViewFull.image.size;
+            self.contentSize = imageSize;
         }
         
         self.imageViewFull.frame = CGRectMake(0.0,
                                               0.0,
-                                              self.imageViewFull.image.size.width,
-                                              self.imageViewFull.image.size.height);
+                                              self.contentSize.width,
+                                              self.contentSize.height);
+        
     }
 
     [self setNeedsLayout];
@@ -107,6 +110,11 @@
 }
 
 -(void)setImage:(UIImage *)image {
+
+    if (!image) {
+        NSLog(@"no image");
+    }
+    
     self.imageViewFull.image = image;
     [self updateContentSize];
 }
