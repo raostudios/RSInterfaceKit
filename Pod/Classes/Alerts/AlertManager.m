@@ -20,12 +20,18 @@
 
 @property (strong, nonatomic) NSLayoutConstraint *topConstraint;
 
+@property (strong, nonatomic) NSTimer *currentTimer;
+
 @end
 
 @implementation AlertManager
 
 NSString * const AlertManagerBannerDisplayedNotification = @"AlertManagerBannerDisplayedNotification";
+NSString * const AlertManagerBannerWillDisplayNotification = @"AlertManagerBannerWillDisplayNotification";
+
 NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerDismissedNotification";
+NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBannerWillDismissNotification";
+
 
 -(void) showAlertWithMessage:(Alert *)alert withAnimation:(BOOL)animations {
     
@@ -36,6 +42,10 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
     AlertView *banner = [[AlertView alloc] initWithFrame:CGRectZero];
     banner.delegate = self;
     UIViewController *topViewController = [self topViewController];
+    
+    if (!topViewController) {
+        return;
+    }
     
     banner.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -56,6 +66,12 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
     
     [topViewController.view addConstraint:self.topConstraint];
     [topViewController.view layoutIfNeeded];
+    
+    [banner layoutIfNeeded];
+    [[NSNotificationCenter defaultCenter] postNotificationName:AlertManagerBannerWillDisplayNotification
+                                                        object:nil
+                                                      userInfo:@{@"bannerFrame": [NSValue valueWithCGRect:banner.frame],
+                                                                 @"alert": alert}];
     
     [topViewController.view removeConstraint:self.topConstraint];
     self.topConstraint = [NSLayoutConstraint constraintWithItem:topViewController.topLayoutGuide
@@ -86,7 +102,7 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
     };
     
     if (alert.seconds > 0) {
-        [NSTimer scheduledTimerWithTimeInterval:alert.seconds
+        self.currentTimer = [NSTimer scheduledTimerWithTimeInterval:alert.seconds
                                          target:self
                                        selector:@selector(dismissMesssage)
                                        userInfo:nil
@@ -113,6 +129,8 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
 -(void) dismissMesssageWithAnimation:(BOOL) animated withCompletion:(void(^)(void))completionBlock {
     
     if (self.alertView) {
+        
+        [self.currentTimer invalidate];
         
         UIViewController *topViewController = [self topViewController];
         
@@ -188,16 +206,38 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
     return alertManager;
 }
 
--(void) scheduleAlert:(Alert *)alert {
+-(void) scheduleAlert:(Alert *)newAlert {
     
-    if ([alert.uniqueId length] && [self.alertsDisplayed containsObject:alert.uniqueId]) {
-        return;
+    if ([newAlert.uniqueId length]) {
+        if ([self.alertsDisplayed containsObject:newAlert.uniqueId]) {
+            return;
+        }
+            
+        for (Alert *alert in self.alertsQueued) {
+            if ([alert.uniqueId length] && [newAlert.uniqueId isEqualToString:alert.uniqueId]) {
+                return;
+            }
+        }
     }
     
-    [self.alertsQueued addObject:alert];
+    [self.alertsQueued addObject:newAlert];
+    
     if (!self.currentAlert) {
         [self showNextQueuedAlert];
     }
+}
+
+-(void) cancelAlert:(Alert *)alert {
+    
+    if ([alert.message isEqualToString:self.currentAlert.message]) {
+        [self dismissMesssage];
+    }
+    
+    [self.alertsQueued enumerateObjectsUsingBlock:^(Alert *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.uniqueId isEqualToString:alert.uniqueId]) {
+            [self.alertsQueued removeObject:obj];
+        }
+    }];
 }
 
 -(void) showNextQueuedAlert {

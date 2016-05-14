@@ -12,6 +12,9 @@
 
 extern NSString * const AlertManagerBannerDisplayedNotification;
 extern NSString * const AlertManagerBannerDismissedNotification;
+extern NSString * const AlertManagerBannerWillDisplayNotification;
+extern NSString * const AlertManagerBannerWillDismissNotification;
+
 
 @interface AlertManager : NSObject
 
@@ -20,6 +23,7 @@ extern NSString * const AlertManagerBannerDismissedNotification;
 -(void) scheduleAlert:(Alert *)alert;
 -(void) showNextQueuedAlert;
 -(void) viewControllerIsDissapearing;
+-(void) cancelAlert:(Alert *)alert;
 
 
 @end
