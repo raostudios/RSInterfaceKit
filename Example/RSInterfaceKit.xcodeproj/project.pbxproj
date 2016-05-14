@@ -24,6 +24,7 @@
 		822FD0F01BBA271400E45C19 /* CollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0EF1BBA271400E45C19 /* CollectionViewDataSource.m */; };
 		822FD0F31BBA271C00E45C19 /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F21BBA271C00E45C19 /* ImageManager.m */; };
 		822FD0F61BBA272500E45C19 /* UserLibraryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F51BBA272500E45C19 /* UserLibraryCollectionViewCell.m */; };
+		824C24701CE7B731001A7235 /* RSInterfaceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 824C246F1CE7B731001A7235 /* RSInterfaceTest.m */; };
 		824D88631B248F430047CE03 /* RSInterfaceKitLibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */; };
 		824D88661B2494FA0047CE03 /* RSFullScreenImageTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */; };
 		82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */; };
@@ -76,6 +77,7 @@
 		822FD0F21BBA271C00E45C19 /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
 		822FD0F41BBA272500E45C19 /* UserLibraryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLibraryCollectionViewCell.h; sourceTree = "<group>"; };
 		822FD0F51BBA272500E45C19 /* UserLibraryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLibraryCollectionViewCell.m; sourceTree = "<group>"; };
+		824C246F1CE7B731001A7235 /* RSInterfaceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSInterfaceTest.m; sourceTree = "<group>"; };
 		824D88611B248F430047CE03 /* RSInterfaceKitLibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSInterfaceKitLibraryView.h; sourceTree = "<group>"; };
 		824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSInterfaceKitLibraryView.m; sourceTree = "<group>"; };
 		824D88641B2494FA0047CE03 /* RSFullScreenImageTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSFullScreenImageTestViewController.h; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				6003F5B6195388D20070C39A /* Supporting Files */,
+				824C246F1CE7B731001A7235 /* RSInterfaceTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				824C24701CE7B731001A7235 /* RSInterfaceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,9 +618,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB963E97BC9D8400B20BE734 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSKit.app/RSKit";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSInterfaceKit.app/RSInterfaceKit";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
@@ -627,6 +630,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -638,15 +642,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E258D4D2B917F81FA4820D7D /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSKit.app/RSKit";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSInterfaceKit.app/RSInterfaceKit";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

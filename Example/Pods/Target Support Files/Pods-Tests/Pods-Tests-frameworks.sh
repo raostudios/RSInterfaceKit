@@ -85,11 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Tests/RSInterfaceKit.framework"
-  install_framework "Pods-Tests/FBSnapshotTestCase.framework"
-  install_framework "Pods-Tests/Kiwi.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Tests/RSInterfaceKit.framework"
-  install_framework "Pods-Tests/FBSnapshotTestCase.framework"
-  install_framework "Pods-Tests/Kiwi.framework"
 fi

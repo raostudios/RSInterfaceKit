@@ -8,7 +8,4 @@ end
 
 target 'Tests', :exclusive => true do
   pod "RSInterfaceKit", :path => "../"
-
-  pod 'Kiwi'
-  pod 'FBSnapshotTestCase'
 end
