@@ -89,7 +89,7 @@
 
 -(void)setBounds:(CGRect)bounds {
     [super setBounds:bounds];
-    if (bounds.size.width != self.oldBounds.size.width) {
+    if (!CGRectEqualToRect(bounds, self.oldBounds)) {
         [self updateContentSize];
         self.oldBounds = bounds;
     }
@@ -114,7 +114,7 @@
 
     UIImage *newImage = [UIImage imageWithCGImage:image.CGImage
                                             scale:[UIScreen mainScreen].scale
-                                      orientation:UIImageOrientationUp];
+                                      orientation:image.imageOrientation];
     
     self.imageViewFull.image = newImage;
     
@@ -123,12 +123,12 @@
     }
 }
 
--(void)setImage:(UIImage *)image {
-    self.imageViewFull.image = image;
+-(UIImage *)currentImage {
+    return self.imageViewFull.image;
 }
 
--(UIImage *)image {
-    return self.imageViewFull.image;
+-(void)prepareForReuse {
+    self.imageViewFull.image = nil;
 }
 
 #pragma mark - Lazy Instantiation

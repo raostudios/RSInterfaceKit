@@ -70,11 +70,11 @@
 }
 
 -(void) setImage: (UIImage *)image {
-    self.view.scrollView.image = image;
+    [self.view.scrollView updateImage:image shouldUpdateFrame:YES];
 }
 
 -(UIImage *)image {
-    return self.view.scrollView.image;
+    return [self.view.scrollView currentImage];
 }
 
 -(void)setDelegate:(id<FullImageViewControllerDelegate>)delegate {
