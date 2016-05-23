@@ -14,4 +14,6 @@
 @property (nonatomic, strong) UIImageView *imageViewFull;
 @property (nonatomic, strong) UIImage *image;
 
+-(void)updateImage:(UIImage *)image shouldUpdateFrame:(BOOL)updateFrames;
+
 @end

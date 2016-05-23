@@ -109,14 +109,22 @@
     return self.imageViewFull;
 }
 
--(void)setImage:(UIImage *)image {
+-(void)updateImage:(UIImage *)image shouldUpdateFrame:(BOOL)updateFrames {
+    NSParameterAssert(image != nil);
 
-    if (!image) {
-        NSLog(@"no image");
-    }
+    UIImage *newImage = [UIImage imageWithCGImage:image.CGImage
+                                            scale:[UIScreen mainScreen].scale
+                                      orientation:UIImageOrientationUp];
     
+    self.imageViewFull.image = newImage;
+    
+    if (updateFrames) {
+        [self updateContentSize];
+    }
+}
+
+-(void)setImage:(UIImage *)image {
     self.imageViewFull.image = image;
-    [self updateContentSize];
 }
 
 -(UIImage *)image {
