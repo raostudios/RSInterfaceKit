@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/CollectionViewWithTransitions/CollectionViewWithTransitions.h
