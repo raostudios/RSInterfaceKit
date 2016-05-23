@@ -37,7 +37,7 @@
                                                                       metrics:nil
                                                                         views:@{@"imageView": self.imageView}]];
     
-    self.imageView.image = [UIImage imageNamed:@"yosemite"];
+    [self.imageView updateImage:[UIImage imageNamed:@"yosemite"] shouldUpdateFrame:YES];
 }
 
 @end
