@@ -60,8 +60,11 @@
     CGSize imageSize = self.imageViewFull.image.size;
     
     if (imageSize.width != 0.0 && imageSize.height != 0.0 && CGRectGetHeight(self.bounds) != 0.0) {
-        self.minimumZoomScale = MIN(CGRectGetWidth(self.bounds) / imageSize.width,
-                                    CGRectGetHeight(self.bounds) / imageSize.height);
+        
+        self.minimumZoomScale = [self minimumZoomScaleForImageSize:imageSize
+                                                    withImageScale:self.imageViewFull.image.scale
+                                                         andBounds:self.bounds
+                                                         withScale:[UIScreen mainScreen].scale];
         
         self.maximumZoomScale = MAX(self.minimumZoomScale * 2, 1.0);
         
@@ -81,15 +84,27 @@
     [self setNeedsLayout];
 }
 
+-(CGFloat) minimumZoomScaleForImageSize:(CGSize)imageSize withImageScale:(CGFloat)imageScale andBounds:(CGRect)bounds withScale:(CGFloat)scale {
+    
+    CGFloat ratio = imageSize.width / imageSize.height;
+    CGFloat deviceRatio = CGRectGetWidth(bounds) / CGRectGetHeight(bounds);
+    
+    if (ratio > deviceRatio) {
+        return (CGRectGetWidth(self.bounds) * scale) / (imageSize.width * imageScale);
+    } else {
+        return (CGRectGetHeight(self.bounds) * scale) / (imageSize.height * imageScale);
+    }
+}
+
 -(void) layoutSubviews {
     [super layoutSubviews];
     [self centerScrollViewContents];
 }
 
 
--(void)setBounds:(CGRect)bounds {
+-(void) setBounds:(CGRect)bounds {
     [super setBounds:bounds];
-    if (!CGRectEqualToRect(bounds, self.oldBounds)) {
+    if (!CGSizeEqualToSize(bounds.size, self.oldBounds.size)) {
         [self updateContentSize];
         self.oldBounds = bounds;
     }
@@ -109,7 +124,7 @@
     return self.imageViewFull;
 }
 
--(void)updateImage:(UIImage *)image shouldUpdateFrame:(BOOL)updateFrames {
+-(void) updateImage:(UIImage *)image shouldUpdateFrame:(BOOL)updateFrames {
     NSParameterAssert(image != nil);
 
     UIImage *newImage = [UIImage imageWithCGImage:image.CGImage
@@ -123,11 +138,11 @@
     }
 }
 
--(UIImage *)currentImage {
+-(UIImage *) currentImage {
     return self.imageViewFull.image;
 }
 
--(void)prepareForReuse {
+-(void) prepareForReuse {
     self.imageViewFull.image = nil;
 }
 
