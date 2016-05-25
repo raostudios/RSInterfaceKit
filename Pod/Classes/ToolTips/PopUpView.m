@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *bottomContraint;
 @property (nonatomic, strong) NSLayoutConstraint *leadingContraint;
 @property (nonatomic, strong) NSLayoutConstraint *trailingContraint;
+@property (nonatomic, strong) UIColor *colorToUse;
 
 @end
 
@@ -22,16 +23,18 @@
 
 static const CGFloat height = 10.0;
 
--(instancetype)initWithContainer:(UIView *)containter {
+-(instancetype)initWithContainer:(UIView *)container {
     self = [self initWithFrame:CGRectZero];
     
     if (self) {
         
         self.offset = 90.0f;
         
-        [self addSubview:containter];
+        [self addSubview:container];
         
-        self.leadingContraint = [NSLayoutConstraint constraintWithItem:containter
+        self.colorToUse = container.backgroundColor;
+        
+        self.leadingContraint = [NSLayoutConstraint constraintWithItem:container
                                                          attribute:NSLayoutAttributeLeading
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
@@ -42,12 +45,12 @@ static const CGFloat height = 10.0;
         self.trailingContraint = [NSLayoutConstraint constraintWithItem:self
                                                             attribute:NSLayoutAttributeTrailing
                                                             relatedBy:NSLayoutRelationEqual
-                                                               toItem:containter
+                                                               toItem:container
                                                             attribute:NSLayoutAttributeTrailing
                                                            multiplier:1.0
                                                              constant:8];
         
-        self.topContraint = [NSLayoutConstraint constraintWithItem:containter
+        self.topContraint = [NSLayoutConstraint constraintWithItem:container
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
@@ -58,7 +61,7 @@ static const CGFloat height = 10.0;
         self.bottomContraint = [NSLayoutConstraint constraintWithItem:self
                                                             attribute:NSLayoutAttributeBottom
                                                             relatedBy:NSLayoutRelationEqual
-                                                               toItem:containter
+                                                               toItem:container
                                                             attribute:NSLayoutAttributeBottom
                                                            multiplier:1.0
                                                              constant:8];
@@ -68,6 +71,7 @@ static const CGFloat height = 10.0;
     }
     return self;
 }
+
 
 -(void)setDirection:(PopUpDirection)direction {
     _direction = direction;
@@ -91,7 +95,7 @@ static const CGFloat height = 10.0;
 -(void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGContextSetFillColorWithColor(context, [[UIColor blackColor] colorWithAlphaComponent:.6].CGColor);
+    CGContextSetFillColorWithColor(context, self.colorToUse.CGColor);
     
     CGFloat topHeight = self.direction == PopUpDirectionDown ? height : 0.0;
     CGFloat bottomHeight =  self.direction == PopUpDirectionUp ? height : 0.0;

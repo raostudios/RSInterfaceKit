@@ -16,6 +16,7 @@
 #import "CollectionViewWithTransitions.h"
 #import "CollectionViewDataSource.h"
 #import "RSSettingsViewController.h"
+#import "RSToolTipsViewController.h"
 
 @interface RSInterfaceKitLibraryViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -46,7 +47,7 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,6 +74,9 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
         case 6:
             cell.textLabel.text = @"Settings View";
             break;
+        case 7:
+            cell.textLabel.text = @"Tool Tips";
+            break;
         default:
             break;
     }
@@ -84,19 +88,19 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
     
     if (indexPath.item == 0) {
         RSFullScreenImageTestViewController *viewController = [[RSFullScreenImageTestViewController alloc] init];
-        [self showViewController:viewController sender:self];
+        [self showDetailViewController:viewController sender:self];
     } else if (indexPath.item == 1) {
         RSAlertsExampleViewController *viewController = [[RSAlertsExampleViewController alloc] init];
-        [self showViewController:viewController sender:self];
+        [self showDetailViewController:viewController sender:self];
     } else if (indexPath.item == 2) {
         RSImageCarouselExampleViewController *viewController = [[RSImageCarouselExampleViewController alloc] init];
-        [self showViewController:viewController sender:self];
+        [self showDetailViewController:viewController sender:self];
     } else if (indexPath.item == 3) {
         RSCarouselViewController *viewController = [[RSCarouselViewController alloc] init];
-        [self showViewController:viewController sender:self];
+        [self showDetailViewController:viewController sender:self];
     } else if (indexPath.item == 4) {
         RSZoomImageToImageViewController *viewController = [[RSZoomImageToImageViewController alloc] init];
-        [self showViewController:viewController sender:self];
+        [self showDetailViewController:viewController sender:self];
     } else if (indexPath.item == 5) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         
@@ -108,12 +112,16 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
         viewController.dataSource = [[CollectionViewDataSource alloc] initWithCollectionView:viewController.collectionView];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
         navigationController.navigationBar.barTintColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];;
-        [self showViewController:navigationController sender:self];
+        [self showDetailViewController:navigationController sender:self];
 
     } else if (indexPath.item == 6) {
         RSSettingsViewController *settingsViewController = [RSSettingsViewController new];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
-        [self showViewController:navigationController sender:self];
+        [self showDetailViewController:navigationController sender:self];
+    } else if (indexPath.item == 7) {
+        RSToolTipsViewController *toolTipsViewController = [RSToolTipsViewController new];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:toolTipsViewController];
+        [self showDetailViewController:navigationController sender:self];
     }
     
 }

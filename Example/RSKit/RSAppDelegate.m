@@ -17,9 +17,12 @@
     RSInterfaceKitLibraryViewController *viewController = [[RSInterfaceKitLibraryViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
+    splitViewController.viewControllers = @[navigationController];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.rootViewController = navigationController;
+    self.window.rootViewController = splitViewController;
     [self.window makeKeyAndVisible];
     
     [[AlertView appearance] setUserBackgroundColor:[UIColor greenColor]];

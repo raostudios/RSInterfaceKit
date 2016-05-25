@@ -63,7 +63,8 @@
 #pragma mark - FullImageViewControllerDelegate
 
 -(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(FullImageViewController *)fullImageViewController {
-    return self.selectedButton.frame;
+    CGRect convertedRect = [self.view convertRect:self.selectedButton.frame toView:self.view.superview];
+    return convertedRect;
 }
 
 -(UIImageView *) initialImageViewForFullImageViewController:(FullImageViewController *)fullImageViewController {

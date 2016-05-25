@@ -15,6 +15,7 @@
 @protocol PopUpPresenterDelegate <NSObject>
 
 -(void)popUpDismissed:(PopUpPresenter *)popupPresenter;
+-(void)popUpPresenterSelected:(PopUpPresenter *)popupPresenter;
 
 @end
 
@@ -25,5 +26,6 @@
 @property (nonatomic, weak) id<PopUpPresenterDelegate> delegate;
 
 -(void) popupContainer:(UIView *)container fromView:(UIView *)sender direction:(PopUpDirection)direction;
+-(void) popupContainer:(UIView *)container fromBarButtonItem:(UIBarButtonItem *)sender direction:(PopUpDirection)direction;
 
 @end
