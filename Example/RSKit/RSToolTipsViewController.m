@@ -29,19 +29,18 @@
     
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(toolbarItemSelected:)];
     [self.navigationController setToolbarHidden:NO];
-    self.toolbarItems = @[button];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+
+    self.toolbarItems = @[flexSpace, button, flexSpace];
     
     UILabel *label = [UILabel new];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     label.textColor = [UIColor greenColor];
     label.backgroundColor = [UIColor blueColor];
     label.text = @"Select a Reference Image";
-    [[PopUpPresenter sharedPresentor] popupContainer:label fromBarButtonItem:button direction:PopUpDirectionAuto];
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [[PopUpPresenter sharedPresentor] popupContainer:label fromBarButtonItem:button direction:PopUpDirectionAuto];
 }
 
 -(void)toolbarItemSelected:(id)sender {

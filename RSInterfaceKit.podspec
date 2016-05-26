@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
     sdkit.public_header_files = 'Pod/Classes/CollectionViewWithTransitions/*.h'
   end
 
-  s.subspec 'ToolTips' do |sdkit|
+  s.subspec 'PopUps' do |sdkit|
     sdkit.source_files = 'Pod/Classes/ToolTips/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/ToolTips/*.h'
   end
