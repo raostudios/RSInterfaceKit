@@ -75,7 +75,7 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
             cell.textLabel.text = @"Settings View";
             break;
         case 7:
-            cell.textLabel.text = @"Tool Tips";
+            cell.textLabel.text = @"Pop Up";
             break;
         default:
             break;
@@ -123,6 +123,8 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:toolTipsViewController];
         [self showDetailViewController:navigationController sender:self];
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 

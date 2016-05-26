@@ -5,6 +5,7 @@ PODS:
     - RSInterfaceKit/CollectionViewWithTransitions (= 0.0.43)
     - RSInterfaceKit/FullScreenImageView (= 0.0.43)
     - RSInterfaceKit/LoadingView (= 0.0.43)
+    - RSInterfaceKit/NavigationBarMenu (= 0.0.43)
     - RSInterfaceKit/PopUps (= 0.0.43)
     - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.43)
     - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.43)
@@ -19,6 +20,7 @@ PODS:
     - RSInterfaceKit/ZoomableImageView
   - RSInterfaceKit/LoadingView (0.0.43):
     - RSInterfaceKit/AutoLayoutHelpers
+  - RSInterfaceKit/NavigationBarMenu (0.0.43)
   - RSInterfaceKit/PopUps (0.0.43)
   - RSInterfaceKit/PortraitOnlyNavigation (0.0.43)
   - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.43)
@@ -35,6 +37,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RSInterfaceKit: 38573eea1ebdf2fcb406b2c4264a75666e4dd3e0
+  RSInterfaceKit: 916ed500b85cc91c049db6e2298db2fec67465fa
 
 COCOAPODS: 0.39.0
