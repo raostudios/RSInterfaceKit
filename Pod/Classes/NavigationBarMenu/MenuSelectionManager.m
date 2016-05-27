@@ -49,7 +49,7 @@
                       forState:UIControlStateNormal];
     }
     return _buttonMenuSelector;
-}cd
+}
 
 -(void)albumSelected:(UIButton *)sender {
     

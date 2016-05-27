@@ -100,7 +100,6 @@
 		82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		82FC196A1CF6359B000B3138 /* RSToolTipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSToolTipsViewController.h; sourceTree = "<group>"; };
 		82FC196B1CF6359B000B3138 /* RSToolTipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSToolTipsViewController.m; sourceTree = "<group>"; };
-		82FC19731CF7B3E2000B3138 /* RSInterfaceKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSInterfaceKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		82FC19761CF7B4E5000B3138 /* MenuSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSelectionViewController.h; sourceTree = "<group>"; };
 		82FC19771CF7B4E5000B3138 /* MenuSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSelectionViewController.m; sourceTree = "<group>"; };
 		A66F6A8598C99C14C39DEE4A /* Pods-RSInterfaceKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSInterfaceKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit.debug.xcconfig"; sourceTree = "<group>"; };
