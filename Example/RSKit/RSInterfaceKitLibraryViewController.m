@@ -17,6 +17,7 @@
 #import "CollectionViewDataSource.h"
 #import "RSSettingsViewController.h"
 #import "RSToolTipsViewController.h"
+#import "MenuSelectionViewController.h"
 
 @interface RSInterfaceKitLibraryViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -47,7 +48,7 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,6 +77,9 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
             break;
         case 7:
             cell.textLabel.text = @"Pop Up";
+            break;
+        case 8:
+            cell.textLabel.text = @"Navigation Bar Menu";
             break;
         default:
             break;
@@ -122,10 +126,13 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
         RSToolTipsViewController *toolTipsViewController = [RSToolTipsViewController new];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:toolTipsViewController];
         [self showDetailViewController:navigationController sender:self];
+    } else if (indexPath.item == 8) {
+        MenuSelectionViewController *menuSelectionViewController = [MenuSelectionViewController new];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:menuSelectionViewController];
+        [self showDetailViewController:navigationController sender:self];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 @end

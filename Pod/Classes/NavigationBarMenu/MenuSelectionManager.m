@@ -37,14 +37,19 @@
 
 -(UIButton *)buttonMenuSelector {
     if (!_buttonMenuSelector) {
+        
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSURL *bundleURL = [bundle URLForResource:@"RSInterfaceKit_NavigationBarMenu" withExtension:@"bundle"];
+        
         _buttonMenuSelector = [UIButton buttonWithType:UIButtonTypeSystem];
         _buttonMenuSelector.frame = CGRectMake(0, 0, 200, 44);
         [_buttonMenuSelector setTintColor:[UIColor whiteColor]];
-        [_buttonMenuSelector setImage:[[UIImage imageNamed:@"chevron-down"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+                
+        [_buttonMenuSelector setImage:[[UIImage imageNamed:@"chevron-down"inBundle:[NSBundle bundleWithURL:bundleURL]  compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                       forState:UIControlStateNormal];
     }
     return _buttonMenuSelector;
-}
+}cd
 
 -(void)albumSelected:(UIButton *)sender {
     

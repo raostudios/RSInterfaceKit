@@ -88,6 +88,8 @@ Pod::Spec.new do |s|
   s.subspec 'NavigationBarMenu' do |sdkit|
     sdkit.source_files = 'Pod/Classes/NavigationBarMenu/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/NavigationBarMenu/*.h'
+    sdkit.resources = 'Pod/Assets/NavigationBarMenu/*.png'
+    sdkit.resource_bundle = { 'RSInterfaceKit_NavigationBarMenu' => 'Pod/Assets/NavigationBarMenu/*.png' }
   end
 
 end
