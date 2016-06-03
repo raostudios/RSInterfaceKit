@@ -89,13 +89,26 @@
     
     [superView addConstraint:centerContrstaint];
     
+    
+    CGPoint contentOffset = CGPointZero;
+    UIView *newScrollView = sender.superview;
+    
+    while (newScrollView) {
+        if ([newScrollView isKindOfClass:[UIScrollView class]]) {
+            UIScrollView *scrollView = (UIScrollView *)newScrollView;
+            contentOffset.x += scrollView.contentOffset.x;
+            contentOffset.y += scrollView.contentOffset.y;
+        }
+        newScrollView = newScrollView.superview;
+    }
+    
     self.constraintTop = [NSLayoutConstraint constraintWithItem:sender
                                                       attribute:senderTopAttribute
                                                       relatedBy:NSLayoutRelationEqual
                                                          toItem:self.toolTip
                                                       attribute:popupTopAttribute
                                                      multiplier:1.0
-                                                       constant:0];
+                                                       constant:contentOffset.y];
     
     [superView addConstraint:self.constraintTop];
     
