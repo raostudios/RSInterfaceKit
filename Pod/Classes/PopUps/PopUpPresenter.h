@@ -15,7 +15,6 @@
 @protocol PopUpPresenterDelegate <NSObject>
 
 -(void)popUpDismissed:(PopUpPresenter *)popupPresenter;
--(void)popUpPresenterSelected:(PopUpPresenter *)popupPresenter;
 
 @end
 

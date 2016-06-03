@@ -135,6 +135,7 @@
 - (void)shareMail:(id)sender {
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController * mailVC = [[MFMailComposeViewController alloc] init];
+        mailVC.navigationBar.tintColor = [[UINavigationBar appearance] tintColor];
         [mailVC setSubject:self.shortDescription];
         [mailVC setMessageBody:self.URLString isHTML:NO];
         [mailVC setMailComposeDelegate:self];
@@ -168,10 +169,11 @@
 
 - (IBAction)shareTextMessage:(id)sender {
     if ([MFMessageComposeViewController canSendText]) {
-        MFMessageComposeViewController * mailVC = [[MFMessageComposeViewController alloc] init];
-        [mailVC setBody:[self descriptionWithURLString]];
-        [mailVC setMessageComposeDelegate:self];
-        [self.viewController presentViewController:mailVC animated:YES completion:nil];
+        MFMessageComposeViewController * textVC = [[MFMessageComposeViewController alloc] init];
+        textVC.navigationBar.tintColor = [[UINavigationBar appearance] tintColor];
+        [textVC setBody:[self descriptionWithURLString]];
+        [textVC setMessageComposeDelegate:self];
+        [self.viewController presentViewController:textVC animated:YES completion:nil];
     }else {
         [self showServiceUnavailableMessage:@"Text Messaging"];
     }
