@@ -222,8 +222,6 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
-    
-
 }
 
 -(void) keyboardDidShow:(NSNotification *) notification {
@@ -243,7 +241,7 @@
 -(UIView *) superViewFromView:(UIView *)view {
     
     if ([view isKindOfClass:[UIBarButtonItem class]]) {
-        view = [self viewForBarButtonItem:view];
+        view = [self viewForBarButtonItem:(UIBarButtonItem *)view];
     }
     
     UIView *superView = view;
