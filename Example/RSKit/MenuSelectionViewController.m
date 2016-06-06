@@ -43,7 +43,7 @@
 }
 
 -(NSString *)titleForIndexPath:(NSIndexPath *)indexPath {
-    return [NSString stringWithFormat:@"%ld Item", indexPath.item];
+    return [NSString stringWithFormat:@"%ld Item", (long)indexPath.item];
 }
 
 -(NSUInteger)numberOfCellsInMenuSelectionManager:(MenuSelectionViewController *)manager {
@@ -52,12 +52,12 @@
 
 -(UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath forManager:(MenuSelectionViewController *)manager {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld Item", indexPath.item];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld Item", (long)indexPath.item];
     return cell;
 }
 
 -(void)menuSelectionManager:(MenuSelectionViewController *)manager cellSelectedAtIndexPath:(NSIndexPath *)indexPath {
-    self.labelAlert.text = [NSString stringWithFormat:@"%ld Item", indexPath.item];
+    self.labelAlert.text = [NSString stringWithFormat:@"%ld Item", (long)indexPath.item];
 }
 
 - (void)didReceiveMemoryWarning {

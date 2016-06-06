@@ -36,7 +36,7 @@
 }
 
 -(void)popupContainer:(UIView *)container fromBarButtonItem:(UIBarButtonItem *)sender direction:(PopUpDirection)direction {
-    UIView *view = [sender performSelector:@selector(view)];
+    UIView *view = [self viewForBarButtonItem:sender];
     [self popupContainer:container fromView:view direction:direction];
 }
 
@@ -212,7 +212,10 @@
         if (control) {
             [control sendActionsForControlEvents:UIControlEventTouchUpInside];
         } else if(button) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [button.target performSelector:self.senderBarButtonItem.action];
+#pragma clang diagnostic pop
         }
     }
     
@@ -240,7 +243,7 @@
 -(UIView *) superViewFromView:(UIView *)view {
     
     if ([view isKindOfClass:[UIBarButtonItem class]]) {
-        view = [view performSelector:@selector(view)];
+        view = [self viewForBarButtonItem:view];
     }
     
     UIView *superView = view;
@@ -248,6 +251,14 @@
         superView = superView.superview;
     }
     return superView;
+}
+
+-(UIView *)viewForBarButtonItem:(UIBarButtonItem *)barButtonItem {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    UIView *view = [barButtonItem performSelector:@selector(view)];
+#pragma clang diagnostic pop
+    return view;
 }
 
 @end
