@@ -118,6 +118,7 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
     if (self.currentAlert.actionOnTap) {
         self.currentAlert.actionOnTap();
     }
+    [self dismissMesssage];
 }
 
 -(void) dismissMesssage {
