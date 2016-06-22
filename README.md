@@ -30,13 +30,34 @@ pod 'RSInterfaceKit/RSSettings'
 
 ### Alert Manager
 
+![](gifs/alerts.gif)
+
+### Navigation Bar Dropdown Menu
+
+![](gifs/menu.gif)
+
+### Pop Ups with Tool Tips
+
+![](gifs/tool_tips.gif)
+
 ### Full Image View Controller with Zoom Animation
+
+![](gifs/image_transition.gif)
+
+### Zoomable and Pannable Image View
+
+![](gifs/actual_image_zoom.gif)
 
 ### Settings Screen
 
-### Infinite Image Scroll View
+![](gifs/settings.gif)
+
+### Swipable Image Carousel
+
+![](gifs/carousel.gif)
 
 ### Dissolving Image Carousel
+
 
 ### Image View Grid with Animatable Column Changes
 

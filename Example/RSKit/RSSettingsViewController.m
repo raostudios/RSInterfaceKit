@@ -34,7 +34,6 @@
         shareGroup.actions = @[[[SettingsActionGenerator sharedGenerator] mailAction], [[SettingsActionGenerator sharedGenerator] textAction]];
     
         
-        
         AppSettingAction *bigClockSettingAction = [AppSettingAction new];
         bigClockSettingAction.appId = @"583451358";
         bigClockSettingAction.name = @"The Big Clock";

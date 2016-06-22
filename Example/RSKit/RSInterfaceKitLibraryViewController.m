@@ -45,6 +45,8 @@ static NSString *const ItemIdentifier = @"ItemIdentifier";
     
     self.view.tableViewItems.dataSource = self;
     self.view.tableViewItems.delegate = self;
+    
+    self.title = @"Available Components";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

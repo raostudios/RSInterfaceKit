@@ -25,6 +25,9 @@
 		822FD0F31BBA271C00E45C19 /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F21BBA271C00E45C19 /* ImageManager.m */; };
 		822FD0F61BBA272500E45C19 /* UserLibraryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FD0F51BBA272500E45C19 /* UserLibraryCollectionViewCell.m */; };
 		824C24701CE7B731001A7235 /* RSInterfaceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 824C246F1CE7B731001A7235 /* RSInterfaceTest.m */; };
+		824D2F281D1AFBA000A0EEA1 /* GSTouchesShowingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D2F251D1AFBA000A0EEA1 /* GSTouchesShowingWindow.m */; };
+		824D2F291D1AFBA000A0EEA1 /* GSTouchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 824D2F261D1AFBA000A0EEA1 /* GSTouchImage.png */; };
+		824D2F2A1D1AFBA000A0EEA1 /* GSTouchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824D2F271D1AFBA000A0EEA1 /* GSTouchImage@2x.png */; };
 		824D88631B248F430047CE03 /* RSInterfaceKitLibraryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */; };
 		824D88661B2494FA0047CE03 /* RSFullScreenImageTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824D88651B2494FA0047CE03 /* RSFullScreenImageTestViewController.m */; };
 		82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82606F511B27B675003BB195 /* RSImageCarouselExampleViewController.m */; };
@@ -80,6 +83,10 @@
 		822FD0F41BBA272500E45C19 /* UserLibraryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLibraryCollectionViewCell.h; sourceTree = "<group>"; };
 		822FD0F51BBA272500E45C19 /* UserLibraryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLibraryCollectionViewCell.m; sourceTree = "<group>"; };
 		824C246F1CE7B731001A7235 /* RSInterfaceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSInterfaceTest.m; sourceTree = "<group>"; };
+		824D2F241D1AFBA000A0EEA1 /* GSTouchesShowingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTouchesShowingWindow.h; sourceTree = "<group>"; };
+		824D2F251D1AFBA000A0EEA1 /* GSTouchesShowingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTouchesShowingWindow.m; sourceTree = "<group>"; };
+		824D2F261D1AFBA000A0EEA1 /* GSTouchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GSTouchImage.png; sourceTree = "<group>"; };
+		824D2F271D1AFBA000A0EEA1 /* GSTouchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GSTouchImage@2x.png"; sourceTree = "<group>"; };
 		824D88611B248F430047CE03 /* RSInterfaceKitLibraryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSInterfaceKitLibraryView.h; sourceTree = "<group>"; };
 		824D88621B248F430047CE03 /* RSInterfaceKitLibraryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSInterfaceKitLibraryView.m; sourceTree = "<group>"; };
 		824D88641B2494FA0047CE03 /* RSFullScreenImageTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSFullScreenImageTestViewController.h; sourceTree = "<group>"; };
@@ -172,6 +179,7 @@
 		6003F593195388D20070C39A /* RSKit */ = {
 			isa = PBXGroup;
 			children = (
+				824D2F2B1D1AFC2900A0EEA1 /* Dev */,
 				822FD0ED1BBA270400E45C19 /* CollectionViewTransitions */,
 				6003F59C195388D20070C39A /* RSAppDelegate.h */,
 				6003F59D195388D20070C39A /* RSAppDelegate.m */,
@@ -255,6 +263,17 @@
 				822FD0F51BBA272500E45C19 /* UserLibraryCollectionViewCell.m */,
 			);
 			name = CollectionViewTransitions;
+			sourceTree = "<group>";
+		};
+		824D2F2B1D1AFC2900A0EEA1 /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				824D2F241D1AFBA000A0EEA1 /* GSTouchesShowingWindow.h */,
+				824D2F251D1AFBA000A0EEA1 /* GSTouchesShowingWindow.m */,
+				824D2F261D1AFBA000A0EEA1 /* GSTouchImage.png */,
+				824D2F271D1AFBA000A0EEA1 /* GSTouchImage@2x.png */,
+			);
+			name = Dev;
 			sourceTree = "<group>";
 		};
 		E341FCED8968DFBDA77E282D /* Pods */ = {
@@ -351,9 +370,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				824D2F291D1AFBA000A0EEA1 /* GSTouchImage.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				82DE1F4E1BB056B1002307AB /* Launch Screen.storyboard in Resources */,
+				824D2F2A1D1AFBA000A0EEA1 /* GSTouchImage@2x.png in Resources */,
 				82BB07491B5C1348002149F5 /* RSInterfaceKit.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +497,7 @@
 				824D88661B2494FA0047CE03 /* RSFullScreenImageTestViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				822FD0F01BBA271400E45C19 /* CollectionViewDataSource.m in Sources */,
+				824D2F281D1AFBA000A0EEA1 /* GSTouchesShowingWindow.m in Sources */,
 				82B73ABF1B27ADE300C5AD74 /* RSAlertsExampleViewController.m in Sources */,
 				82606F521B27B675003BB195 /* RSImageCarouselExampleViewController.m in Sources */,
 				82A8168F1C6457FA00609AA3 /* RSSettingsViewController.m in Sources */,
