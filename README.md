@@ -30,7 +30,7 @@ pod 'RSInterfaceKit/RSSettings'
 
 ### Alert Manager
 
-![](gifs/alerts.gif)
+![Alert](gifs/alerts.gif)
 
 ### Navigation Bar Dropdown Menu
 
