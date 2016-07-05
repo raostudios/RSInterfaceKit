@@ -29,9 +29,7 @@
                                                          attribute:NSLayoutAttributeCenterY
                                                         multiplier:1.0
                                                           constant:0.0]];
-        
-        
-        
+                
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[sliderValue]-(>=8)-|"
                                                                      options:0
                                                                      metrics:nil
