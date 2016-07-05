@@ -53,6 +53,8 @@ Pod::Spec.new do |s|
     sdkit.source_files = 'Pod/Classes/RSSettings/*.{h,m}'
     sdkit.public_header_files = 'Pod/Classes/RSSettings/*.h'
     sdkit.dependency 'RSInterfaceKit/AutoLayoutHelpers'
+    sdkit.resources = 'Pod/Assets/RSSettings/*.png'
+    sdkit.resource_bundle = { 'RSInterfaceKit_RSSettings' => 'Pod/Assets/RSSettings/*.png' }
   end
 
   s.subspec 'RSCarouselDissolvingImageView' do |sdkit|

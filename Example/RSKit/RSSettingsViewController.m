@@ -12,6 +12,8 @@
 #import "SettingsAction.h"
 #import "AppSettingAction.h"
 #import "SettingsActionGroup.h"
+#import "SwitchSettingsAction.h"
+#import "NumericalSettingAction.h"
 
 @implementation RSSettingsViewController
 
@@ -45,8 +47,26 @@
         appGroup.name = @"Our other Apps";
         appGroup.actions = @[bigClockSettingAction];
         
-        self.actionGroups = @[shareGroup, appGroup];
 
+        SwitchSettingsAction *switchAction = [SwitchSettingsAction new];
+        switchAction.name = @"Turn on Light";
+        switchAction.defaultValue = YES;
+        switchAction.changeNotificationName = @"LightOnChanged";
+        switchAction.settingKey = @"LightOnKey";
+        
+        NumericalSettingAction *numericalAction = [NumericalSettingAction new];
+        numericalAction.name = @"Brightness";
+        numericalAction.defaultValue = @(.25);
+        numericalAction.maximumValue = @(1.0);
+        numericalAction.minimumValue = @(-1.0);
+        numericalAction.changeNotificationName = @"BrightnessChanged";
+        numericalAction.settingKey = @"BrightnessSettingKey";
+        
+        SettingsActionGroup *settingsGroup = [SettingsActionGroup new];
+        settingsGroup.name = @"General Settings";
+        settingsGroup.actions = @[switchAction, numericalAction];
+        
+        self.actionGroups = @[settingsGroup, shareGroup, appGroup];
         
     }
     

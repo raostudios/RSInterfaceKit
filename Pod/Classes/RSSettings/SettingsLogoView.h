@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsLogoView : UIView
+@interface SettingsLogoView : UITableViewCell
 
 @property (strong, nonatomic) UIButton *logoButton;
 @property (strong, nonatomic) UILabel *labelBuildNumber;

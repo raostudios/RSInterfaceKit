@@ -45,7 +45,9 @@
         _buttonMenuSelector.frame = CGRectMake(0, 0, 200, 44);
         [_buttonMenuSelector setTintColor:[UIColor whiteColor]];
                 
-        [_buttonMenuSelector setImage:[[UIImage imageNamed:@"chevron-down"inBundle:[NSBundle bundleWithURL:bundleURL]  compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
+        [_buttonMenuSelector setImage:[[UIImage imageNamed:@"chevron-down"
+                                                  inBundle:[NSBundle bundleWithURL:bundleURL]
+                             compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]
                       forState:UIControlStateNormal];
     }
     return _buttonMenuSelector;

@@ -11,9 +11,11 @@
 
 @implementation SettingsLogoView
 
--(instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier {
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         self.logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.logoButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.logoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -30,14 +32,21 @@
                                                                        views:@{@"logoButton": self.logoButton,
                                                                                @"labelBuildNumber":self.labelBuildNumber}]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[logoButton]-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:@{@"logoButton": self.logoButton}]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.logoButton
+                                                         attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self.logoButton
-                                                         attribute:NSLayoutAttributeCenterX
+                                                         attribute:NSLayoutAttributeHeight
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                         attribute:NSLayoutAttributeCenterX
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self.labelBuildNumber
                                                          attribute:NSLayoutAttributeCenterX

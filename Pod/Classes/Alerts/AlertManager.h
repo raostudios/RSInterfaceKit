@@ -25,5 +25,4 @@ extern NSString * const AlertManagerBannerWillDismissNotification;
 -(void) viewControllerIsDissapearing;
 -(void) cancelAlert:(Alert *)alert;
 
-
 @end
