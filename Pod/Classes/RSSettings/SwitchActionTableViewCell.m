@@ -30,8 +30,6 @@
                                                         multiplier:1.0
                                                           constant:0.0]];
         
-        
-        
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[switchValue]-(>=8)-|"
                                                                      options:0
                                                                      metrics:nil

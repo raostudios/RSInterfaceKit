@@ -16,7 +16,7 @@
     if (self) {
         [self addSubview:self.sliderValue];
         [self addSubview:self.labelName];
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[labelName]-[sliderValue]-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[labelName]-[sliderValue(150)]-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"sliderValue": self.sliderValue,

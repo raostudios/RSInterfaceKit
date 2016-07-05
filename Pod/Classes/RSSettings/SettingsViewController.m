@@ -183,7 +183,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
 }
 
 -(void)sliderValueChanged:(UISlider *)sender {
-    NSLog(@"value: %.2f", sender.value);
     UserSettingsAction *selectedAction = [self actionForView:sender];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:selectedAction.name object:nil];
