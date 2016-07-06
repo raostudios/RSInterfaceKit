@@ -19,15 +19,6 @@
 
 @implementation SettingsActionGenerator
 
-+(instancetype)sharedGenerator {
-    static SettingsActionGenerator *sharedGenerator;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedGenerator = [SettingsActionGenerator new];
-    });
-    return sharedGenerator;
-}
-
 -(SettingsAction *)mailAction {
     SettingsAction *action = [SettingsAction new];
     action.name = @"Mail";

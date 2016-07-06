@@ -18,9 +18,6 @@
 @property (strong, nonatomic) NSString *appId;
 @property (weak, nonatomic) UIViewController *viewController;
 
-
-+(instancetype)sharedGenerator;
-
 -(SettingsAction *)mailAction;
 -(SettingsAction *)textAction;
 -(SettingsAction *)facebookShareAction;

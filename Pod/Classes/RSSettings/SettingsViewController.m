@@ -152,8 +152,10 @@ static NSString *CellIdentifier = @"CellIdentifier";
         [cell.sliderValue addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         return cell;
     } else {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         cell.textLabel.text = action.name;
+        cell.detailTextLabel.text = action.subtitle;
+        cell.accessoryType = (action.pushIndicator ? UITableViewCellAccessoryDisclosureIndicator :UITableViewCellAccessoryNone);
         return cell;
     }
 }

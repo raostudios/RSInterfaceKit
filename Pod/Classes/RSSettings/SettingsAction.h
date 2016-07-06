@@ -11,6 +11,9 @@
 @interface SettingsAction : NSObject
 
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *subtitle;
+
+@property (assign, nonatomic) BOOL pushIndicator;
 @property (copy, nonatomic) void (^action)(void);
 
 @end

@@ -22,10 +22,11 @@
     
     if (self) {
         
-        [SettingsActionGenerator sharedGenerator].appId = @"990229325";
-        [SettingsActionGenerator sharedGenerator].shortDescription = @"Create your own Filters with Preset!";
-        [SettingsActionGenerator sharedGenerator].URLString = @"http://apple.co/1PTwa6E";
-        [SettingsActionGenerator sharedGenerator].viewController = self;
+        SettingsActionGenerator *generator = [SettingsActionGenerator new];
+        generator.appId = @"990229325";
+        generator.shortDescription = @"Create your own Filters with Preset!";
+        generator.URLString = @"http://apple.co/1PTwa6E";
+        generator.viewController = self;
         
         self.imageLogo = [UIImage imageNamed:@"logo"];
         self.appLogo = [UIImage imageNamed:@"icon"];
@@ -33,7 +34,7 @@
         
         SettingsActionGroup *shareGroup = [SettingsActionGroup new];
         shareGroup.name = @"Tell Others About Preset";
-        shareGroup.actions = @[[[SettingsActionGenerator sharedGenerator] mailAction], [[SettingsActionGenerator sharedGenerator] textAction]];
+        shareGroup.actions = @[[generator mailAction], [generator textAction]];
     
         
         AppSettingAction *bigClockSettingAction = [AppSettingAction new];
@@ -62,9 +63,15 @@
         numericalAction.changeNotificationName = @"BrightnessChanged";
         numericalAction.settingKey = @"BrightnessSettingKey";
         
+        SettingsAction *subtitleAction = [SettingsAction new];
+        subtitleAction.pushIndicator = YES;
+        subtitleAction.name = @"Title";
+        subtitleAction.subtitle = @"Subtitle";
+
+        
         SettingsActionGroup *settingsGroup = [SettingsActionGroup new];
         settingsGroup.name = @"General Settings";
-        settingsGroup.actions = @[switchAction, numericalAction];
+        settingsGroup.actions = @[switchAction, numericalAction, subtitleAction];
         
         self.actionGroups = @[settingsGroup, shareGroup, appGroup];
         
