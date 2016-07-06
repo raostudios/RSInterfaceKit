@@ -25,7 +25,7 @@
 @interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) SettingsLogoView *logoView;
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UILabel *labelBuildNumber;
 
 @end
 
@@ -59,6 +59,11 @@ static NSString *CellIdentifier = @"CellIdentifier";
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|"
                                                                           options:0 metrics:nil
                                                                             views:@{@"tableView": self.tableView}]];
+        
+        self.labelBuildNumber = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44.0)];
+        self.labelBuildNumber.textAlignment = NSTextAlignmentCenter;
+        self.labelBuildNumber.text = [NSString stringWithFormat:@"Build: %@", [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
+        self.tableView.tableFooterView = self.labelBuildNumber;
     }
     
     return self;
@@ -128,8 +133,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
         
         [logoView.logoButton setImage:[UIImage imageNamed:logoAction.logoName]
                              forState:UIControlStateNormal];
-        logoView.labelBuildNumber.text = [NSString stringWithFormat:@"Build: %@", [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]];
-        
         [logoView.logoButton addTarget:self
                                 action:@selector(logoTapped:)
                       forControlEvents:UIControlEventTouchUpInside];

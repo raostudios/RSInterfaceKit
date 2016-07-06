@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic) NSArray<SettingsActionGroup *> *actionGroups;
 
+@property (strong, nonatomic) UITableView *tableView;
+
 @end

@@ -20,17 +20,12 @@
         [self.logoButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.logoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:self.logoButton];
-        
-        self.labelBuildNumber = [[UILabel alloc] initWithAutoLayout];
-        self.labelBuildNumber.textAlignment = NSTextAlignmentCenter;
 
-        [self addSubview:self.labelBuildNumber];
 
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[labelBuildNumber]-[logoButton]-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[logoButton]-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:@{@"logoButton": self.logoButton,
-                                                                               @"labelBuildNumber":self.labelBuildNumber}]];
+                                                                       views:@{@"logoButton": self.logoButton}]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[logoButton]-|"
                                                                      options:0
@@ -45,13 +40,7 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self
-                                                         attribute:NSLayoutAttributeCenterX
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.labelBuildNumber
-                                                         attribute:NSLayoutAttributeCenterX
-                                                        multiplier:1
-                                                          constant:0]];
+
     }
     return self;
 }
