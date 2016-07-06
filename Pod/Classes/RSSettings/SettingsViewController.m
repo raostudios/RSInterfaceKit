@@ -178,14 +178,14 @@ static NSString *CellIdentifier = @"CellIdentifier";
 -(void)valueChanged:(UISwitch *)sender {
     UserSettingsAction *selectedAction = [self actionForView:sender];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:selectedAction.name object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:selectedAction.name object:self userInfo:@{@"value": @(sender.on)}];
     [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:selectedAction.settingKey];
 }
 
 -(void)sliderValueChanged:(UISlider *)sender {
     UserSettingsAction *selectedAction = [self actionForView:sender];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:selectedAction.name object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:selectedAction.name object:self userInfo:@{@"value": @(sender.value)}];
     [[NSUserDefaults standardUserDefaults] setObject:@(sender.value) forKey:selectedAction.settingKey];
 }
 
