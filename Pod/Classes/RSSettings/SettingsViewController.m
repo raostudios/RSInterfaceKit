@@ -132,7 +132,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
         LogoAction *logoAction = (LogoAction *)action;
         SettingsLogoView *logoView = [SettingsLogoView new];
         logoView.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth(self.tableView.bounds)/2.0, 0, CGRectGetWidth(self.tableView.bounds)/2.0);
-        logoView.image = [UIImage imageNamed:logoAction.logoName];
+        logoView.logoButton.image = [UIImage imageNamed:logoAction.logoName];
         return logoView;
     } else if ([action isKindOfClass:[SwitchSettingsAction class]]) {
         SwitchSettingsAction *switchAction = (SwitchSettingsAction *)action;
