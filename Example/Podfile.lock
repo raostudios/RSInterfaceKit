@@ -37,6 +37,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RSInterfaceKit: 284a564cfdcbbcefc22e6aff95a17876d835f945
+  RSInterfaceKit: 059478bd28102b85cb541dcbd6d07011a5c0d6ae
 
 COCOAPODS: 0.39.0
