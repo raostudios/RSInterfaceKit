@@ -10,6 +10,6 @@
 
 @interface SettingsLogoView : UITableViewCell
 
-@property (strong, nonatomic) UIButton *logoButton;
+@property (strong, nonatomic) UIImageView *logoButton;
 
 @end

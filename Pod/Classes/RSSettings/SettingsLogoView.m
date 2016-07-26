@@ -16,31 +16,29 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        self.logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+
+        self.logoButton = [UIImageView new];
         [self.logoButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.logoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:self.logoButton];
+        self.logoButton.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView  addSubview:self.logoButton];
 
-
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[logoButton]-|"
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[logoButton]-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"logoButton": self.logoButton}]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[logoButton]-|"
+        [self.contentView  addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[logoButton]-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"logoButton": self.logoButton}]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.logoButton
+        [self.contentView  addConstraint:[NSLayoutConstraint constraintWithItem:self.logoButton
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self.logoButton
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1
                                                           constant:0]];
-        
-
     }
     return self;
 }

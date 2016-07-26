@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *appURL;
 @property (strong, nonatomic) NSString *imageName;
+@property (strong, nonatomic) NSString *appDescription;
 @property (strong, nonatomic) NSString *price;
 @property (strong, nonatomic) NSString *appId;
 @property (strong, nonatomic) NSString *campaignId;

@@ -10,4 +10,8 @@
 
 @implementation LogoAction
 
+-(void (^)(void))action {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.raostudios.com"]];
+}
+
 @end

@@ -21,6 +21,7 @@
 
 #import "SwitchActionTableViewCell.h"
 #import "SliderActionTableViewCell.h"
+#import "PromoAppTableViewCell.h"
 
 @interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -103,10 +104,11 @@ static NSString *CellIdentifier = @"CellIdentifier";
     SettingsAction *action =  self.actionGroups[indexPath.section].actions[indexPath.row];
     
     if ([action isKindOfClass:[AppSettingAction class]]) {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        PromoAppTableViewCell *cell = [[PromoAppTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         AppSettingAction *appAction = (AppSettingAction *)action;
-        cell.textLabel.text = action.name;
-        cell.imageView.image = [UIImage imageNamed:appAction.imageName];
+        cell.appName = appAction.name;
+        cell.appDescription = appAction.appDescription;
+        cell.appIcon = appAction.imageName;
         return cell;
         
     } else if ([action isKindOfClass:[SocialAction class]]) {
@@ -130,13 +132,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
         LogoAction *logoAction = (LogoAction *)action;
         SettingsLogoView *logoView = [SettingsLogoView new];
         logoView.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth(self.tableView.bounds)/2.0, 0, CGRectGetWidth(self.tableView.bounds)/2.0);
-        
-        [logoView.logoButton setImage:[UIImage imageNamed:logoAction.logoName]
-                             forState:UIControlStateNormal];
-        [logoView.logoButton addTarget:self
-                                action:@selector(logoTapped:)
-                      forControlEvents:UIControlEventTouchUpInside];
-        [logoView layoutIfNeeded];
+        logoView.image = [UIImage imageNamed:logoAction.logoName];
         return logoView;
     } else if ([action isKindOfClass:[SwitchSettingsAction class]]) {
         SwitchSettingsAction *switchAction = (SwitchSettingsAction *)action;
@@ -174,10 +170,6 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.actionGroups[section].name;
-}
-
--(void)logoTapped:(UIButton *)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.raostudios.com"]];
 }
 
 -(void)valueChanged:(UISwitch *)sender {
