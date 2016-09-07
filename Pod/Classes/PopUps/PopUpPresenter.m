@@ -56,40 +56,6 @@
     self.toolTip.translatesAutoresizingMaskIntoConstraints = NO;
     [superView addSubview:self.toolTip];
     
-    NSLayoutAttribute senderTopAttribute;
-    NSLayoutAttribute popupTopAttribute;
-    NSLayoutAttribute centerAttribute;
-
-    if(direction == PopUpDirectionUp) {
-        senderTopAttribute = NSLayoutAttributeTop;
-        popupTopAttribute = NSLayoutAttributeBottom;
-        centerAttribute = NSLayoutAttributeCenterX;
-    } else if(direction == PopUpDirectionDown) {
-        senderTopAttribute = NSLayoutAttributeBottom;
-        popupTopAttribute = NSLayoutAttributeTop;
-        centerAttribute = NSLayoutAttributeCenterX;
-    } else if(direction == PopUpDirectionRight) {
-        senderTopAttribute = NSLayoutAttributeTrailing;
-        popupTopAttribute = NSLayoutAttributeLeading;
-        centerAttribute = NSLayoutAttributeCenterY;
-    } else { //  direction == PopUpDirectionLeft
-        senderTopAttribute = NSLayoutAttributeLeading;
-        popupTopAttribute = NSLayoutAttributeTrailing;
-        centerAttribute = NSLayoutAttributeCenterY;
-    }
-    
-    NSLayoutConstraint *centerContrstaint = [NSLayoutConstraint constraintWithItem:sender
-                                                                         attribute:centerAttribute
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.toolTip
-                                                                         attribute:centerAttribute
-                                                                        multiplier:1.0
-                                                                          constant:0];
-    centerContrstaint.priority = UILayoutPriorityDefaultLow;
-    
-    [superView addConstraint:centerContrstaint];
-    
-    
     CGPoint contentOffset = CGPointZero;
     UIView *newScrollView = sender.superview;
     
@@ -102,6 +68,31 @@
         newScrollView = newScrollView.superview;
     }
     
+    NSLayoutAttribute senderTopAttribute;
+    NSLayoutAttribute popupTopAttribute;
+    NSLayoutAttribute centerAttribute;
+    CGFloat centerXOffset = 0.0;
+
+    if(direction == PopUpDirectionUp) {
+        senderTopAttribute = NSLayoutAttributeTop;
+        popupTopAttribute = NSLayoutAttributeBottom;
+        centerAttribute = NSLayoutAttributeCenterX;
+        centerXOffset = contentOffset.x;
+    } else if(direction == PopUpDirectionDown) {
+        senderTopAttribute = NSLayoutAttributeBottom;
+        popupTopAttribute = NSLayoutAttributeTop;
+        centerAttribute = NSLayoutAttributeCenterX;
+        centerXOffset = contentOffset.x;
+    } else if(direction == PopUpDirectionRight) {
+        senderTopAttribute = NSLayoutAttributeTrailing;
+        popupTopAttribute = NSLayoutAttributeLeading;
+        centerAttribute = NSLayoutAttributeCenterY;
+    } else { //  direction == PopUpDirectionLeft
+        senderTopAttribute = NSLayoutAttributeLeading;
+        popupTopAttribute = NSLayoutAttributeTrailing;
+        centerAttribute = NSLayoutAttributeCenterY;
+    }
+    
     self.constraintTop = [NSLayoutConstraint constraintWithItem:sender
                                                       attribute:senderTopAttribute
                                                       relatedBy:NSLayoutRelationEqual
@@ -111,6 +102,16 @@
                                                        constant:contentOffset.y];
     
     [superView addConstraint:self.constraintTop];
+    
+    NSLayoutConstraint *centerContrstaint = [NSLayoutConstraint constraintWithItem:sender
+                                                                         attribute:centerAttribute
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.toolTip
+                                                                         attribute:centerAttribute
+                                                                        multiplier:1.0
+                                                                          constant:centerXOffset];
+    centerContrstaint.priority = UILayoutPriorityDefaultLow;
+    [superView addConstraint:centerContrstaint];
     
     self.overlay = [[UIView alloc] initWithFrame:CGRectZero];
     self.overlay.translatesAutoresizingMaskIntoConstraints = NO;
