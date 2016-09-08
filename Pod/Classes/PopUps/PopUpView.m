@@ -70,6 +70,13 @@ static const CGFloat height = 10.0;
         
         [self addConstraints:@[self.leadingContraint, self.trailingContraint, self.topContraint, self.bottomContraint]];
         self.backgroundColor = [UIColor clearColor];
+        container.backgroundColor = [UIColor clearColor];
+        
+        self.layer.shadowRadius = 6.0;
+        self.layer.shadowOffset = CGSizeMake(0, 8.0);
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOpacity = .50;
+        
     }
     return self;
 }
