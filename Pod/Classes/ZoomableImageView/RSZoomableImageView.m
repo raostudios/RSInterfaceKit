@@ -124,7 +124,7 @@
     return self.imageViewFull;
 }
 
--(void) updateImage:(UIImage *)image shouldUpdateFrame:(BOOL)updateFrames {
+-(void) updateImage:(nonnull UIImage *)image shouldUpdateFrame:(BOOL)updateFrames {
     NSParameterAssert(image != nil);
 
     UIImage *newImage = [UIImage imageWithCGImage:image.CGImage
