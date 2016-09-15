@@ -10,11 +10,11 @@
 
 @interface RSZoomableImageView : UIScrollView
 
-@property (nonatomic, strong) UITapGestureRecognizer *doubleTapGestureRecognizer;
-@property (nonatomic, strong) UIImageView *imageViewFull;
+@property (nonatomic, strong)  UITapGestureRecognizer * _Nonnull doubleTapGestureRecognizer;
+@property (nonatomic, strong) UIImageView * _Nonnull imageViewFull;
 
--(void)updateImage:(UIImage *)image shouldUpdateFrame:(BOOL)updateFrames;
--(UIImage *)currentImage;
+-(void)updateImage:(nonnull UIImage *)image shouldUpdateFrame:(BOOL)updateFrames;
+-(nullable UIImage *)currentImage;
 
 -(void)prepareForReuse;
 

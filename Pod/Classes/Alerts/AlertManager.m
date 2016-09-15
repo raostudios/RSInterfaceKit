@@ -153,7 +153,7 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
         __weak typeof(self) weakSelf = self;
         
         [UIView animateWithDuration:(animated ? 1.0 : 0.0) delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            [weakSelf.alertView layoutIfNeeded];
+            [weakSelf.alertView.superview layoutIfNeeded];
         } completion:^(BOOL finished) {
             [weakSelf.alertView removeFromSuperview];
             weakSelf.alertView = nil;
