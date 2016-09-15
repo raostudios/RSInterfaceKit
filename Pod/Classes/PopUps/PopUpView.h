@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, PopUpDirection) {
 
 @interface PopUpView : UIView
 
--(instancetype) initWithContainer:(UIView *)container;
+-(instancetype _Nonnull) initWithContainer:(UIView * _Nonnull)container;
 
 @property (nonatomic, assign) PopUpDirection direction;
 @property (nonatomic, assign) CGFloat offset;

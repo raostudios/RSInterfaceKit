@@ -14,9 +14,9 @@
 
 @interface MenuSelectionManager : NSObject<UIAppearanceContainer>
 
-@property (nonatomic, strong) UIButton *buttonMenuSelector;
-@property (nonatomic, weak) id<MenuSelectionDelegate>delegate;
-@property (nonatomic, weak) id<MenuSelectionDataSource>dataSource;
-@property (nonatomic, weak) UIViewController *parentViewController;
+@property (nonatomic, strong) UIButton * _Nonnull buttonMenuSelector;
+@property (nonatomic, weak) id<MenuSelectionDelegate> _Nullable delegate;
+@property (nonatomic, weak) id<MenuSelectionDataSource> _Nullable dataSource;
+@property (nonatomic, weak) UIViewController * _Nullable parentViewController;
 
 @end

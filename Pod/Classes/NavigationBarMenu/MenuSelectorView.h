@@ -10,11 +10,9 @@
 
 @interface MenuSelectorView : UIView<UIAppearanceContainer>
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UIView *overlayView;
-
-@property (nonatomic, strong) NSLayoutConstraint *constraintHeight;
-
-@property (nonatomic, strong) UIColor *overlayBackgroundColor;
+@property (nonatomic, strong) UITableView * _Nonnull tableView;
+@property (nonatomic, strong) UIView * _Nonnull overlayView;
+@property (nonatomic, strong) NSLayoutConstraint * _Nonnull constraintHeight;
+@property (nonatomic, strong) UIColor * _Nullable overlayBackgroundColor;
 
 @end

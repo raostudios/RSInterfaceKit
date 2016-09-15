@@ -10,19 +10,19 @@
 
 @class Alert;
 
-extern NSString * const AlertManagerBannerDisplayedNotification;
-extern NSString * const AlertManagerBannerDismissedNotification;
-extern NSString * const AlertManagerBannerWillDisplayNotification;
-extern NSString * const AlertManagerBannerWillDismissNotification;
+extern NSString * _Nonnull const AlertManagerBannerDisplayedNotification;
+extern NSString * _Nonnull const AlertManagerBannerDismissedNotification;
+extern NSString * _Nonnull const AlertManagerBannerWillDisplayNotification;
+extern NSString * _Nonnull const AlertManagerBannerWillDismissNotification;
 
 
 @interface AlertManager : NSObject
 
-+(instancetype) sharedManager;
++(instancetype _Nonnull) sharedManager;
 
--(void) scheduleAlert:(Alert *)alert;
+-(void) scheduleAlert:(Alert * _Nonnull)alert;
 -(void) showNextQueuedAlert;
 -(void) viewControllerIsDissapearing;
--(void) cancelAlert:(Alert *)alert;
+-(void) cancelAlert:(Alert * _Nonnull)alert;
 
 @end

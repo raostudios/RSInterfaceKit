@@ -13,14 +13,14 @@
 
 @protocol ZoomAnimatorDelegate <NSObject>
 
--(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(ZoomAnimator *)zoomAnimator;
--(UIImageView *) initialImageViewForFullImageViewController:(ZoomAnimator *)zoomAnimator;
--(UIImage *) initialImageForFullImageViewController:(ZoomAnimator *)zoomAnimator;
+-(CGRect) rectForInitialImageForView:(UIView * _Nonnull)view forFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
+-(UIImageView * _Nonnull) initialImageViewForFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
+-(UIImage * _Nonnull) initialImageForFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
 
 @end
 
 @interface ZoomAnimator : NSObject<UIViewControllerTransitioningDelegate>
 
-@property (nonatomic, weak) id<ZoomAnimatorDelegate> delegate;
+@property (nonatomic, weak) id<ZoomAnimatorDelegate> _Nullable delegate;
 
 @end

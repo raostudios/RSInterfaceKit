@@ -13,24 +13,24 @@
 
 @protocol MenuSelectionDataSource <NSObject>
 
--(NSString *)titleForIndexPath:(NSIndexPath *)indexPath;
--(NSUInteger)numberOfCellsInMenuSelectionManager:(MenuSelectionViewController *)manager;
--(UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath forManager:(MenuSelectionViewController *)manager;
+-(NSString * _Nonnull)titleForIndexPath:(NSIndexPath * _Nonnull)indexPath;
+-(NSUInteger)numberOfCellsInMenuSelectionManager:(MenuSelectionViewController * _Nonnull)manager;
+-(UITableViewCell * _Nonnull)cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath forManager:(MenuSelectionViewController * _Nonnull)manager;
 
 @end
 
 @protocol MenuSelectionDelegate <NSObject>
 
--(void)menuSelectionManager:(MenuSelectionViewController *)manager cellSelectedAtIndexPath:(NSIndexPath *)indexPath;
+-(void)menuSelectionManager:(MenuSelectionViewController * _Nonnull)manager cellSelectedAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 @end
 
 
 @interface MenuSelectionViewController : UIViewController
 
-@property (nonatomic, strong, readonly) NSLayoutConstraint *constraintHeight;
-@property (nonatomic, weak) id<MenuSelectionDelegate>delegate;
-@property (nonatomic, weak) id<MenuSelectionDataSource>dataSource;
-@property (nonatomic, strong,readonly) UIView *overlayView;
+@property (nonatomic, strong, readonly) NSLayoutConstraint * _Nonnull constraintHeight;
+@property (nonatomic, weak) id<MenuSelectionDelegate> _Nullable delegate;
+@property (nonatomic, weak) id<MenuSelectionDataSource> _Nullable dataSource;
+@property (nonatomic, strong,readonly) UIView * _Nonnull overlayView;
 
 @end

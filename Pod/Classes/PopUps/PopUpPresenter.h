@@ -14,17 +14,17 @@
 
 @protocol PopUpPresenterDelegate <NSObject>
 
--(void)popUpDismissed:(PopUpPresenter *)popupPresenter;
+-(void)popUpDismissed:(PopUpPresenter * _Nonnull)popupPresenter;
 
 @end
 
 @interface PopUpPresenter : NSObject
 
-+(PopUpPresenter *)sharedPresentor;
++(PopUpPresenter * _Nonnull)sharedPresentor;
 
-@property (nonatomic, weak) id<PopUpPresenterDelegate> delegate;
+@property (nonatomic, weak) id<PopUpPresenterDelegate> _Nullable delegate;
 
--(void) popupContainer:(UIView *)container fromView:(UIView *)sender direction:(PopUpDirection)direction;
--(void) popupContainer:(UIView *)container fromBarButtonItem:(UIBarButtonItem *)sender direction:(PopUpDirection)direction;
+-(void) popupContainer:(UIView * _Nonnull)container fromView:(UIView * _Nonnull)sender direction:(PopUpDirection)direction;
+-(void) popupContainer:(UIView * _Nonnull)container fromBarButtonItem:(UIBarButtonItem * _Nonnull)sender direction:(PopUpDirection)direction;
 
 @end

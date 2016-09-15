@@ -12,15 +12,15 @@
 
 @protocol FullImageViewControllerDelegate <NSObject>
 
--(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(FullImageViewController *)fullImageViewController;
--(UIImageView *) initialImageViewForFullImageViewController:(FullImageViewController *)fullImageViewController;
--(UIImage *) initialImageForFullImageViewController:(FullImageViewController *)fullImageViewController;
+-(CGRect) rectForInitialImageForView:(UIView * _Nonnull)view forFullImageViewController:(FullImageViewController * _Nonnull)fullImageViewController;
+-(UIImageView * _Nonnull) initialImageViewForFullImageViewController:(FullImageViewController * _Nonnull)fullImageViewController;
+-(UIImage * _Nonnull) initialImageForFullImageViewController:(FullImageViewController *_Nonnull)fullImageViewController;
 
 @end
 
 @interface FullImageViewController : UIViewController
 
-@property (nonatomic) UIImage *image;
-@property (nonatomic, weak) id<FullImageViewControllerDelegate> delegate;
+@property (nonatomic) UIImage * _Nonnull image;
+@property (nonatomic, weak) id<FullImageViewControllerDelegate> _Nullable delegate;
 
 @end
