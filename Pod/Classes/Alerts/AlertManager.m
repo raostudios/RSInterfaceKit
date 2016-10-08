@@ -34,6 +34,7 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
 
 
 -(void) showAlertWithMessage:(Alert *)alert withAnimation:(BOOL)animations {
+    NSAssert([NSThread isMainThread], @"Cannot call method on main thread");
     
     if ([alert.uniqueId length]) {
         [self.alertsDisplayed addObject:alert.uniqueId];
@@ -193,6 +194,10 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
         topViewController = navigationController.topViewController;
     }
     
+    while (topViewController.presentedViewController) {
+        topViewController = topViewController.presentedViewController;
+    }
+    
     return topViewController;
 }
 
@@ -247,14 +252,18 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
         [self.alertsQueued removeObjectAtIndex:0];
         if (alert.shouldDisplay) {
             if (alert.shouldDisplay()) {
-                [self showAlertWithMessage:alert withAnimation:YES];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showAlertWithMessage:alert withAnimation:YES];
+                });
             } else {
                 if (alert.retry) {
                     [self.alertsQueued addObject:alert];
                 }
             }
         } else {
-            [self showAlertWithMessage:alert withAnimation:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showAlertWithMessage:alert withAnimation:YES];
+            });
         }
     }
 }
