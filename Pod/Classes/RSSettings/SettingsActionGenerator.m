@@ -15,25 +15,34 @@
 
 @interface SettingsActionGenerator ()<MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 
+@property (copy, nonatomic) void (^mailCompletionBlock)(BOOL);
+@property (copy, nonatomic) void (^textCompletionBlock)(BOOL);
+@property (copy, nonatomic) void (^facebookCompletionBlock)(BOOL);
+@property (copy, nonatomic) void (^twitterCompletionBlock)(BOOL);
+
 @end
 
 @implementation SettingsActionGenerator
 
--(SettingsAction *)mailAction {
+-(SettingsAction *)mailActionWithCompletion:(void(^)(BOOL))completionBlock {
     SettingsAction *action = [SettingsAction new];
     action.name = @"Mail";
     action.action = ^{
         [self shareMail:nil];
     };
+    self.mailCompletionBlock = completionBlock;
+    
     return action;
 }
 
--(SettingsAction *)textAction {
+-(SettingsAction *)textActionWithCompletion:(void(^)(BOOL))completionBlock {
     SettingsAction *action = [SettingsAction new];
     action.name = @"Text";
     action.action = ^{
         [self shareTextMessage:nil];
     };
+    self.textCompletionBlock = completionBlock;
+
     return action;
 }
 
@@ -75,10 +84,14 @@
         tweetSheetOBJ.completionHandler = ^(SLComposeViewControllerResult result) {
             switch (result) {
                 case SLComposeViewControllerResultCancelled:
-//                    [Flurry logEvent:@"Twitter Share" withParameters:@{@"Result" :@"Cancelled"}];
+                    if (self.twitterCompletionBlock) {
+                        self.twitterCompletionBlock(NO);
+                    }
                     break;
                 case SLComposeViewControllerResultDone:
-//                    [Flurry logEvent:@"Twitter Share" withParameters:@{@"Result" :@"Success"}];
+                    if (self.twitterCompletionBlock) {
+                        self.twitterCompletionBlock(YES);
+                    }
                     break;
                 default:
                     break;
@@ -89,6 +102,7 @@
         [self showServiceUnavailableMessage:@"Twitter"];
     }
 }
+
 - (IBAction)shareFacebookPressed:(id)sender {
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
@@ -98,10 +112,14 @@
         facebookSheetOBJ.completionHandler = ^(SLComposeViewControllerResult result) {
             switch (result) {
                 case SLComposeViewControllerResultCancelled:
-//                    [Flurry logEvent:@"Facebook Share" withParameters:@{@"Result" :@"Cancelled"}];
+                    if (self.facebookCompletionBlock) {
+                        self.facebookCompletionBlock(NO);
+                    }
                     break;
                 case SLComposeViewControllerResultDone:
-//                    [Flurry logEvent:@"Facebook Share" withParameters:@{@"Result" :@"Success"}];
+                    if (self.facebookCompletionBlock) {
+                        self.facebookCompletionBlock(YES);
+                    }
                     break;
                 default:
                     break;
@@ -138,23 +156,31 @@
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller
            didFinishWithResult:(MFMailComposeResult)result
-                         error:(NSError *)error
-{
-    //    switch (result) {
-    //        case MFMailComposeResultFailed:
-    //            [Flurry logEvent:@"Mail Share" withParameters:@{@"Result" :@"Failed"}];
-    //        case MFMailComposeResultCancelled:
-    //            [Flurry logEvent:@"Mail Share" withParameters:@{@"Result" :@"Cancelled"}];
-    //            break;
-    //        case MFMailComposeResultSaved:
-    //            [Flurry logEvent:@"Mail Share" withParameters:@{@"Result" :@"Saved"}];
-    //            break;
-    //        case MFMailComposeResultSent:
-    //            [Flurry logEvent:@"Mail Share" withParameters:@{@"Result" :@"Sent"}];
-    //            break;
-    //        default:
-    //            break;
-    //    }
+                         error:(NSError *)error {
+    
+        switch (result) {
+            case MFMailComposeResultFailed:
+                if (self.mailCompletionBlock) {
+                    self.mailCompletionBlock(NO);
+                }
+            case MFMailComposeResultCancelled:
+                if (self.mailCompletionBlock) {
+                    self.mailCompletionBlock(NO);
+                }
+                break;
+            case MFMailComposeResultSaved:
+                if (self.mailCompletionBlock) {
+                    self.mailCompletionBlock(NO);
+                }
+                break;
+            case MFMailComposeResultSent:
+                if (self.mailCompletionBlock) {
+                    self.mailCompletionBlock(YES);
+                }
+                break;
+            default:
+                break;
+        }
     [controller dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -176,19 +202,25 @@
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
     
-    //    switch (result) {
-    //        case MessageComposeResultCancelled:
-    //            [Flurry logEvent:@"Text Share" withParameters:@{@"Result" :@"Cancelled"}];
-    //            break;
-    //        case MessageComposeResultSent:
-    //            [Flurry logEvent:@"Text Share" withParameters:@{@"Result" :@"Sent"}];
-    //            break;
-    //        case MessageComposeResultFailed:
-    //            [Flurry logEvent:@"Text Share" withParameters:@{@"Result" :@"Failed"}];
-    //            break;
-    //        default:
-    //            break;
-    //    }
+    switch (result) {
+        case MessageComposeResultCancelled:
+            if (self.textCompletionBlock) {
+                self.textCompletionBlock(NO);
+            }
+            break;
+        case MessageComposeResultSent:
+            if (self.textCompletionBlock) {
+                self.textCompletionBlock(NO);
+            }
+            break;
+        case MessageComposeResultFailed:
+            if (self.textCompletionBlock) {
+                self.textCompletionBlock(NO);
+            }
+            break;
+        default:
+            break;
+    }
     
     [controller dismissViewControllerAnimated:YES completion:nil];
 }

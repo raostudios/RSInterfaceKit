@@ -18,8 +18,8 @@
 @property (strong, nonatomic) NSString *appId;
 @property (weak, nonatomic) UIViewController *viewController;
 
--(SettingsAction *)mailAction;
--(SettingsAction *)textAction;
+-(SettingsAction *)mailActionWithCompletion:(void(^)(BOOL))completionBlock;
+-(SettingsAction *)textActionWithCompletion:(void(^)(BOOL))completionBlock;
 -(SettingsAction *)facebookShareAction;
 -(SettingsAction *)twitterShareAction;
 
