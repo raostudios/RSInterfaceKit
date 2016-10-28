@@ -26,7 +26,8 @@
     if (self) {
         self.imageViewIcon = [[UIImageView alloc] init];
         self.imageViewIcon.translatesAutoresizingMaskIntoConstraints = NO;
-        
+        self.imageViewIcon.clipsToBounds = YES;
+        self.imageViewIcon.layer.cornerRadius = 5.0;
         [self.contentView addSubview:self.imageViewIcon];
         
         self.labelDescription = [[UILabel alloc] init];
