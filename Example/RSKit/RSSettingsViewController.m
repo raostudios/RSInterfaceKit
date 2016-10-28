@@ -34,9 +34,8 @@
         
         SettingsActionGroup *shareGroup = [SettingsActionGroup new];
         shareGroup.name = @"Tell Others About Preset";
-        shareGroup.actions = @[[generator mailAction], [generator textAction]];
+        shareGroup.actions = @[[generator mailActionWithCompletion:nil], [generator textActionWithCompletion:nil]];
     
-        
         AppSettingAction *bigClockSettingAction = [AppSettingAction new];
         bigClockSettingAction.appId = @"583451358";
         bigClockSettingAction.name = @"The Big Clock";

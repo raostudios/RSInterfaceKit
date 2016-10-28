@@ -2,10 +2,10 @@ use_frameworks!
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-target 'RSInterfaceKit', :exclusive => true do
+target 'RSInterfaceKit' do
   pod "RSInterfaceKit", :path => "../"
 end
 
-target 'Tests', :exclusive => true do
+target 'Tests' do
   pod "RSInterfaceKit", :path => "../"
 end
