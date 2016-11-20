@@ -9,8 +9,6 @@
 #import "MenuSelectionViewController.h"
 #import "MenuSelectorView.h"
 
-@import Photos;
-
 @interface MenuSelectionViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) MenuSelectorView *view;
