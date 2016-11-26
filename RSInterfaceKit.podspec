@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
 
   s.subspec 'LoadingView' do |sdkit|
