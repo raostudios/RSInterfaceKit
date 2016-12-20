@@ -214,10 +214,7 @@
     CGPoint tapLocation = [gesture locationInView:self.overlay];
     CGRect frame = [self.senderView.superview convertRect:self.senderView.frame toView:[self superViewFromView:self.senderView]];
 
-    [self.delegate popUpDismissed:self];
-
-    [self.overlay removeFromSuperview];
-    [self.toolTip removeFromSuperview];
+    [self hidePopup];
     
     UIControl *control;
     if ([self.senderView isKindOfClass:[UIControl class]]) {
@@ -244,6 +241,13 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+}
+
+-(void)hidePopup {
+    [self.delegate popUpDismissed:self];
+    
+    [self.overlay removeFromSuperview];
+    [self.toolTip removeFromSuperview];
 }
 
 -(void) keyboardDidShow:(NSNotification *) notification {

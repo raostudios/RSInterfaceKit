@@ -27,4 +27,6 @@
 -(void) popupContainer:(UIView * _Nonnull)container fromView:(UIView * _Nonnull)sender direction:(PopUpDirection)direction;
 -(void) popupContainer:(UIView * _Nonnull)container fromBarButtonItem:(UIBarButtonItem * _Nonnull)sender direction:(PopUpDirection)direction;
 
+-(void)hidePopup;
+
 @end
