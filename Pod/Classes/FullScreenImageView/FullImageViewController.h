@@ -12,7 +12,7 @@
 
 @protocol FullImageViewControllerDelegate <NSObject>
 
--(CGRect) rectForFinalImageForView:(UIView * _Nonnull)view forFullImageViewController:(FullImageViewController * _Nonnull)fullImageViewController;
+-(UIEdgeInsets) insetForFinalImageForView:(UIView * _Nonnull)view forFullImageViewController:(FullImageViewController * _Nonnull)fullImageViewController;
 -(CGRect) rectForInitialImageForView:(UIView * _Nonnull)view forFullImageViewController:(FullImageViewController * _Nonnull)fullImageViewController;
 -(UIImageView * _Nonnull) initialImageViewForFullImageViewController:(FullImageViewController * _Nonnull)fullImageViewController;
 -(UIImage * _Nonnull) initialImageForFullImageViewController:(FullImageViewController *_Nonnull)fullImageViewController;

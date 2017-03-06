@@ -62,6 +62,10 @@
 
 #pragma mark - FullImageViewControllerDelegate
 
+-(UIEdgeInsets) insetForFinalImageForView:(UIView * _Nonnull)view forFullImageViewController:(FullImageViewController * _Nonnull)fullImageViewController {
+    return UIEdgeInsetsZero;
+}
+
 -(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(FullImageViewController *)fullImageViewController {
     CGRect convertedRect = [self.view convertRect:self.selectedButton.frame toView:self.view.superview];
     return convertedRect;
