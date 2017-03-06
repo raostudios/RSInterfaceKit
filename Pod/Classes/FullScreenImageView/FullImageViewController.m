@@ -82,6 +82,14 @@
     self.transitioningDelegate = self.zoomAnimator;
 }
 
+#pragma mark - ZoomAnimatorDelegate
+
+
+-(UIEdgeInsets) insetForFinalImageForView:(UIView * _Nonnull)view forFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator {
+    return UIEdgeInsetsZero;
+}
+
+
 -(CGRect) rectForInitialImageForView:(UIView *)view forFullImageViewController:(ZoomAnimator *)zoomAnimator {
     return [self.delegate rectForInitialImageForView:view forFullImageViewController:self];
 }
@@ -94,6 +102,7 @@
     return [self.delegate initialImageForFullImageViewController:self];
 }
 
+#pragma mark - Lazy Instantiation
 
 -(ZoomAnimator *) zoomAnimator {
     if (!_zoomAnimator) {
