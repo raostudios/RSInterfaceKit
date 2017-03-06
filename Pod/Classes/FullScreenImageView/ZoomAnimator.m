@@ -31,7 +31,7 @@
 }
 
 -(NSTimeInterval) transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return .2;
+    return .3;
 }
 
 -(void) animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -59,9 +59,17 @@
         initialFrame = [self frameForImage:image
                                insideFrame:insideFrame forContentMode:initialImageView.contentMode];
         
+        CGRect toFrame = [transitionContext finalFrameForViewController:toViewController];
+        UIEdgeInsets inset = [self.delegate insetForFinalImageForView:toViewController.view forFullImageViewController:self];
+        
+        toFrame.size.height -= inset.top + inset.bottom;
+        toFrame.size.width -= inset.left + inset.right;
+
         finalFrame = [self frameForImage:image
-                             insideFrame:[transitionContext finalFrameForViewController:toViewController]
+                             insideFrame:toFrame
                           forContentMode:UIViewContentModeScaleAspectFit];
+        
+
         
         tempView.frame = initialFrame;
         

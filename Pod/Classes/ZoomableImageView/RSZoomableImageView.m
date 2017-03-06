@@ -29,7 +29,7 @@
         self.doubleTapGestureRecognizer.numberOfTapsRequired = 2;
         [self addGestureRecognizer:self.doubleTapGestureRecognizer];
         
-        [self addSubview:self.imageViewFull];
+        [super addSubview:self.imageViewFull];
     }
     
     return self;
@@ -80,7 +80,7 @@
                                               self.contentSize.height);
         
     }
-
+    
     [self setNeedsLayout];
 }
 
@@ -98,6 +98,7 @@
 
 -(void) layoutSubviews {
     [super layoutSubviews];
+    self.bounds = self.bounds;
     [self centerScrollViewContents];
 }
 
@@ -114,19 +115,27 @@
     [self setZoomScale:self.minimumZoomScale animated:YES];
 }
 
+-(void)addSubview:(UIView *)view {
+    [self.imageViewFull addSubview:view];
+}
+
+
 #pragma mark - UIScrollViewDelegate
 
 -(void) scrollViewDidZoom:(UIScrollView *)scrollView {
     [self centerScrollViewContents];
+    [self.zoomDelegate zoomableImageViewDidZoom:self];
 }
 
 -(UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageViewFull;
 }
 
+#pragma mark - Public
+
 -(void) updateImage:(nonnull UIImage *)image shouldUpdateFrame:(BOOL)updateFrames {
     NSParameterAssert(image != nil);
-
+    
     UIImage *newImage = [UIImage imageWithCGImage:image.CGImage
                                             scale:[UIScreen mainScreen].scale
                                       orientation:image.imageOrientation];

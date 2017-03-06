@@ -210,7 +210,7 @@
             break;
         case MessageComposeResultSent:
             if (self.textCompletionBlock) {
-                self.textCompletionBlock(NO);
+                self.textCompletionBlock(YES);
             }
             break;
         case MessageComposeResultFailed:

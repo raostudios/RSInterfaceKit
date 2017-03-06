@@ -14,6 +14,8 @@
 @protocol ZoomAnimatorDelegate <NSObject>
 
 -(CGRect) rectForInitialImageForView:(UIView * _Nonnull)view forFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
+-(UIEdgeInsets) insetForFinalImageForView:(UIView * _Nonnull)view forFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
+
 -(UIImageView * _Nonnull) initialImageViewForFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
 -(UIImage * _Nonnull) initialImageForFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
 
