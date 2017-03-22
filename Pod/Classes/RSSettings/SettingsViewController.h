@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class SettingsActionGroup;
+@class UserSettingsAction;
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController<UITableViewDataSource>
 
 @property (strong, nonatomic) UIImage *imageLogo;
 @property (strong, nonatomic) NSString *appDescription;
@@ -19,5 +20,7 @@
 @property (strong, nonatomic) NSArray<SettingsActionGroup *> *actionGroups;
 
 @property (strong, nonatomic) UITableView *tableView;
+
+-(UserSettingsAction *) actionForView:(UIView *)view;
 
 @end

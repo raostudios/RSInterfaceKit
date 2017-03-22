@@ -23,7 +23,7 @@
 #import "SliderActionTableViewCell.h"
 #import "PromoAppTableViewCell.h"
 
-@interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SettingsViewController () <UITableViewDelegate>
 
 @property (strong, nonatomic) SettingsLogoView *logoView;
 @property (strong, nonatomic) UILabel *labelBuildNumber;
