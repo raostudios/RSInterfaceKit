@@ -65,10 +65,7 @@
     return self;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(CGRectGetWidth(self.collectionView.bounds),
-                      CGRectGetHeight(self.collectionView.bounds));
-}
+
 
 -(void) dealloc {
     [self.scrollTimer invalidate];
@@ -87,9 +84,20 @@
                                         animated:YES];
 }
 
+#pragma mark - UICollectionViewDataSource
+
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return ([self.dataSource numberOfItemsInCarouselView:self] + (self.shouldWrapAround ? 2 : 0));
 }
+
+-(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.carouselCellIdentifier forIndexPath:indexPath];
+    [self.dataSource configureCell:cell InCarouselView:self atIndex:[self adjustedIndexForCollectionViewIndex:indexPath.item]];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
 
 -(void) collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -111,26 +119,26 @@
     }
 }
 
-
--(NSIndexPath *) indexPathForItemAtCenterOfCollectionView:(UICollectionView *)collectionView {
-    return [collectionView indexPathForItemAtPoint:CGPointMake(collectionView.center.x + collectionView.contentOffset.x, collectionView.center.y + collectionView.contentOffset.y)];
-}
-
 -(void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.scrollTimer invalidate];
-}
-
--(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.carouselCellIdentifier forIndexPath:indexPath];
-    [self.dataSource configureCell:cell InCarouselView:self atIndex:[self adjustedIndexForCollectionViewIndex:indexPath.item]];
-    return cell;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[self.collectionView indexPathForItemAtPoint:scrollView.contentOffset]];
     [self.delegate carouselView:self animationEndedOnCell:cell];
 }
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(CGRectGetWidth(self.collectionView.bounds),
+                      CGRectGetHeight(self.collectionView.bounds));
+}
+
+
+-(NSIndexPath *) indexPathForItemAtCenterOfCollectionView:(UICollectionView *)collectionView {
+    return [collectionView indexPathForItemAtPoint:CGPointMake(collectionView.center.x + collectionView.contentOffset.x, collectionView.center.y + collectionView.contentOffset.y)];
+}
+
 
 -(NSUInteger) adjustedIndexForCollectionViewIndex:(NSUInteger) index {
     
