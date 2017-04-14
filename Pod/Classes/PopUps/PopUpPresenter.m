@@ -7,13 +7,14 @@
 //
 
 #import "PopUpPresenter.h"
+#import "PopupBackgroundView.h"
 #import "PopUpView.h"
 
 @import UIKit;
 
-@interface PopUpPresenter ()
+@interface PopUpPresenter ()<PopupBackgroundViewDelegate>
 
-@property (nonatomic, strong) UIView *overlay;
+@property (nonatomic, strong) PopupBackgroundView *overlay;
 @property (nonatomic, strong) PopUpView *toolTip;
 @property (nonatomic, strong) UIView *senderView;
 @property (nonatomic, strong) UIBarButtonItem *senderBarButtonItem;
@@ -113,8 +114,10 @@
     centerContrstaint.priority = UILayoutPriorityDefaultLow;
     [superView addConstraint:centerContrstaint];
     
-    self.overlay = [[UIView alloc] initWithFrame:CGRectZero];
+    self.overlay = [[PopupBackgroundView alloc] initWithFrame:CGRectZero];
     self.overlay.translatesAutoresizingMaskIntoConstraints = NO;
+    self.overlay.delegate = self;
+    
     [superView insertSubview:self.overlay belowSubview:self.toolTip];
     
     [superView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=8)-[toolTip]-(>=8)-|"
@@ -131,9 +134,6 @@
                                                                       options:0
                                                                       metrics:nil
                                                                         views:@{@"overlay":self.overlay}]];
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide:)];
-    [self.overlay addGestureRecognizer:tapGesture];
     
     self.toolTip.offset = [self findOffsetForPopUp:self.toolTip fromSender:sender];
     
@@ -208,46 +208,18 @@
     }
 }
 
--(void) hide:(UITapGestureRecognizer *)gesture {
-    NSAssert(self.toolTip != nil, @"tooltip cannot be nil");
-    
-    CGPoint tapLocation = [gesture locationInView:self.overlay];
-    CGRect frame = [self.senderView.superview convertRect:self.senderView.frame toView:[self superViewFromView:self.senderView]];
-
-    [self hidePopup];
-    
-    UIControl *control;
-    if ([self.senderView isKindOfClass:[UIControl class]]) {
-        control = (UIControl *)self.senderView;
-    }
-    UIBarButtonItem *button = self.senderBarButtonItem;
-    
-    self.senderView = nil;
-    self.senderBarButtonItem = nil;
-    self.overlay = nil;
-    self.toolTip = nil;
-    
-    if (CGRectContainsPoint(frame, tapLocation)) {
-        if (control) {
-            [control sendActionsForControlEvents:UIControlEventTouchUpInside];
-        } else if(button) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [button.target performSelector:self.senderBarButtonItem.action];
-#pragma clang diagnostic pop
-        }
-    }
-    
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
-}
 
 -(void)hidePopup {
     [self.delegate popUpDismissed:self];
     
+    self.senderView = nil;
+    self.senderBarButtonItem = nil;
+    
     [self.overlay removeFromSuperview];
     [self.toolTip removeFromSuperview];
+    
+    self.overlay = nil;
+    self.toolTip = nil;
 }
 
 -(void) keyboardDidShow:(NSNotification *) notification {
@@ -284,5 +256,10 @@
 #pragma clang diagnostic pop
     return view;
 }
+
+-(void)dismissPopUpForBackgroundView:(PopupBackgroundView *)popupBackgroundView {
+    [self hidePopup];
+}
+
 
 @end

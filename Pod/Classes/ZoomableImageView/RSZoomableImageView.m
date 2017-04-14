@@ -104,7 +104,6 @@
 
 -(void) layoutSubviews {
     [super layoutSubviews];
-    self.bounds = self.bounds;
     [self centerScrollViewContents];
 }
 
@@ -116,7 +115,9 @@
         
         [self updateZoomBounds];
         
-        if (CGRectEqualToRect(self.imageViewFull.frame, CGRectZero) || originalZoom) {
+        if (CGRectEqualToRect(self.imageViewFull.frame, CGRectZero) ||
+            originalZoom ||
+            CGRectEqualToRect(self.oldBounds, CGRectZero)) {
             [self updateContentSize];
         }
         
@@ -153,7 +154,6 @@
                                             scale:[UIScreen mainScreen].scale
                                       orientation:image.imageOrientation];
     
-
     self.imageViewFull.image = newImage;
     
     if (!CGSizeEqualToSize(self.imageViewFull.image.size, CGSizeZero) && updateFrames) {
@@ -170,6 +170,7 @@
 
 -(void) prepareForReuse {
     self.imageViewFull.image = nil;
+    self.oldBounds = CGRectZero;
 }
 
 #pragma mark - Lazy Instantiation
