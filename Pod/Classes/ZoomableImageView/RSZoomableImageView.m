@@ -11,6 +11,7 @@
 @interface RSZoomableImageView () <UIScrollViewDelegate>
 
 @property (assign, nonatomic) CGRect oldBounds;
+@property (assign, nonatomic) CGSize oldImageSize;
 
 @end
 
@@ -102,6 +103,7 @@
     }
 }
 
+
 -(void) layoutSubviews {
     [super layoutSubviews];
     [self centerScrollViewContents];
@@ -117,8 +119,11 @@
         
         if (CGRectEqualToRect(self.imageViewFull.frame, CGRectZero) ||
             originalZoom ||
-            CGRectEqualToRect(self.oldBounds, CGRectZero)) {
+            CGRectEqualToRect(self.oldBounds, CGRectZero) ||
+            !CGSizeEqualToSize(self.oldImageSize, self.imageViewFull.image.size)) {
             [self updateContentSize];
+                
+            self.oldImageSize = self.imageViewFull.image.size;
         }
         
         self.oldBounds = bounds;
@@ -156,9 +161,13 @@
     
     self.imageViewFull.image = newImage;
     
-    if (!CGSizeEqualToSize(self.imageViewFull.image.size, CGSizeZero) && updateFrames) {
+    if ((!CGSizeEqualToSize(self.imageViewFull.image.size, CGSizeZero) && updateFrames) ||
+        !CGSizeEqualToSize(self.oldImageSize, self.imageViewFull.image.size)) {
         [self updateZoomBounds];
         [self updateContentSize];
+        [self centerScrollViewContents];
+        
+        self.oldImageSize = self.imageViewFull.image.size;
     }
 }
 
@@ -171,6 +180,7 @@
 -(void) prepareForReuse {
     self.imageViewFull.image = nil;
     self.oldBounds = CGRectZero;
+    self.oldImageSize = CGSizeZero;
 }
 
 #pragma mark - Lazy Instantiation
