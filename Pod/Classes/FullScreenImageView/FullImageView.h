@@ -20,6 +20,6 @@
 -(void) shouldShowButtons:(BOOL) showButtons;
 -(void) shouldShowButtons:(BOOL) showButtons animated:(BOOL)animated;
 -(void) flipWithAnimation:(BOOL) animated;
--(void) animateBackToOriginalWithCompletion:(void (^)())completionBlock;
+-(void) animateBackToOriginalWithCompletion:(void (^)(void))completionBlock;
 
 @end

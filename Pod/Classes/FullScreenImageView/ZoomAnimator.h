@@ -19,6 +19,8 @@
 -(UIImageView * _Nonnull) initialImageViewForFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
 -(UIImage * _Nonnull) initialImageForFullImageViewController:(ZoomAnimator * _Nonnull)zoomAnimator;
 
+-(void)didDismissAnimator:(ZoomAnimator *_Nonnull)zoomAnimator;
+
 @end
 
 @interface ZoomAnimator : NSObject<UIViewControllerTransitioningDelegate>

@@ -63,7 +63,7 @@
     [self shouldShowButtons:self.buttonDone.alpha == 0.0 animated:animated];
 }
 
--(void) animateBackToOriginalWithCompletion:(void (^)())completionBlock {
+-(void) animateBackToOriginalWithCompletion:(void (^)(void))completionBlock {
     
     [UIView animateWithDuration:.1 animations:^{
         self.scrollView.zoomScale = self.scrollView.minimumZoomScale;

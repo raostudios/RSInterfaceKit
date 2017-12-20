@@ -21,8 +21,6 @@
 
 @property (nonatomic, strong) NSLayoutConstraint *constraintTop;
 
-
-
 @end
 
 @implementation PopUpPresenter
@@ -263,6 +261,5 @@
 -(void)dismissPopUpForBackgroundView:(PopupBackgroundView *)popupBackgroundView {
     [self hidePopup];
 }
-
 
 @end

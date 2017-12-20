@@ -116,6 +116,7 @@
             [tempView removeFromSuperview];
             toViewController.view.frame = [transitionContext finalFrameForViewController:toViewController];
             initialImageView.alpha = 1.0;
+            [self.delegate didDismissAnimator:self];
             [transitionContext completeTransition:finished];
         }];
     }

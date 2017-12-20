@@ -102,6 +102,10 @@
     return [self.delegate initialImageForFullImageViewController:self];
 }
 
+-(void)didDismissAnimator:(ZoomAnimator *)zoomAnimator {
+    
+}
+
 #pragma mark - Lazy Instantiation
 
 -(ZoomAnimator *) zoomAnimator {
