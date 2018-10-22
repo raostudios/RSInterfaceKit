@@ -25,7 +25,10 @@
 @property (nonatomic, weak) id<PopUpPresenterDelegate> _Nullable delegate;
 
 -(void) popupContainer:(UIView * _Nonnull)container fromView:(UIView * _Nonnull)sender direction:(PopUpDirection)direction;
+-(void) popupContainer:(UIView * _Nonnull)container fromView:(UIView * _Nonnull)sender direction:(PopUpDirection)direction withOffset:(CGPoint)offset;
+
 -(void) popupContainer:(UIView * _Nonnull)container fromBarButtonItem:(UIBarButtonItem * _Nonnull)sender direction:(PopUpDirection)direction;
+
 
 -(void)hidePopup;
 

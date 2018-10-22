@@ -10,9 +10,19 @@
 
 @implementation PopupBackgroundView
 
--(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+-(instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+        [self addGestureRecognizer:recognizer];
+    }
+    
+    return self;
+}
+
+-(void)viewTapped:(UITapGestureRecognizer *)sender {
     [self.delegate dismissPopUpForBackgroundView:self];
-    return nil;
 }
 
 @end

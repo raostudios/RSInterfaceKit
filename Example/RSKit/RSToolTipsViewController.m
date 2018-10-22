@@ -10,7 +10,7 @@
 #import "PopUpPresenter.h"
 
 @interface RSToolTipsViewController ()
-
+@property (nonatomic, strong) UIBarButtonItem *barButton;
 @end
 
 @implementation RSToolTipsViewController
@@ -27,20 +27,25 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:showToolTip attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
     [showToolTip addTarget:self action:@selector(showTooltip:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(toolbarItemSelected:)];
+    self.barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(toolbarItemSelected:)];
     [self.navigationController setToolbarHidden:NO];
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
+    self.toolbarItems = @[flexSpace, self.barButton, flexSpace];
+}
 
-    self.toolbarItems = @[flexSpace, button, flexSpace];
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     UILabel *label = [UILabel new];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     label.textColor = [UIColor greenColor];
     label.backgroundColor = [UIColor blueColor];
     label.text = @"Select a Reference Image";
-
-    [[PopUpPresenter sharedPresentor] popupContainer:label fromBarButtonItem:button direction:PopUpDirectionAuto];
+    
+    [[PopUpPresenter sharedPresentor] popupContainer:label
+                                   fromBarButtonItem:self.barButton
+                                           direction:PopUpDirectionAuto];
 }
 
 -(void)toolbarItemSelected:(id)sender {
