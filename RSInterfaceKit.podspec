@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RSInterfaceKit"
-  s.version          = "0.0.73"
+  s.version          = "0.0.74"
   s.summary          = "RSInterfaceKit provides common UI components for iOS Development"
   s.description      = "RSInterfaceKit provides common UI components for iOS Development."
   s.homepage         = "https://github.com/raostudios/RSInterfaceKit"
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/raostudios/RSInterfaceKit.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/venkatrao'
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '9.0'
   s.requires_arc = true
 
   s.frameworks = 'UIKit'
