@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
   s.author           = { "Venkat Rao" => "vrao423@gmail.com" }
   s.source           = { :git => "https://github.com/raostudios/RSInterfaceKit.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/venkatrao'
-
-  s.platform     = :ios, '9.0'
   s.requires_arc = true
+  s.platform = :ios
+  s.ios.deployment_target = '8.0'
 
   s.frameworks = 'UIKit'
 
