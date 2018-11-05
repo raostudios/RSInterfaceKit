@@ -194,7 +194,7 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
         topViewController = navigationController.topViewController;
     }
     
-    while (topViewController.presentedViewController) {
+    while (topViewController.presentedViewController && ![topViewController.presentedViewController isKindOfClass:[UIAlertController class]]) {
         topViewController = topViewController.presentedViewController;
     }
     
