@@ -57,8 +57,9 @@
 }
 
 -(void) updateContentSize {
-    
-    CGSize imageSize = self.imageViewFull.image.size;
+
+    CGSize imageSize = CGSizeApplyAffineTransform(self.imageViewFull.image.size,
+                                                  CGAffineTransformMakeScale(self.imageViewFull.image.scale, self.imageViewFull.image.scale));
     
     if (!CGSizeEqualToSize(imageSize, CGSizeZero) && CGRectGetHeight(self.bounds) != 0.0) {
         
@@ -92,6 +93,7 @@
 }
 
 -(CGFloat) minimumZoomScaleForImageSize:(CGSize)imageSize withImageScale:(CGFloat)imageScale andBounds:(CGRect)bounds withScale:(CGFloat)scale {
+    NSAssert(!CGRectIsEmpty(bounds), @"rect cannot be empty");
     
     CGFloat ratio = imageSize.width / imageSize.height;
     CGFloat deviceRatio = CGRectGetWidth(bounds) / CGRectGetHeight(bounds);
@@ -160,6 +162,10 @@
                                       orientation:image.imageOrientation];
     
     self.imageViewFull.image = newImage;
+    
+    if (CGRectIsEmpty(self.bounds)) {
+        return;
+    }
     
     if ((!CGSizeEqualToSize(self.imageViewFull.image.size, CGSizeZero) && updateFrames) ||
         !CGSizeEqualToSize(self.oldImageSize, self.imageViewFull.image.size)) {

@@ -6,8 +6,8 @@
 //
 //
 
-#import "Alert.h"
+#import "RSAlert.h"
 
-@implementation Alert
+@implementation RSAlert
 
 @end

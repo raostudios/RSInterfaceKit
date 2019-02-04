@@ -37,7 +37,7 @@
                                                                       metrics:nil
                                                                         views:@{@"imageView": self.imageView}]];
     
-    [self.imageView updateImage:[UIImage imageNamed:@"yosemite"] shouldUpdateFrame:YES];
+    [self.imageView updateImage:[UIImage imageNamed:@"yosemite-small"] shouldUpdateFrame:YES];
 }
 
 @end

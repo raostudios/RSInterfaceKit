@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Venkat Rao. All rights reserved.
 //
 
-#import "AlertManager.h"
-#import "AlertView.h"
-#import "Alert.h"
+#import "RSAlertManager.h"
+#import "RSAlertView.h"
+#import "RSAlert.h"
 
-@interface AlertManager()<AlertViewDelegate>
+@interface RSAlertManager()<RSAlertViewDelegate>
 
-@property (weak, nonatomic) AlertView *alertView;
-@property (strong, nonatomic) Alert *currentAlert;
+@property (weak, nonatomic) RSAlertView *alertView;
+@property (strong, nonatomic) RSAlert *currentAlert;
 
 @property (strong, nonatomic) NSMutableArray *alertsDisplayed;
 @property (strong, nonatomic) NSMutableArray *alertsQueued;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation AlertManager
+@implementation RSAlertManager
 
 NSString * const AlertManagerBannerDisplayedNotification = @"AlertManagerBannerDisplayedNotification";
 NSString * const AlertManagerBannerWillDisplayNotification = @"AlertManagerBannerWillDisplayNotification";
@@ -33,14 +33,14 @@ NSString * const AlertManagerBannerDismissedNotification = @"AlertManagerBannerD
 NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBannerWillDismissNotification";
 
 
--(void) showAlertWithMessage:(Alert *)alert withAnimation:(BOOL)animations {
+-(void) showAlertWithMessage:(RSAlert *)alert withAnimation:(BOOL)animations {
     NSAssert([NSThread isMainThread], @"Cannot call method on main thread");
     
     if ([alert.uniqueId length]) {
         [self.alertsDisplayed addObject:alert.uniqueId];
     }
     
-    AlertView *banner = [[AlertView alloc] initWithFrame:CGRectZero];
+    RSAlertView *banner = [[RSAlertView alloc] initWithFrame:CGRectZero];
     banner.delegate = self;
     UIViewController *topViewController = [self topViewController];
     
@@ -115,7 +115,7 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
     
 }
 
--(void)alertViewTapped:(AlertView *)alertView {
+-(void)alertViewTapped:(RSAlertView *)alertView {
     if (self.currentAlert.actionOnTap) {
         self.currentAlert.actionOnTap();
     }
@@ -204,22 +204,22 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
 #pragma mark - Public API
 
 +(instancetype) sharedManager {
-    static AlertManager *alertManager;
+    static RSAlertManager *alertManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        alertManager = [AlertManager new];
+        alertManager = [RSAlertManager new];
     });
     return alertManager;
 }
 
--(void) scheduleAlert:(Alert *)newAlert {
+-(void) scheduleAlert:(RSAlert *)newAlert {
     
     if ([newAlert.uniqueId length]) {
         if ([self.alertsDisplayed containsObject:newAlert.uniqueId]) {
             return;
         }
             
-        for (Alert *alert in self.alertsQueued) {
+        for (RSAlert *alert in self.alertsQueued) {
             if ([alert.uniqueId length] && [newAlert.uniqueId isEqualToString:alert.uniqueId]) {
                 return;
             }
@@ -233,13 +233,13 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
     }
 }
 
--(void) cancelAlert:(Alert *)alert {
+-(void) cancelAlert:(RSAlert *)alert {
     
     if ([alert.message isEqualToString:self.currentAlert.message]) {
         [self dismissMesssage];
     }
     
-    [self.alertsQueued enumerateObjectsUsingBlock:^(Alert *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.alertsQueued enumerateObjectsUsingBlock:^(RSAlert *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj.uniqueId isEqualToString:alert.uniqueId]) {
             [self.alertsQueued removeObject:obj];
         }
@@ -248,7 +248,7 @@ NSString * const AlertManagerBannerWillDismissNotification = @"AlertManagerBanne
 
 -(void) showNextQueuedAlert {
     if ([self.alertsQueued count] != 0) {
-        Alert *alert = [self.alertsQueued firstObject];
+        RSAlert *alert = [self.alertsQueued firstObject];
         [self.alertsQueued removeObjectAtIndex:0];
         if (alert.shouldDisplay) {
             if (alert.shouldDisplay()) {

@@ -398,7 +398,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RSInterfaceKit-iOS9.0/RSInterfaceKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RSInterfaceKit-iOS10.0/RSInterfaceKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -652,7 +652,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSKit/RSInterfaceKit-Prefix.pch";
 				INFOPLIST_FILE = "RSKit/RSInterfaceKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = RSInterfaceKit;
 				WRAPPER_EXTENSION = app;
@@ -669,7 +669,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSKit/RSInterfaceKit-Prefix.pch";
 				INFOPLIST_FILE = "RSKit/RSInterfaceKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = RSInterfaceKit;
 				WRAPPER_EXTENSION = app;

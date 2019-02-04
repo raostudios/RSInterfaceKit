@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Venkat Rao. All rights reserved.
 //
 
-#import "AlertView.h"
+#import "RSAlertView.h"
 #import "UIView+AutoLayout.h"
 
-@interface AlertView ()
+@interface RSAlertView ()
 
 @property (nonatomic, strong) UILabel *labelMessage;
 @property (nonatomic, strong) UIButton *buttonClose;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation AlertView
+@implementation RSAlertView
 
 -(instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

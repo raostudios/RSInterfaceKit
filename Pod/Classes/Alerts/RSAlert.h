@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, AlertType) {
-    AlertTypeBanner,
-    AlertTypeModal
+typedef NS_ENUM(NSUInteger, RSAlertType) {
+    RSAlertTypeBanner,
+    RSAlertTypeModal
 };
 
-@interface Alert : NSObject
+@interface RSAlert : NSObject
 
 @property (strong, nonatomic) NSString *uniqueId;
 @property (strong, nonatomic) NSString *message;
@@ -21,7 +21,8 @@ typedef NS_ENUM(NSUInteger, AlertType) {
 @property (strong, nonatomic) void (^dismiss)(void);
 @property (strong, nonatomic) BOOL (^shouldDisplay)(void);
 @property (assign, nonatomic) BOOL retry;
-@property (assign, nonatomic) AlertType alertType;
+@property (assign, nonatomic) RSAlertType alertType;
 @property (assign, nonatomic) NSTimeInterval seconds;
 
 @end
+

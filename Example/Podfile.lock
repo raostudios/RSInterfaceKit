@@ -1,33 +1,33 @@
 PODS:
-  - RSInterfaceKit (0.0.76):
-    - RSInterfaceKit/Alerts (= 0.0.76)
-    - RSInterfaceKit/AutoLayoutHelpers (= 0.0.76)
-    - RSInterfaceKit/CollectionViewWithTransitions (= 0.0.76)
-    - RSInterfaceKit/FullScreenImageView (= 0.0.76)
-    - RSInterfaceKit/LoadingView (= 0.0.76)
-    - RSInterfaceKit/NavigationBarMenu (= 0.0.76)
-    - RSInterfaceKit/PopUps (= 0.0.76)
-    - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.76)
-    - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.76)
-    - RSInterfaceKit/RSCarouselScrollView (= 0.0.76)
-    - RSInterfaceKit/RSSettings (= 0.0.76)
-    - RSInterfaceKit/ZoomableImageView (= 0.0.76)
-  - RSInterfaceKit/Alerts (0.0.76):
+  - RSInterfaceKit (0.0.77):
+    - RSInterfaceKit/Alerts (= 0.0.77)
+    - RSInterfaceKit/AutoLayoutHelpers (= 0.0.77)
+    - RSInterfaceKit/CollectionViewWithTransitions (= 0.0.77)
+    - RSInterfaceKit/FullScreenImageView (= 0.0.77)
+    - RSInterfaceKit/LoadingView (= 0.0.77)
+    - RSInterfaceKit/NavigationBarMenu (= 0.0.77)
+    - RSInterfaceKit/PopUps (= 0.0.77)
+    - RSInterfaceKit/PortraitOnlyNavigation (= 0.0.77)
+    - RSInterfaceKit/RSCarouselDissolvingImageView (= 0.0.77)
+    - RSInterfaceKit/RSCarouselScrollView (= 0.0.77)
+    - RSInterfaceKit/RSSettings (= 0.0.77)
+    - RSInterfaceKit/ZoomableImageView (= 0.0.77)
+  - RSInterfaceKit/Alerts (0.0.77):
     - RSInterfaceKit/AutoLayoutHelpers
-  - RSInterfaceKit/AutoLayoutHelpers (0.0.76)
-  - RSInterfaceKit/CollectionViewWithTransitions (0.0.76)
-  - RSInterfaceKit/FullScreenImageView (0.0.76):
+  - RSInterfaceKit/AutoLayoutHelpers (0.0.77)
+  - RSInterfaceKit/CollectionViewWithTransitions (0.0.77)
+  - RSInterfaceKit/FullScreenImageView (0.0.77):
     - RSInterfaceKit/ZoomableImageView
-  - RSInterfaceKit/LoadingView (0.0.76):
+  - RSInterfaceKit/LoadingView (0.0.77):
     - RSInterfaceKit/AutoLayoutHelpers
-  - RSInterfaceKit/NavigationBarMenu (0.0.76)
-  - RSInterfaceKit/PopUps (0.0.76)
-  - RSInterfaceKit/PortraitOnlyNavigation (0.0.76)
-  - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.76)
-  - RSInterfaceKit/RSCarouselScrollView (0.0.76)
-  - RSInterfaceKit/RSSettings (0.0.76):
+  - RSInterfaceKit/NavigationBarMenu (0.0.77)
+  - RSInterfaceKit/PopUps (0.0.77)
+  - RSInterfaceKit/PortraitOnlyNavigation (0.0.77)
+  - RSInterfaceKit/RSCarouselDissolvingImageView (0.0.77)
+  - RSInterfaceKit/RSCarouselScrollView (0.0.77)
+  - RSInterfaceKit/RSSettings (0.0.77):
     - RSInterfaceKit/AutoLayoutHelpers
-  - RSInterfaceKit/ZoomableImageView (0.0.76)
+  - RSInterfaceKit/ZoomableImageView (0.0.77)
 
 DEPENDENCIES:
   - RSInterfaceKit (from `../`)
@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RSInterfaceKit: dea10934cf56d47fa25da8e011cb0411911a5507
+  RSInterfaceKit: 8158d2f1e39fd3772c4ea22404843a1f52d2522c
 
 PODFILE CHECKSUM: 6605aea5bc2be51debf39683e856f57077be0825
 

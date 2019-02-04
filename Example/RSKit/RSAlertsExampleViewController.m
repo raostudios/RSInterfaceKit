@@ -7,8 +7,8 @@
 //
 
 #import "RSAlertsExampleViewController.h"
-#import "AlertManager.h"
-#import "Alert.h"
+#import "RSAlertManager.h"
+#import "RSAlert.h"
 #import "RSWebViewController.h"
 
 @interface RSAlertsExampleViewController ()
@@ -102,7 +102,7 @@
 
 -(void) showSimpleAlert:(UIButton *)sender {
     
-    Alert *alert = [Alert new];
+    RSAlert *alert = [RSAlert new];
     alert.message = @"Test";
     alert.actionOnTap = ^void (void) {
         RSWebViewController *webView = [RSWebViewController new];
@@ -110,25 +110,25 @@
         [self.navigationController pushViewController:webView animated:YES];
     };
     
-    [[AlertManager sharedManager] scheduleAlert:alert];
+    [[RSAlertManager sharedManager] scheduleAlert:alert];
 }
 
 -(void) showUniqueAlert:(UIButton *)sender {
     
-    Alert *alert = [Alert new];
+    RSAlert *alert = [RSAlert new];
     alert.message = @"Test";
     alert.uniqueId = @"dsfsdf";
     
-    [[AlertManager sharedManager] scheduleAlert:alert];
+    [[RSAlertManager sharedManager] scheduleAlert:alert];
 }
 
 -(void) showTimedAlert:(UIButton *)sender {
     
-    Alert *alert = [Alert new];
+    RSAlert *alert = [RSAlert new];
     alert.message = @"Test";
     alert.seconds = 2;
     
-    [[AlertManager sharedManager] scheduleAlert:alert];
+    [[RSAlertManager sharedManager] scheduleAlert:alert];
 }
 
 @end

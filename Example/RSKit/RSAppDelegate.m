@@ -8,7 +8,7 @@
 
 #import "RSAppDelegate.h"
 #import "RSInterfaceKitLibraryViewController.h"
-#import "AlertView.h"
+#import "RSAlertView.h"
 
 @implementation RSAppDelegate
 
@@ -24,8 +24,8 @@
     self.window.rootViewController = splitViewController;
     [self.window makeKeyAndVisible];
     
-    [[AlertView appearance] setUserBackgroundColor:[UIColor greenColor]];
-    [[AlertView appearance] setTextColor:[UIColor whiteColor]];
+    [[RSAlertView appearance] setUserBackgroundColor:[UIColor greenColor]];
+    [[RSAlertView appearance] setTextColor:[UIColor whiteColor]];
     
     return YES;
 }

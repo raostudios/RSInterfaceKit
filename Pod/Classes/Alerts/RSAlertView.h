@@ -8,21 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@class AlertView;
+@class RSAlertView;
 
-@protocol AlertViewDelegate <NSObject>
+@protocol RSAlertViewDelegate <NSObject>
 
--(void) alertViewTapped:(AlertView *)alertView;
+-(void) alertViewTapped:(RSAlertView *)alertView;
 
 @end
 
-@interface AlertView : UIView <UIAppearanceContainer>
+@interface RSAlertView : UIView <UIAppearanceContainer>
 
 @property (nonatomic, weak) NSString *message;
 
 @property (nonatomic, copy) void(^bannerDismissed)(void);
 
-@property (nonatomic, weak) id<AlertViewDelegate> delegate;
+@property (nonatomic, weak) id<RSAlertViewDelegate> delegate;
 
 @property (nonatomic, strong) UIColor *textColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIFont *textFont UI_APPEARANCE_SELECTOR;
