@@ -101,7 +101,7 @@
 		82A8168E1C6457FA00609AA3 /* RSSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSettingsViewController.m; sourceTree = "<group>"; };
 		82B73ABD1B27ADE300C5AD74 /* RSAlertsExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAlertsExampleViewController.h; sourceTree = "<group>"; };
 		82B73ABE1B27ADE300C5AD74 /* RSAlertsExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAlertsExampleViewController.m; sourceTree = "<group>"; };
-		82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RSInterfaceKit.podspec; path = ../RSInterfaceKit.podspec; sourceTree = "<group>"; };
+		82BB07481B5C1348002149F5 /* RSInterfaceKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RSInterfaceKit.podspec; path = ../RSInterfaceKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		82BB074A1B5C8285002149F5 /* RSZoomImageToImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSZoomImageToImageViewController.h; sourceTree = "<group>"; };
 		82BB074B1B5C8285002149F5 /* RSZoomImageToImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSZoomImageToImageViewController.m; sourceTree = "<group>"; };
 		82DE1F4D1BB056B1002307AB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
