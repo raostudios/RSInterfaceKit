@@ -12,7 +12,7 @@
 
 -(void (^)(void))action {
     return ^void(void) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.urlString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.urlString] options:@{} completionHandler:nil];
     };
 }
 

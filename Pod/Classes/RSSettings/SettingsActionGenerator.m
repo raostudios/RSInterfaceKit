@@ -70,7 +70,7 @@
     action.action = ^{
         NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software", self.appId];
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]options:@{} completionHandler:nil];
     };
     return action;
 }
@@ -133,12 +133,14 @@
 
 
 -(void) showServiceUnavailableMessage:(NSString *) service {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Service Unavailable"
-                                                     message:[NSString stringWithFormat:@"%@ is unavailable on your device.", service]
-                                                    delegate:nil
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-    [alert show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Service Unavailable"
+                                                                             message:[NSString stringWithFormat:@"%@ is unavailable on your device.", service]
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:ok];
+
+    [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)shareMail:(id)sender {

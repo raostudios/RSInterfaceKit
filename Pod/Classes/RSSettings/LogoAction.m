@@ -12,7 +12,7 @@
 
 -(void (^)(void))action {
     return ^void(void) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.raostudios.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.raostudios.com"] options:@{} completionHandler:nil];
     };
 }
 

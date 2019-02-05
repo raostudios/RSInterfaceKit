@@ -19,7 +19,7 @@
     action.name = @"Like Us on Facebook";
     action.glyphName = @"facebook";
     action.action = ^{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://facebook.com/%@", self.facebook]]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://facebook.com/%@", self.facebook]] options:@{} completionHandler:nil];
     };
     return action;
 }
@@ -29,7 +29,7 @@
     action.name = [NSString stringWithFormat:@"Follow @%@ on Instagram", self.instagram];
     action.glyphName = @"instagram";
     action.action = ^{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://instagram.com/%@", self.instagram]]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://instagram.com/%@", self.instagram]] options:@{} completionHandler:nil];
     };
     return action;
 }
@@ -39,7 +39,7 @@
     action.name = [NSString stringWithFormat:@"Follow @%@ on Twitter", self.twitter];
     action.glyphName = @"twitter";
     action.action = ^{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://twitter.com/%@", self.twitter]]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://twitter.com/%@", self.twitter]] options:@{} completionHandler:nil];
     };
     return action;
 }
@@ -49,7 +49,7 @@
     action.name = @"Follow Us on Snapchat";
     action.glyphName = @"snapchat";
     action.action = ^{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://www.snapchat.com/add/%@", self.snapchat]]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://www.snapchat.com/add/%@", self.snapchat]] options:@{} completionHandler:nil];
     };
     return action;
 }
@@ -59,7 +59,7 @@
     action.name = @"Visit our Website";
     action.glyphName = @"website";
     action.action = ^{
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.website]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.website] options:@{} completionHandler:nil];
     };
     return action;
 }
