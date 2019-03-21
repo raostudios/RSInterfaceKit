@@ -398,7 +398,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RSInterfaceKit/Pods-RSInterfaceKit-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RSInterfaceKit-iOS10.0/RSInterfaceKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RSInterfaceKit/RSInterfaceKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -442,7 +442,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RSInterfaceKit-iOS8.0/RSInterfaceKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RSInterfaceKit/RSInterfaceKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
