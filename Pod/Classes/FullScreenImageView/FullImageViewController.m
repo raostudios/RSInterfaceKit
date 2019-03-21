@@ -35,18 +35,29 @@
     
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:gesture];
-    
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view.buttonDone
-                                                     attribute:NSLayoutAttributeBottom
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.bottomLayoutGuide
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1
-                                                      constant:0]];
+
+    if(@available(iOS 11, *)) {
+        [self.view.buttonDone.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor].active = YES;
+    } else {
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view.buttonDone
+                                                              attribute:NSLayoutAttributeBottom
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.bottomLayoutGuide
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:1
+                                                               constant:0]];
+    }
+
+
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(imageTapped:)];
     [self.view.scrollView addGestureRecognizer:tapGesture];
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self.view.scrollView updateZoomBounds];
 }
 
 -(BOOL) prefersStatusBarHidden {
