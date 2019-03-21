@@ -183,8 +183,13 @@
 
 -(CGSize)constraintsSize {
     CGSize constraintedSize = self.bounds.size;
-    constraintedSize.width -= (self.adjustedContentInset.left + self.adjustedContentInset.right);
-    constraintedSize.height -= (self.adjustedContentInset.top + self.adjustedContentInset.bottom);
+
+    if (@available(iOS 11, *)) {
+        constraintedSize.width -= (self.adjustedContentInset.left + self.adjustedContentInset.right);
+        constraintedSize.height -= (self.adjustedContentInset.top + self.adjustedContentInset.bottom);
+    } else {
+        constraintedSize.width -= (self.contentInset.left + self.contentInset.right);
+        constraintedSize.height -= (self.contentInset.top + self.contentInset.bottom);    }
 
     return constraintedSize;
 }
