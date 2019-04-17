@@ -62,8 +62,11 @@
 }
 
 -(CGFloat) minimumZoomScaleForImageSize:(CGSize)imageSize andBounds:(CGSize)boundedSize {
-    NSAssert(!CGSizeEqualToSize(boundedSize, CGSizeZero), @"rect cannot be empty");
     
+    if (CGSizeEqualToSize(boundedSize, CGSizeZero) || CGSizeEqualToSize(imageSize, CGSizeZero) ) {
+        return 0.0;
+    }
+
     CGFloat ratio = imageSize.width / imageSize.height;
     CGFloat deviceRatio = boundedSize.width / boundedSize.height;
     
