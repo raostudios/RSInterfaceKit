@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIButton *selectedButton;
 
 @property (strong, nonatomic) FullImageViewController *fullImageViewController;
+
 @end
 
 @implementation RSFullScreenImageTestViewController
