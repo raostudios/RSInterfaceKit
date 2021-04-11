@@ -9,18 +9,17 @@
 #import "MenuSelectionViewController.h"
 #import <RSInterfaceKit/MenuSelectionManager.h>
 
-@interface MenuSelectionViewController ()<MenuSelectionDataSource, MenuSelectionDelegate>
+@interface MenuSelectionTestViewController ()<MenuSelectionDataSource, MenuSelectionDelegate>
 
 @property (nonatomic, strong) MenuSelectionManager *manager;
 @property (nonatomic, strong) UILabel *labelAlert;
 
 @end
 
-@implementation MenuSelectionViewController
+@implementation MenuSelectionTestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.manager = [MenuSelectionManager new];
     self.manager.delegate = self;
@@ -33,7 +32,6 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.labelAlert attribute:NSLayoutAttributeCenterX
                                                           relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.labelAlert attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
-
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -58,11 +56,6 @@
 
 -(void)menuSelectionManager:(MenuSelectionViewController *)manager cellSelectedAtIndexPath:(NSIndexPath *)indexPath {
     self.labelAlert.text = [NSString stringWithFormat:@"%ld Item", (long)indexPath.item];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
